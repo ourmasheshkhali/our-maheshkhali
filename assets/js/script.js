@@ -6133,4 +6133,101 @@ if (footer && particles.length) {
         cursor.style.opacity = '1';
         glow.style.opacity   = '1';
     });
+})();/* =========================================================
+   📱 MOBILE NAVIGATION TOGGLE
+========================================================= */
+
+(function initMobileNav() {
+    const navbar  = document.querySelector('.navbar') || document.querySelector('nav');
+    const navMenu = document.querySelector('.nav-menu') || document.querySelector('.navbar-menu');
+    if (!navbar || !navMenu) return;
+
+    // Hamburger button তৈরি
+    let hamburger = navbar.querySelector('.hamburger');
+    if (!hamburger) {
+        hamburger = document.createElement('button');
+        hamburger.className = 'hamburger';
+        hamburger.type = 'button';
+        hamburger.setAttribute('aria-label', 'Toggle menu');
+        hamburger.setAttribute('aria-expanded', 'false');
+        hamburger.innerHTML = `
+            <span></span>
+            <span></span>
+            <span></span>
+        `;
+        navbar.appendChild(hamburger);
+    }
+
+    // Hamburger style inject
+    const style = document.createElement('style');
+    style.textContent = `
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            justify-content: center;
+            gap: 5px;
+            width: 42px;
+            height: 42px;
+            padding: 8px;
+            background: rgba(255,255,255,0.06);
+            border: 1px solid rgba(255,255,255,0.15);
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        .hamburger span {
+            display: block;
+            width: 100%;
+            height: 2px;
+            background: #fff;
+            border-radius: 2px;
+            transition: all 0.3s ease;
+        }
+        .hamburger.active span:nth-child(1) {
+            transform: rotate(45deg) translate(5px, 5px);
+        }
+        .hamburger.active span:nth-child(2) {
+            opacity: 0;
+        }
+        .hamburger.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(5px, -5px);
+        }
+        @media (max-width: 1023px) {
+            .hamburger { display: flex !important; }
+        }
+    `;
+    document.head.appendChild(style);
+
+    // Toggle menu
+    hamburger.addEventListener('click', () => {
+        hamburger.classList.toggle('active');
+        navMenu.classList.toggle('active');
+        const expanded = hamburger.getAttribute('aria-expanded') === 'true';
+        hamburger.setAttribute('aria-expanded', !expanded);
+
+        if (!expanded) {
+            document.body.style.overflow = 'hidden';
+        } else {
+            document.body.style.overflow = '';
+        }
+    });
+
+    // মেনু লিংকে ক্লিক করলে বন্ধ
+    navMenu.querySelectorAll('a').forEach((link) => {
+        link.addEventListener('click', () => {
+            hamburger.classList.remove('active');
+            navMenu.classList.remove('active');
+            hamburger.setAttribute('aria-expanded', 'false');
+            document.body.style.overflow = '';
+        });
+    });
+
+    // Resize করলে মেনু বন্ধ
+    window.addEventListener('resize', () => {
+        if (window.innerWidth > 1023) {
+            hamburger.classList.remove('active');
+            navMenu.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+    });
 })();
