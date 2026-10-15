@@ -5494,4 +5494,643 @@ document.addEventListener('touchstart', function (e) {
         }
     });
 
+})();/* ═══════════════════════════════════════════
+   🌐 LANGUAGE SWITCH SYSTEM
+   Bangla ↔ English
+   Reads data-bn / data-en from all elements
+═══════════════════════════════════════════ */
+
+(function initLanguageSystem() {
+  'use strict';
+
+  const STORAGE_KEY = 'om.lang';
+  const DEFAULT_LANG = 'bn';
+  const SUPPORTED = ['bn', 'en'];
+
+  /* ─── Get current language ─── */
+  function getLang() {
+    const saved = localStorage.getItem(STORAGE_KEY);
+    return SUPPORTED.includes(saved) ? saved : DEFAULT_LANG;
+  }
+
+  /* ─── Apply language to ALL elements ─── */
+  function applyLanguage(lang) {
+    const isBn = lang === 'bn';
+
+    // Set html attributes
+    document.documentElement.lang = lang;
+    document.documentElement.setAttribute('data-lang', lang);
+
+    // 1. Text content
+    document.querySelectorAll('[data-bn][data-en]').forEach(el => {
+      const val = el.getAttribute(isBn ? 'data-bn' : 'data-en');
+      if (val !== null && val !== undefined) {
+        el.textContent = val;
+      }
+    });
+
+    // 2. Placeholders
+    document.querySelectorAll('[data-bn-placeholder][data-en-placeholder]').forEach(el => {
+      const val = el.getAttribute(isBn ? 'data-bn-placeholder' : 'data-en-placeholder');
+      if (val) el.placeholder = val;
+    });
+
+    // 3. Titles
+    document.querySelectorAll('[data-bn-title][data-en-title]').forEach(el => {
+      const val = el.getAttribute(isBn ? 'data-bn-title' : 'data-en-title');
+      if (val) el.title = val;
+    });
+
+    // 4. Aria labels
+    document.querySelectorAll('[data-bn-aria][data-en-aria]').forEach(el => {
+      const val = el.getAttribute(isBn ? 'data-bn-aria' : 'data-en-aria');
+      if (val) el.setAttribute('aria-label', val);
+    });
+
+    // 5. Update language toggle button label
+    document.querySelectorAll('#topLangText, #language-toggle, .lang-current, #libLangText').forEach(el => {
+      el.textContent = isBn ? 'বাংলা' : 'English';
+    });
+
+    // 6. Dispatch event for other scripts
+    window.dispatchEvent(new CustomEvent('om:language-change', {
+      detail: { lang: lang }
+    }));
+
+    console.log('[i18n] Language:', lang);
+  }
+
+  /* ─── Toggle ─── */
+  function toggleLanguage() {
+    const current = getLang();
+    const next = current === 'bn' ? 'en' : 'bn';
+    localStorage.setItem(STORAGE_KEY, next);
+    applyLanguage(next);
+
+    // Toast notification
+    if (window.showToast) {
+      window.showToast(next === 'bn' ? '🌐 ভাষা: বাংলা' : '🌐 Language: English');
+    }
+  }
+
+  /* ─── Bind all language toggle buttons ─── */
+  function bindToggles() {
+    const selectors = [
+      '#topLangBtn',
+      '#language-toggle',
+      '#libLang',
+      '#ribLang',
+      '[data-lang-toggle]',
+      '[data-i18n-toggle]'
+    ];
+
+    selectors.forEach(sel => {
+      document.querySelectorAll(sel).forEach(btn => {
+        btn.addEventListener('click', (e) => {
+          e.preventDefault();
+          toggleLanguage();
+        });
+      });
+    });
+
+    console.log('[i18n] Bound language toggle buttons');
+  }
+
+  /* ─── Init on page load ─── */
+  function init() {
+    const lang = getLang();
+    applyLanguage(lang);
+    bindToggles();
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', init);
+  } else {
+    init();
+  }
+
+  // Expose globally
+  window.OM_setLanguage = applyLanguage;
+  window.OM_getLanguage = getLang;
+
+})();/* ═══════════════════════════════════════════
+   🗺️ INTERACTIVE MAP — Matarbari First
+═══════════════════════════════════════════ */
+
+(function initMap() {
+  'use strict';
+
+  const UNIONS = [
+    { id: 'matarbari',          icon: '🏭', x: 22, y: 32, name: { bn: 'মাতারবাড়ী', en: 'Matarbari' },         num: { bn: 'ইউনিয়ন ১', en: 'Union 1' } },
+    { id: 'dhalghata',          icon: '🌴', x: 75, y: 25, name: { bn: 'ধলঘাটা', en: 'Dhalghata' },             num: { bn: 'ইউনিয়ন ২', en: 'Union 2' } },
+    { id: 'kalarmarchhara',     icon: '🌿', x: 50, y: 42, name: { bn: 'কালারমারছড়া', en: 'Kalarmarchhara' },   num: { bn: 'ইউনিয়ন ৩', en: 'Union 3' } },
+    { id: 'shaplapur',          icon: '🌸', x: 35, y: 58, name: { bn: 'শাপলাপুর', en: 'Shaplapur' },             num: { bn: 'ইউনিয়ন ৪', en: 'Union 4' } },
+    { id: 'hoanak',             icon: '🌊', x: 65, y: 52, name: { bn: 'হোয়ানক', en: 'Hoanak' },                num: { bn: 'ইউনিয়ন ৫', en: 'Union 5' } },
+    { id: 'bara-maheshkhali',   icon: '🏝️', x: 45, y: 18, name: { bn: 'বড় মহেশখালী', en: 'Bara Maheshkhali' }, num: { bn: 'ইউনিয়ন ৬', en: 'Union 6' } },
+    { id: 'kutubjom',           icon: '🏖️', x: 28, y: 72, name: { bn: 'কুতুবজোম', en: 'Kutubjom' },            num: { bn: 'ইউনিয়ন ৭', en: 'Union 7' } },
+    { id: 'chhota-maheshkhali', icon: '⛰️', x: 72, y: 78, name: { bn: 'ছোট মহেশখালী', en: 'Chhota Maheshkhali' }, num: { bn: 'ইউনিয়ন ৮', en: 'Union 8' } }
+  ];
+
+  const overlay  = document.getElementById('map-modal');
+  const island   = document.getElementById('map-island');
+  const listEl   = document.getElementById('map-list');
+  const searchEl = document.getElementById('map-search');
+
+  if (!overlay || !island || !listEl) {
+    console.warn('[Map] Missing elements');
+    return;
+  }
+
+  const getLang = () => localStorage.getItem('om.lang') || 'bn';
+  const isBn    = () => getLang() === 'bn';
+  const pick    = (obj) => isBn() ? obj.bn : obj.en;
+
+  function renderList() {
+    listEl.innerHTML = UNIONS.map(u => `
+      <button type="button" class="map-list-item" data-union="${u.id}">
+        <span class="map-list-item__icon">${u.icon}</span>
+        <span class="map-list-item__content">
+          <strong>${pick(u.name)}</strong>
+          <small>${pick(u.num)}</small>
+        </span>
+      </button>
+    `).join('');
+  }
+
+  function renderMarkers() {
+    island.innerHTML = UNIONS.map(u => `
+      <div class="map-marker" data-union="${u.id}" style="left:${u.x}%;top:${u.y}%" title="${pick(u.name)}">
+        <div class="map-marker__dot"></div>
+        <div class="map-marker__label">${pick(u.name)}</div>
+      </div>
+    `).join('');
+  }
+
+  function openGoogleMaps(union) {
+    const q = encodeURIComponent(`${union.name.en}, Maheshkhali, Cox's Bazar, Bangladesh`);
+    window.open(`https://www.google.com/maps/search/?api=1&query=${q}`, '_blank', 'noopener');
+  }
+
+  function initClicks() {
+    document.addEventListener('click', (e) => {
+      const item = e.target.closest('.map-list-item, .map-marker');
+      if (!item || !overlay.contains(item)) return;
+
+      const u = UNIONS.find(x => x.id === item.dataset.union);
+      if (!u) return;
+
+      document.querySelectorAll('.map-marker, .map-list-item')
+        .forEach(el => el.classList.remove('active'));
+
+      item.classList.add('active');
+      openGoogleMaps(u);
+    });
+  }
+
+  function initSearch() {
+    if (!searchEl) return;
+    searchEl.addEventListener('input', () => {
+      const q = searchEl.value.trim().toLowerCase();
+      listEl.querySelectorAll('.map-list-item').forEach(item => {
+        item.style.display =
+          !q || item.textContent.toLowerCase().includes(q) ? '' : 'none';
+      });
+    });
+  }
+
+  function openMap() {
+    overlay.removeAttribute('hidden');
+    document.body.style.overflow = 'hidden';
+    renderList();
+    renderMarkers();
+  }
+
+  function closeMap() {
+    overlay.setAttribute('hidden', '');
+    document.body.style.overflow = '';
+  }
+
+  document.addEventListener('click', (e) => {
+    const trigger = e.target.closest('a[href="#map"], [data-open="map"]');
+    if (trigger) {
+      e.preventDefault();
+      openMap();
+      return;
+    }
+    if (e.target.closest('#map-modal [data-close]')) closeMap();
+  });
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && !overlay.hasAttribute('hidden')) closeMap();
+  });
+
+  window.addEventListener('om:language-change', () => {
+    if (!overlay.hasAttribute('hidden')) {
+      renderList();
+      renderMarkers();
+    }
+  });
+
+  initClicks();
+  initSearch();
+
+  console.log('[Map] Ready — Matarbari first, 8 unions');
+  window.OM_Map = { open: openMap, close: closeMap };
+
+})();/* =========================================================
+   🌴 TOP INFORMATION BAR — SCRIPT
+========================================================= */
+
+/* ---------- 1. LIVE DATE / DAY / TIME ---------- */
+const DAYS_BN = ['রবিবার','সোমবার','মঙ্গলবার','বুধবার','বৃহস্পতিবার','শুক্রবার','শনিবার'];
+const DAYS_EN = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
+const MONTHS_BN = ['জানুয়ারি','ফেব্রুয়ারি','মার্চ','এপ্রিল','মে','জুন','জুলাই','আগস্ট','সেপ্টেম্বর','অক্টোবর','নভেম্বর','ডিসেম্বর'];
+const MONTHS_EN = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+
+function pad(n) { return n.toString().padStart(2, '0'); }
+
+function updateDateTime() {
+    const now = new Date();
+    const isEn = document.documentElement.lang === 'en';
+
+    // Day
+    const dayEl = document.getElementById('current-day');
+    if (dayEl) {
+        const bn = DAYS_BN[now.getDay()];
+        const en = DAYS_EN[now.getDay()];
+        dayEl.setAttribute('data-bn', bn);
+        dayEl.setAttribute('data-en', en);
+        dayEl.textContent = isEn ? en : bn;
+    }
+
+    // Date
+    const dateEl = document.getElementById('current-date');
+    if (dateEl) {
+        const d = pad(now.getDate());
+        const m = isEn ? MONTHS_EN[now.getMonth()] : MONTHS_BN[now.getMonth()];
+        const y = now.getFullYear();
+        dateEl.textContent = `${d} ${m} ${y}`;
+    }
+
+    // Time
+    const timeEl = document.getElementById('live-time');
+    if (timeEl) {
+        let h = now.getHours();
+        const ampm = h >= 12 ? 'PM' : 'AM';
+        h = h % 12 || 12;
+        timeEl.textContent = `${pad(h)}:${pad(now.getMinutes())}:${pad(now.getSeconds())} ${ampm}`;
+    }
+}
+
+updateDateTime();
+setInterval(updateDateTime, 1000);
+
+/* ---------- 2. LANGUAGE TOGGLE ---------- */
+const topLangBtn  = document.getElementById('topLangBtn');
+const topLangText = document.getElementById('topLangText');
+
+topLangBtn?.addEventListener('click', () => {
+    const newLang = document.documentElement.lang === 'bn' ? 'en' : 'bn';
+    document.documentElement.lang = newLang;
+
+    const targets = document.querySelectorAll('[data-bn][data-en]');
+    targets.forEach(el => el.classList.add('swapping'));
+
+    setTimeout(() => {
+        targets.forEach(el => {
+            el.textContent = el.getAttribute('data-' + newLang);
+            el.classList.remove('swapping');
+        });
+        updateDateTime();
+    }, 220);
+
+    localStorage.setItem('lang', newLang);
+});
+
+// Restore saved language
+(function restoreLang() {
+    const saved = localStorage.getItem('lang');
+    if (saved === 'en') {
+        document.documentElement.lang = 'en';
+        document.querySelectorAll('[data-bn][data-en]').forEach(el => {
+            el.textContent = el.getAttribute('data-en');
+        });
+        updateDateTime();
+    }
+})();
+
+/* ---------- 3. THEME TOGGLE ---------- */
+const topThemeBtn = document.getElementById('topThemeBtn');
+
+if (localStorage.getItem('theme') === 'light') {
+    document.body.classList.add('light-theme');
+    if (topThemeBtn) topThemeBtn.textContent = '☀️';
+}
+
+topThemeBtn?.addEventListener('click', () => {
+    const isLight = document.body.classList.toggle('light-theme');
+    topThemeBtn.textContent = isLight ? '☀️' : '🌙';
+    localStorage.setItem('theme', isLight ? 'light' : 'dark');
+});
+
+/* ---------- 4. LOGIN / LOGOUT ---------- */
+const topLoginBtn  = document.getElementById('topLoginBtn');
+const topLogoutBtn = document.getElementById('topLogoutBtn');
+
+if (localStorage.getItem('isLoggedIn') === 'true') {
+    document.body.classList.add('logged-in');
+}
+
+topLoginBtn?.addEventListener('click', () => {
+    // TODO: open login modal / redirect
+    localStorage.setItem('isLoggedIn', 'true');
+    document.body.classList.add('logged-in');
+});
+
+topLogoutBtn?.addEventListener('click', () => {
+    localStorage.removeItem('isLoggedIn');
+    document.body.classList.remove('logged-in');
+});
+
+/* ---------- 5. MY LOCATION ---------- */
+const topLocationBtn = document.getElementById('topLocationBtn');
+topLocationBtn?.addEventListener('click', () => {
+    if (!navigator.geolocation) {
+        alert('Geolocation is not supported by your browser.');
+        return;
+    }
+    topLocationBtn.disabled = true;
+    navigator.geolocation.getCurrentPosition(
+        (pos) => {
+            const { latitude, longitude } = pos.coords;
+            window.open(`https://www.google.com/maps?q=${latitude},${longitude}`, '_blank');
+            topLocationBtn.disabled = false;
+        },
+        () => {
+            alert('Location access denied or unavailable.');
+            topLocationBtn.disabled = false;
+        }
+    );
+});
+
+/* ---------- 6. NOTIFICATIONS ---------- */
+const topNotifBtn = document.getElementById('topNotifBtn');
+topNotifBtn?.addEventListener('click', () => {
+    // TODO: open notification panel
+    console.log('🔔 Notifications opened');
+});/* =========================================================
+   🏝️ HERO SECTION — SCRIPT
+   Our Maheshkhali
+========================================================= */
+
+/* ---------- 1. 3D PARALLAX ON MOUSE MOVE ---------- */
+const heroSection = document.querySelector('.hero-section');
+const heroIsland  = document.getElementById('heroIsland');
+const sunEl       = document.querySelector('.ocean-sun');
+const sunGlowEl   = document.querySelector('.ocean-sun-glow');
+const floatingCards = document.querySelectorAll('.floating-card');
+
+if (heroSection && window.matchMedia('(hover: hover)').matches) {
+    heroSection.addEventListener('mousemove', (e) => {
+        const rect = heroSection.getBoundingClientRect();
+        const x = (e.clientX - rect.left) / rect.width  - 0.5;
+        const y = (e.clientY - rect.top)  / rect.height - 0.5;
+
+        if (heroIsland) {
+            heroIsland.style.transform =
+                `translateX(-50%) translateY(${y * -14}px) rotateX(${y * 6}deg) rotateY(${x * 8}deg)`;
+        }
+        if (sunEl) {
+            sunEl.style.transform = `translate(${x * 20}px, ${y * 20}px)`;
+        }
+        if (sunGlowEl) {
+            sunGlowEl.style.transform = `translate(${x * 30}px, ${y * 30}px)`;
+        }
+    });
+
+    heroSection.addEventListener('mouseleave', () => {
+        if (heroIsland) {
+            heroIsland.style.transform = 'translateX(-50%) translateY(0) rotateX(0) rotateY(0)';
+        }
+        if (sunEl)     sunEl.style.transform = '';
+        if (sunGlowEl) sunGlowEl.style.transform = '';
+    });
+}
+
+/* ---------- 2. FLOATING CARDS 3D TILT (per card) ---------- */
+floatingCards.forEach((card) => {
+    card.addEventListener('mousemove', (e) => {
+        const rect = card.getBoundingClientRect();
+        const x = (e.clientX - rect.left) / rect.width  - 0.5;
+        const y = (e.clientY - rect.top)  / rect.height - 0.5;
+        card.style.transform =
+            `translateZ(20px) translateY(-4px) rotateX(${y * -10}deg) rotateY(${x * 10}deg) scale(1.05)`;
+    });
+    card.addEventListener('mouseleave', () => {
+        card.style.transform = '';
+    });
+});
+
+/* ---------- 3. TIME-BASED SKY (DAY / EVENING / NIGHT) ---------- */
+(function adaptiveSky() {
+    const hour = new Date().getHours();
+    const sky = document.querySelector('.ocean-sky');
+    if (!sky) return;
+
+    if (hour >= 5 && hour < 12) {
+        // Morning
+        sky.style.background = 'linear-gradient(180deg, #0b1e3d 0%, #1c3d6e 40%, #ffb88c 100%)';
+    } else if (hour >= 12 && hour < 17) {
+        // Afternoon
+        sky.style.background = 'linear-gradient(180deg, #1b4b8a 0%, #3b86c9 50%, #ffb88c 100%)';
+    } else if (hour >= 17 && hour < 19) {
+        // Sunset
+        sky.style.background = 'linear-gradient(180deg, #0b1e3d 0%, #7a2f5c 45%, #ff8a5c 100%)';
+    } else {
+        // Night
+        sky.style.background = 'linear-gradient(180deg, #030614 0%, #0b1230 60%, #1a1f4a 100%)';
+    }
+})();
+
+/* ---------- 4. SMOOTH SCROLL FOR HERO BUTTONS ---------- */
+document.querySelectorAll('.hero-actions a[href^="#"]').forEach((link) => {
+    link.addEventListener('click', (e) => {
+        const target = document.querySelector(link.getAttribute('href'));
+        if (target) {
+            e.preventDefault();
+            target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+    });
+});/* =========================================================
+   🌴 FOOTER SCRIPT — Our Maheshkhali
+========================================================= */
+
+/* ---------- 1. SMOOTH SCROLL FOR FOOTER LINKS ---------- */
+document.querySelectorAll('.site-footer a[href^="#"]').forEach((link) => {
+    link.addEventListener('click', (e) => {
+        const id = link.getAttribute('href');
+        if (id === '#') return;
+        const target = document.querySelector(id);
+        if (target) {
+            e.preventDefault();
+            target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+    });
+});
+
+/* ---------- 2. AUTO YEAR IN COPYRIGHT ---------- */
+(function autoYear() {
+    const copyright = document.querySelector('.fb-copyright p');
+    if (!copyright) return;
+
+    const year = new Date().getFullYear();
+    const lang = document.documentElement.lang === 'en' ? 'en' : 'bn';
+
+    const bnDigits = ['০','১','২','৩','৪','৫','৬','৭','৮','৯'];
+    const toBn = (n) => n.toString().split('').map(d => bnDigits[+d] ?? d).join('');
+
+    if (lang === 'en') {
+        copyright.setAttribute('data-en', `© ${year} OUR MAHESHKHALI. All rights reserved.`);
+    } else {
+        copyright.setAttribute('data-bn', `© ${toBn(year)} OUR MAHESHKHALI। সর্বস্বত্ব সংরক্ষিত।`);
+    }
+
+    const text = copyright.getAttribute('data-' + lang);
+    if (text) copyright.textContent = text;
+})();
+
+/* ---------- 3. DEV 3D CUBE — MOUSE TILT ---------- */
+const devScene = document.querySelector('.dev-3d-scene');
+const devCube  = document.querySelector('.dev-3d-cube');
+
+if (devScene && devCube && window.matchMedia('(hover: hover)').matches) {
+    devScene.addEventListener('mousemove', (e) => {
+        const rect = devScene.getBoundingClientRect();
+        const x = (e.clientX - rect.left) / rect.width  - 0.5;
+        const y = (e.clientY - rect.top)  / rect.height - 0.5;
+
+        devCube.style.animation = 'none';
+        devCube.style.transform =
+            `rotateX(${y * -60}deg) rotateY(${x * 60}deg)`;
+    });
+    devScene.addEventListener('mouseleave', () => {
+        devCube.style.transform = '';
+        devCube.style.animation = 'cubeRotate3D 12s linear infinite';
+    });
+}
+
+/* ---------- 4. FLOATING PARTICLES PARALLAX ---------- */
+const footer = document.querySelector('.site-footer');
+const particles = document.querySelectorAll('.fp');
+
+if (footer && particles.length) {
+    footer.addEventListener('mousemove', (e) => {
+        const rect = footer.getBoundingClientRect();
+        const x = (e.clientX - rect.left) / rect.width  - 0.5;
+        const y = (e.clientY - rect.top)  / rect.height - 0.5;
+
+        particles.forEach((p, i) => {
+            const depth = ((i % 3) + 1) * 6;
+            p.style.marginLeft = `${x * depth}px`;
+            p.style.marginTop  = `${y * depth}px`;
+        });
+    });
+}/* =========================================================
+   ✨ কাস্টম 3D অ্যানিমেটেড কার্সর — স্ক্রিপ্ট
+========================================================= */
+
+(function initCustomCursor() {
+    // মোবাইল/ট্যাবে বন্ধ
+    const isTouch = window.matchMedia('(hover: none), (pointer: coarse)').matches;
+    if (isTouch) return;
+
+    const cursor   = document.getElementById('cursor3D');
+    const glow     = document.getElementById('cursorGlow');
+    const sparkles = document.getElementById('cursorSparkles');
+
+    if (!cursor || !glow) return;
+
+    let mouseX = window.innerWidth  / 2;
+    let mouseY = window.innerHeight / 2;
+    let posX   = mouseX;
+    let posY   = mouseY;
+    let glowX  = mouseX;
+    let glowY  = mouseY;
+
+    // মাউস ট্র্যাক
+    document.addEventListener('mousemove', (e) => {
+        mouseX = e.clientX;
+        mouseY = e.clientY;
+        spawnSparkle(e.clientX, e.clientY);
+    });
+
+    // স্মুথ ফলো
+    function animate() {
+        posX += (mouseX - posX) * 0.22;
+        posY += (mouseY - posY) * 0.22;
+
+        glowX += (mouseX - glowX) * 0.12;
+        glowY += (mouseY - glowY) * 0.12;
+
+        cursor.style.transform = `translate3d(${posX}px, ${posY}px, 0)`;
+        glow.style.transform   = `translate3d(${glowX}px, ${glowY}px, 0)`;
+
+        requestAnimationFrame(animate);
+    }
+    animate();
+
+    // হোভার ডিটেকশন
+    const hoverTargets = 'a, button, [role="button"], input, textarea, select, .ctrl-btn, .top-action-btn, .button, .fs-btn, .floating-card, .fc-list a';
+
+    document.querySelectorAll(hoverTargets).forEach((el) => {
+        el.addEventListener('mouseenter', () => cursor.classList.add('cursor-hover'));
+        el.addEventListener('mouseleave', () => cursor.classList.remove('cursor-hover'));
+    });
+
+    document.addEventListener('mouseover', (e) => {
+        if (e.target.closest && e.target.closest(hoverTargets)) {
+            cursor.classList.add('cursor-hover');
+        }
+    });
+    document.addEventListener('mouseout', (e) => {
+        if (e.target.closest && e.target.closest(hoverTargets)) {
+            cursor.classList.remove('cursor-hover');
+        }
+    });
+
+    // ক্লিক
+    document.addEventListener('mousedown', () => cursor.classList.add('cursor-click'));
+    document.addEventListener('mouseup',   () => cursor.classList.remove('cursor-click'));
+
+    // স্পার্কল
+    let lastSparkleTime = 0;
+    function spawnSparkle(x, y) {
+        const now = performance.now();
+        if (now - lastSparkleTime < 60) return;
+        lastSparkleTime = now;
+
+        const s = document.createElement('span');
+        s.className = 'sparkle';
+        s.style.left = x + 'px';
+        s.style.top  = y + 'px';
+        s.style.background = Math.random() > 0.5
+            ? 'radial-gradient(circle, #fff, #00e0ff)'
+            : 'radial-gradient(circle, #fff, #ff2e88)';
+        s.style.boxShadow = Math.random() > 0.5
+            ? '0 0 10px #00e0ff'
+            : '0 0 10px #ff2e88';
+
+        sparkles.appendChild(s);
+        setTimeout(() => s.remove(), 900);
+    }
+
+    // উইন্ডো ছেড়ে গেলে
+    document.addEventListener('mouseleave', () => {
+        cursor.style.opacity = '0';
+        glow.style.opacity   = '0';
+    });
+    document.addEventListener('mouseenter', () => {
+        cursor.style.opacity = '1';
+        glow.style.opacity   = '1';
+    });
 })();

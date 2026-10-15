@@ -26,16 +26,19 @@
     </div>
 
     <div class="loader-controls">
-        <button type="button" class="ctrl-btn" id="langToggle">
-            🌐 <span id="langText" data-bn="বাংলা" data-en="English">বাংলা</span>
-        </button>
-        <button type="button" class="ctrl-btn" id="loginBtn">
-            <span data-bn="🔐 লগইন" data-en="🔐 Login">🔐 লগইন</span>
-        </button>
-        <button type="button" class="ctrl-btn" id="registerBtn">
-            <span data-bn="📝 রেজিস্ট্রেশন" data-en="📝 Register">📝 রেজিস্ট্রেশন</span>
-        </button>
-    </div>
+    <button type="button" class="ctrl-btn" id="langToggle">
+        🌐 <span id="langText" data-bn="বাংলা" data-en="English">বাংলা</span>
+    </button>
+    <button type="button" class="ctrl-btn" id="loginBtn">
+        <span data-bn="🔐 লগইন" data-en="🔐 Login">🔐 লগইন</span>
+    </button>
+    <button type="button" class="ctrl-btn" id="registerBtn">
+        <span data-bn="📝 রেজিস্ট্রেশন" data-en="📝 Register">📝 রেজিস্ট্রেশন</span>
+    </button>
+    <button type="button" class="ctrl-btn" id="logoutBtn">
+        <span data-bn="🚪 লগআউট" data-en="🚪 Logout">🚪 লগআউট</span>
+    </button>
+</div>
 
     <!-- SCENE 01: WORLD MAP -->
     <div class="scene scene-world active" id="sceneWorld">
@@ -316,58 +319,151 @@
 </div>
 
 <!-- =========================================================
-     🌴 TOP INFORMATION BAR
+     🌴 TOP INFORMATION BAR — OUR MAHESHKHALI
 ========================================================= -->
 
 <div class="top-information-bar">
     <div class="container top-bar-inner">
+
+        <!-- LEFT: DATE, TIME & LOCATION -->
         <div class="top-bar-left">
-            <div class="top-info-item"><span class="top-info-icon">📅</span><span id="current-day" data-bn="রবিবার" data-en="Sunday">রবিবার</span></div>
-            <div class="top-info-item"><span class="top-info-icon">📆</span><span id="current-date">Loading...</span></div>
-            <div class="top-info-item"><span class="top-info-icon">⏰</span><span id="live-time">Loading...</span></div>
-            <div class="top-info-item"><span class="top-info-icon">📍</span><span data-bn="মহেশখালী, কক্সবাজার" data-en="Maheshkhali, Cox's Bazar">মহেশখালী, কক্সবাজার</span></div>
-            <div class="top-info-item live-status"><span class="live-dot"></span><span data-bn="লাইভ" data-en="Live">লাইভ</span></div>
+
+            <div class="top-info-item">
+                <span class="top-info-icon">📅</span>
+                <span id="current-day"
+                      data-bn="বৃহস্পতিবার"
+                      data-en="Thursday">বৃহস্পতিবার</span>
+            </div>
+
+            <div class="top-info-item">
+                <span class="top-info-icon">📆</span>
+                <span id="current-date">Loading...</span>
+            </div>
+
+            <div class="top-info-item">
+                <span class="top-info-icon">⏰</span>
+                <span id="live-time">Loading...</span>
+            </div>
+
+            <a class="top-info-item top-location-link"
+               href="https://www.google.com/maps/search/?api=1&query=Maheshkhali+Cox%27s+Bazar+Bangladesh"
+               target="_blank"
+               rel="noopener noreferrer">
+                <span class="top-info-icon">📍</span>
+                <span data-bn="মহেশখালী, কক্সবাজার"
+                      data-en="Maheshkhali, Cox's Bazar">
+                    মহেশখালী, কক্সবাজার
+                </span>
+            </a>
+
         </div>
+
+        <!-- RIGHT: QUICK ACTIONS -->
         <div class="top-bar-right">
-            <button type="button" class="top-action-btn" id="topSearchBtn"><span data-bn="🔎 খুঁজুন" data-en="🔎 Search">🔎 খুঁজুন</span></button>
-            <button type="button" class="top-action-btn" id="topNotifBtn">🔔 <span class="notif-badge">3</span></button>
-            <button type="button" class="top-action-btn" id="topLoginBtn"><span data-bn="🔐 লগইন" data-en="🔐 Login">🔐 লগইন</span></button>
-            <button type="button" class="top-action-btn top-action-primary" id="topRegisterBtn"><span data-bn="📝 রেজিস্ট্রেশন" data-en="📝 Register">📝 রেজিস্ট্রেশন</span></button>
-            <button type="button" class="top-action-btn" id="topLangBtn">🌐 <span id="topLangText" data-bn="বাংলা" data-en="English">বাংলা</span></button>
-            <button type="button" class="top-action-btn" id="topThemeBtn">🌙</button>
+
+            <!-- Emergency -->
+            <a href="tel:999"
+               class="top-action-btn top-emergency-btn"
+               aria-label="Emergency Helpline 999">
+                🚨
+                <span data-bn="জরুরি"
+                      data-en="Emergency">জরুরি</span>
+            </a>
+
+            <!-- GPS / My Location -->
+            <button type="button"
+                    class="top-action-btn"
+                    id="topLocationBtn"
+                    aria-label="Find my location">
+                📡
+                <span data-bn="আমার অবস্থান"
+                      data-en="My Location">আমার অবস্থান</span>
+            </button>
+
+            <!-- Notifications -->
+            <button type="button"
+                    class="top-action-btn"
+                    id="topNotifBtn"
+                    aria-label="Notifications">
+                🔔
+                <span data-bn="নোটিশ"
+                      data-en="Notices">নোটিশ</span>
+                <span class="notif-badge">3</span>
+            </button>
+
+            <!-- Login -->
+            <button type="button"
+                    class="top-action-btn"
+                    id="topLoginBtn">
+                🔐
+                <span data-bn="লগইন"
+                      data-en="Login">লগইন</span>
+            </button>
+
+            <!-- Logout -->
+            <button type="button"
+                    class="top-action-btn"
+                    id="topLogoutBtn">
+                🚪
+                <span data-bn="লগআউট"
+                      data-en="Logout">লগআউট</span>
+            </button>
+
+            <!-- Language Switch -->
+            <button type="button"
+                    class="top-action-btn"
+                    id="topLangBtn"
+                    aria-label="Change language">
+                🌐
+                <span id="topLangText"
+                      data-bn="বাংলা"
+                      data-en="English">বাংলা</span>
+            </button>
+
+            <!-- Light / Dark Theme -->
+            <button type="button"
+                    class="top-action-btn"
+                    id="topThemeBtn"
+                    aria-label="Toggle theme">
+                🌙
+            </button>
+
         </div>
     </div>
 </div>
 <!-- ═══════════════════════════════════════════
-     🌴 LIVE STATUS BAR
+     🌴 LIVE STATUS BAR — OUR MAHESHKHALI
      Between Topbar and Main Navigation
-     Language-Ready (Bangla ↔ English)
+     Language-Ready (বাংলা ↔ English)
+     Premium 3D Design
 ═══════════════════════════════════════════ -->
 <div class="live-status-bar" id="liveStatusBar" role="status" aria-live="polite">
     <div class="container live-status-inner">
 
-        <!-- ═══ LEFT GROUP ═══ -->
+        <!-- ═══════════════════════════════════
+             LEFT GROUP — System Status
+        ═══════════════════════════════════ -->
         <div class="live-status-left">
 
-            <!-- Online / Offline -->
-            <div class="live-item live-item--online" id="liveOnline" data-status="online">
-                <span class="live-pulse"></span>
+            <!-- 🟢 Online / Offline -->
+            <div class="live-item live-item--online" id="liveOnline" data-status="online" title="Connection Status">
+                <span class="live-pulse" aria-hidden="true"></span>
                 <span class="live-text"
                       data-bn="অনলাইন"
                       data-en="Online">অনলাইন</span>
             </div>
 
-            <!-- Weather -->
-            <div class="live-item live-item--weather" id="liveWeather">
-                <span class="live-icon">🌤️</span>
+            <!-- 🌤️ Weather -->
+            <div class="live-item live-item--weather" id="liveWeather" title="Weather">
+                <span class="live-icon" aria-hidden="true">🌤️</span>
                 <span class="live-text" id="liveWeatherText"
                       data-bn="—°C"
                       data-en="—°C">—°C</span>
             </div>
 
-            <!-- Alert Status -->
-            <div class="live-item live-item--alert" id="liveAlert" data-level="safe">
-                <span class="live-icon">🛡️</span>
+            <!-- 🛡️ Alert Status -->
+            <div class="live-item live-item--alert" id="liveAlert" data-level="safe" title="Alert Status">
+                <span class="live-icon" aria-hidden="true">🛡️</span>
                 <span class="live-text"
                       data-bn="নিরাপদ"
                       data-en="Safe">নিরাপদ</span>
@@ -375,10 +471,12 @@
 
         </div>
 
-        <!-- ═══ CENTER: LIVE TICKER ═══ -->
+        <!-- ═══════════════════════════════════
+             CENTER — Live Ticker
+        ═══════════════════════════════════ -->
         <div class="live-status-center" aria-label="Live updates">
-            <span class="live-tag">
-                <span class="live-tag-dot"></span>
+            <span class="live-tag" title="Live">
+                <span class="live-tag-dot" aria-hidden="true"></span>
                 <span data-bn="লাইভ"
                       data-en="LIVE">লাইভ</span>
             </span>
@@ -386,47 +484,48 @@
             <div class="live-ticker" id="liveTicker">
                 <div class="live-ticker-track">
 
-                    <!-- Original messages (loop start) -->
-                    <span data-bn="দুর্যোগের সময় স্থানীয় প্রশাসনের নির্দেশনা অনুসরণ করুন।"
-                          data-en="Follow local administration guidance during disasters.">দুর্যোগের সময় স্থানীয় প্রশাসনের নির্দেশনা অনুসরণ করুন।</span>
-                    <span data-bn="আজকের আবহাওয়া: স্বাভাবিক।"
-                          data-en="Today's weather: Normal.">আজকের আবহাওয়া: স্বাভাবিক।</span>
-                    <span data-bn="মহেশখালী ডিজিটাল প্ল্যাটফর্মে স্বাগতম।"
-                          data-en="Welcome to Maheshkhali Digital Platform.">মহেশখালী ডিজিটাল প্ল্যাটফর্মে স্বাগতম।</span>
-                    <span data-bn="৮টি ইউনিয়নের তথ্য এখন হাতের মুঠোয়।"
-                          data-en="Information of 8 unions now at your fingertips.">৮টি ইউনিয়নের তথ্য এখন হাতের মুঠোয়।</span>
+                    <!-- Original messages -->
+                    <span data-bn="🌴 মহেশখালী ডিজিটাল প্ল্যাটফর্মে স্বাগতম।"
+                          data-en="🌴 Welcome to Maheshkhali Digital Platform.">🌴 মহেশখালী ডিজিটাল প্ল্যাটফর্মে স্বাগতম।</span>
+                    <span data-bn="🏛️ ৮টি ইউনিয়নের তথ্য এখন হাতের মুঠোয়।"
+                          data-en="🏛️ Information of 8 unions now at your fingertips.">🏛️ ৮টি ইউনিয়নের তথ্য এখন হাতের মুঠোয়।</span>
+                    <span data-bn="🌊 দুর্যোগের সময় স্থানীয় প্রশাসনের নির্দেশনা অনুসরণ করুন।"
+                          data-en="🌊 Follow local administration guidance during disasters.">🌊 দুর্যোগের সময় স্থানীয় প্রশাসনের নির্দেশনা অনুসরণ করুন।</span>
+                    <span data-bn="🌤️ আজকের আবহাওয়া: স্বাভাবিক।"
+                          data-en="🌤️ Today's weather: Normal.">🌤️ আজকের আবহাওয়া: স্বাভাবিক।</span>
+                    <span data-bn="💡 জরুরি প্রয়োজনে ৯৯৯ নম্বরে কল করুন।"
+                          data-en="💡 For emergencies, call 999.">💡 জরুরি প্রয়োজনে ৯৯৯ নম্বরে কল করুন।</span>
+                    <span data-bn="👨‍💻 ডেভেলপার: বাদশা সোলাইমান"
+                          data-en="👨‍💻 Developer: Badsha Solyman">👨‍💻 ডেভেলপার: বাদশা সোলাইমান</span>
 
                     <!-- Duplicate for seamless loop -->
-                    <span data-bn="দুর্যোগের সময় স্থানীয় প্রশাসনের নির্দেশনা অনুসরণ করুন।"
-                          data-en="Follow local administration guidance during disasters.">দুর্যোগের সময় স্থানীয় প্রশাসনের নির্দেশনা অনুসরণ করুন।</span>
-                    <span data-bn="আজকের আবহাওয়া: স্বাভাবিক।"
-                          data-en="Today's weather: Normal.">আজকের আবহাওয়া: স্বাভাবিক।</span>
-                    <span data-bn="মহেশখালী ডিজিটাল প্ল্যাটফর্মে স্বাগতম।"
-                          data-en="Welcome to Maheshkhali Digital Platform.">মহেশখালী ডিজিটাল প্ল্যাটফর্মে স্বাগতম।</span>
-                    <span data-bn="৮টি ইউনিয়নের তথ্য এখন হাতের মুঠোয়।"
-                          data-en="Information of 8 unions now at your fingertips.">৮টি ইউনিয়নের তথ্য এখন হাতের মুঠোয়।</span>
+                    <span data-bn="🌴 মহেশখালী ডিজিটাল প্ল্যাটফর্মে স্বাগতম।"
+                          data-en="🌴 Welcome to Maheshkhali Digital Platform.">🌴 মহেশখালী ডিজিটাল প্ল্যাটফর্মে স্বাগতম।</span>
+                    <span data-bn="🏛️ ৮টি ইউনিয়নের তথ্য এখন হাতের মুঠোয়।"
+                          data-en="🏛️ Information of 8 unions now at your fingertips.">🏛️ ৮টি ইউনিয়নের তথ্য এখন হাতের মুঠোয়।</span>
+                    <span data-bn="🌊 দুর্যোগের সময় স্থানীয় প্রশাসনের নির্দেশনা অনুসরণ করুন।"
+                          data-en="🌊 Follow local administration guidance during disasters.">🌊 দুর্যোগের সময় স্থানীয় প্রশাসনের নির্দেশনা অনুসরণ করুন।</span>
+                    <span data-bn="🌤️ আজকের আবহাওয়া: স্বাভাবিক।"
+                          data-en="🌤️ Today's weather: Normal.">🌤️ আজকের আবহাওয়া: স্বাভাবিক।</span>
+                    <span data-bn="💡 জরুরি প্রয়োজনে ৯৯৯ নম্বরে কল করুন।"
+                          data-en="💡 For emergencies, call 999.">💡 জরুরি প্রয়োজনে ৯৯৯ নম্বরে কল করুন।</span>
+                    <span data-bn="👨‍💻 ডেভেলপার: বাদশা সোলাইমান"
+                          data-en="👨‍💻 Developer: Badsha Solyman">👨‍💻 ডেভেলপার: বাদশা সোলাইমান</span>
 
                 </div>
             </div>
         </div>
 
-        <!-- ═══ RIGHT GROUP ═══ -->
+        <!-- ═══════════════════════════════════
+             RIGHT GROUP — Emergency Only
+        ═══════════════════════════════════ -->
         <div class="live-status-right">
 
-            <!-- Visitor Count -->
-            <div class="live-item live-item--visitors" id="liveVisitors">
-                <span class="live-icon">👥</span>
-                <span class="live-text" id="liveVisitorCount">—</span>
-                <span class="live-sublabel"
-                      data-bn="দর্শক"
-                      data-en="visitors">দর্শক</span>
-            </div>
-
-            <!-- Emergency Button -->
-            <button type="button" class="live-emergency" id="liveEmergencyBtn" aria-label="Emergency">
-                <span class="live-pulse live-pulse--red"></span>
-                <span data-bn="জরুরি"
-                      data-en="Emergency">জরুরি</span>
+            <!-- 🚨 Emergency Button -->
+            <button type="button" class="live-emergency" id="liveEmergencyBtn" aria-label="Emergency — 999" title="Emergency — 999">
+                <span class="live-pulse live-pulse--red" aria-hidden="true"></span>
+                <span data-bn="জরুরি — ৯৯৯"
+                      data-en="Emergency — 999">জরুরি — ৯৯৯</span>
             </button>
 
         </div>
@@ -434,175 +533,362 @@
     </div>
 </div>
 <!-- ═══════ END LIVE STATUS BAR ═══════ -->
-<!-- =========================================================
-     🌴 HEADER + NAVIGATION
-========================================================= -->
-<link rel="stylesheet" href="css/header.css">
+<!-- ═══════════════════════════════════════════
+     🌴 PREMIUM HEADER + 3D MEGA NAVIGATION
+     Bangla ↔ English · SEO-Friendly · Accessible
+     Developer: Badsha Solyman
+═══════════════════════════════════════════ -->
+<header class="site-header" id="site-header" role="banner">
 
-<header class="site-header">
-    <div class="container header-inner">
-        <a href="#home" class="brand">
-            <div class="brand-mark">🏝️</div>
-            <div class="brand-content">
-                <span class="brand-name">OUR MAHESHKHALI</span>
-                <span class="brand-tagline" data-bn="এক দ্বীপ। এক কমিউনিটি। এক প্ল্যাটফর্ম।" data-en="One Island. One Community. One Platform.">এক দ্বীপ। এক কমিউনিটি। এক প্ল্যাটফর্ম।</span>
+  <div class="container header-inner">
+
+    <!-- ═══ BRAND ═══ -->
+    <a href="#home" class="brand" aria-label="OUR MAHESHKHALI — Home">
+      <div class="brand-mark" aria-hidden="true">🏝️</div>
+      <div class="brand-content">
+        <span class="brand-name">OUR MAHESHKHALI</span>
+        <span class="brand-tagline"
+              data-bn="এক দ্বীপ। এক কমিউনিটি। এক প্ল্যাটফর্ম।"
+              data-en="One Island. One Community. One Platform.">এক দ্বীপ। এক কমিউনিটি। এক প্ল্যাটফর্ম।</span>
+      </div>
+    </a>
+
+    <!-- ═══ MOBILE MENU BUTTON ═══ -->
+    <button type="button" class="mobile-menu-btn" id="mobileMenuBtn"
+            aria-label="Open menu" aria-expanded="false" aria-controls="mainNav">
+      <span></span><span></span><span></span>
+    </button>
+
+    <!-- ═══ MAIN NAVIGATION ═══ -->
+    <nav class="main-navigation" id="mainNav" aria-label="Main Navigation">
+      <ul class="navigation-list" role="menubar">
+
+        <!-- ═══════════════════════════════════════════
+             1. HOME
+        ═══════════════════════════════════════════ -->
+        <li class="nav-item has-mega" role="none">
+          <a href="#home" class="nav-link active" role="menuitem" aria-haspopup="true" aria-expanded="false">
+            <span data-bn="🏠 হোম" data-en="🏠 HOME">🏠 হোম</span>
+            <span class="nav-arrow" aria-hidden="true">⌄</span>
+          </a>
+
+          <div class="mega-menu" role="menu" aria-label="Home menu">
+            <div class="mega-menu-inner">
+
+              <div class="mega-col">
+                <h4 class="mega-heading" data-bn="🏠 মূল পাতা" data-en="🏠 Homepage">🏠 মূল পাতা</h4>
+                <a href="#home" role="menuitem" data-bn="🏠 হোম" data-en="🏠 Home">🏠 হোম</a>
+                <a href="#hero" role="menuitem" data-bn="🌴 হিরো" data-en="🌴 Hero">🌴 হিরো</a>
+                <a href="#welcome" role="menuitem" data-bn="👋 স্বাগতম" data-en="👋 Welcome">👋 স্বাগতম</a>
+                <a href="#latest" role="menuitem" data-bn="📰 সর্বশেষ" data-en="📰 Latest Updates">📰 সর্বশেষ</a>
+                <a href="#featured" role="menuitem" data-bn="⭐ ফিচারড" data-en="⭐ Featured">⭐ ফিচারড</a>
+              </div>
+
+              <div class="mega-col">
+                <h4 class="mega-heading" data-bn="✨ হাইলাইট" data-en="✨ Highlights">✨ হাইলাইট</h4>
+                <a href="#announcements" role="menuitem" data-bn="📢 ঘোষণা" data-en="📢 Announcements">📢 ঘোষণা</a>
+                <a href="#whats-new" role="menuitem" data-bn="🆕 নতুন কী" data-en="🆕 What's New">🆕 নতুন কী</a>
+                <a href="#notices" role="menuitem" data-bn="📌 নোটিশ" data-en="📌 Notices">📌 নোটিশ</a>
+                <a href="#events" role="menuitem" data-bn="📅 ইভেন্ট" data-en="📅 Events">📅 ইভেন্ট</a>
+                <a href="#updates" role="menuitem" data-bn="🔄 আপডেট" data-en="🔄 Updates">🔄 আপডেট</a>
+              </div>
+
+              <div class="mega-col">
+                <h4 class="mega-heading" data-bn="⚡ দ্রুত লিংক" data-en="⚡ Quick Links">⚡ দ্রুত লিংক</h4>
+                <a href="#about" role="menuitem" data-bn="📖 পরিচিতি" data-en="📖 About">📖 পরিচিতি</a>
+                <a href="#unions" role="menuitem" data-bn="🏛️ ইউনিয়ন" data-en="🏛️ Unions">🏛️ ইউনিয়ন</a>
+                <a href="#tourism" role="menuitem" data-bn="🏝️ পর্যটন" data-en="🏝️ Tourism">🏝️ পর্যটন</a>
+                <a href="#jobs" role="menuitem" data-bn="💼 চাকরি" data-en="💼 Jobs">💼 চাকরি</a>
+                <a href="#contact" role="menuitem" data-bn="📞 যোগাযোগ" data-en="📞 Contact">📞 যোগাযোগ</a>
+              </div>
+
             </div>
-        </a>
+          </div>
+        </li>
 
-        <button type="button" class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Menu">
-            <span></span><span></span><span></span>
-        </button>
+        <!-- ═══════════════════════════════════════════
+             2. ABOUT
+        ═══════════════════════════════════════════ -->
+        <li class="nav-item has-mega" role="none">
+          <a href="#about-us" class="nav-link" role="menuitem" aria-haspopup="true" aria-expanded="false">
+            <span data-bn="📖 পরিচিতি" data-en="📖 ABOUT">📖 পরিচিতি</span>
+            <span class="nav-arrow" aria-hidden="true">⌄</span>
+          </a>
 
-        <nav class="main-navigation" id="mainNav">
-            <ul class="navigation-list">
-                <li class="nav-item has-mega">
-                    <a href="#home" class="nav-link active"><span data-bn="🏠 হোম" data-en="🏠 HOME">🏠 হোম</span> <span class="nav-arrow">⌄</span></a>
-                    <div class="mega-menu"><div class="mega-col">
-                        <a href="#home" data-bn="🏠 হোম" data-en="🏠 Home">🏠 হোম</a>
-                        <a href="#latest" data-bn="📰 সর্বশেষ" data-en="📰 Latest Updates">📰 সর্বশেষ</a>
-                        <a href="#featured" data-bn="⭐ ফিচারড" data-en="⭐ Featured">⭐ ফিচারড</a>
-                        <a href="#announcements" data-bn="📢 ঘোষণা" data-en="📢 Announcements">📢 ঘোষণা</a>
-                        <a href="#whats-new" data-bn="🆕 নতুন কী" data-en="🆕 What's New">🆕 নতুন কী</a>
-                    </div></div>
-                </li>
-                <li class="nav-item has-mega">
-                    <a href="#about-us" class="nav-link"><span data-bn="📖 পরিচিতি" data-en="📖 ABOUT">📖 পরিচিতি</span> <span class="nav-arrow">⌄</span></a>
-                    <div class="mega-menu">
-                        <div class="mega-col">
-                            <a href="#our-maheshkhali" data-bn="🌴 আমাদের মহেশখালী" data-en="🌴 Our Maheshkhali">🌴 আমাদের মহেশখালী</a>
-                            <a href="#vision" data-bn="🎯 লক্ষ্য" data-en="🎯 Vision & Mission">🎯 লক্ষ্য</a>
-                            <a href="#developer" data-bn="👨‍💻 ডেভেলপার" data-en="👨‍💻 Developer">👨‍💻 ডেভেলপার</a>
-                            <a href="#contact" data-bn="📞 যোগাযোগ" data-en="📞 Contact">📞 যোগাযোগ</a>
-                        </div>
-                        <div class="mega-col">
-                            <a href="#faq" data-bn="❓ প্রশ্নোত্তর" data-en="❓ FAQ">❓ প্রশ্নোত্তর</a>
-                            <a href="#privacy" data-bn="🔒 গোপনীয়তা" data-en="🔒 Privacy Policy">🔒 গোপনীয়তা</a>
-                            <a href="#terms" data-bn="📄 শর্তাবলী" data-en="📄 Terms & Conditions">📄 শর্তাবলী</a>
-                        </div>
-                    </div>
-                </li>
-                <li class="nav-item has-mega">
-                    <a href="#about" class="nav-link"><span data-bn="🌴 অন্বেষণ" data-en="🌴 EXPLORE">🌴 অন্বেষণ</span> <span class="nav-arrow">⌄</span></a>
-                    <div class="mega-menu mega-menu-large">
-                        <div class="mega-col">
-                            <h4 class="mega-heading" data-bn="🌴 পরিচিতি" data-en="🌴 About">🌴 পরিচিতি</h4>
-                            <a href="#about" data-bn="🌴 মহেশখালী সম্পর্কে" data-en="🌴 About Maheshkhali">🌴 মহেশখালী সম্পর্কে</a>
-                            <a href="#unions" data-bn="🏘️ ৮টি ইউনিয়ন" data-en="🏘️ 8 Unions">🏘️ ৮টি ইউনিয়ন</a>
-                            <a href="#villages" data-bn="🏡 গ্রাম" data-en="🏡 Villages">🏡 গ্রাম</a>
-                            <a href="#history" data-bn="📜 ইতিহাস" data-en="📜 History & Heritage">📜 ইতিহাস</a>
-                        </div>
-                        <div class="mega-col">
-                            <h4 class="mega-heading" data-bn="🧭 আবিষ্কার" data-en="🧭 Discover">🧭 আবিষ্কার</h4>
-                            <a href="#tourism" data-bn="🌊 পর্যটন" data-en="🌊 Tourism">🌊 পর্যটন</a>
-                            <a href="#places" data-bn="📍 স্থান" data-en="📍 Places & Attractions">📍 স্থান</a>
-                            <a href="#culture" data-bn="🎭 সংস্কৃতি" data-en="🎭 Culture & Tradition">🎭 সংস্কৃতি</a>
-                            <a href="#gallery" data-bn="📸 গ্যালারি" data-en="📸 Gallery">📸 গ্যালারি</a>
-                        </div>
-                    </div>
-                </li>
-                <li class="nav-item has-mega">
-                    <a href="#community" class="nav-link"><span data-bn="👥 কমিউনিটি" data-en="👥 COMMUNITY">👥 কমিউনিটি</span> <span class="nav-arrow">⌄</span></a>
-                    <div class="mega-menu mega-menu-large">
-                        <div class="mega-col">
-                            <h4 class="mega-heading" data-bn="👥 কমিউনিটি" data-en="👥 Community">👥 কমিউনিটি</h4>
-                            <a href="#community" data-bn="👥 কমিউনিটি" data-en="👥 Our Community">👥 কমিউনিটি</a>
-                            <a href="#volunteer" data-bn="🤝 স্বেচ্ছাসেবক" data-en="🤝 Volunteer">🤝 স্বেচ্ছাসেবক</a>
-                            <a href="#local-services" data-bn="🛠️ স্থানীয় সেবা" data-en="🛠️ Local Services">🛠️ স্থানীয় সেবা</a>
-                            <a href="#emergency" data-bn="🚨 জরুরি" data-en="🚨 Emergency">🚨 জরুরি</a>
-                        </div>
-                        <div class="mega-col">
-                            <h4 class="mega-heading" data-bn="📚 সেবা" data-en="📚 Services">📚 সেবা</h4>
-                            <a href="#health" data-bn="🏥 স্বাস্থ্য" data-en="🏥 Health">🏥 স্বাস্থ্য</a>
-                            <a href="#education" data-bn="🎓 শিক্ষা" data-en="🎓 Education">🎓 শিক্ষা</a>
-                            <a href="#stories" data-bn="📖 গল্প" data-en="📖 Community Stories">📖 গল্প</a>
-                            <a href="#events" data-bn="📅 ইভেন্ট" data-en="📅 Events & Activities">📅 ইভেন্ট</a>
-                        </div>
-                    </div>
-                </li>
-                <li class="nav-item has-mega">
-                    <a href="#opportunities" class="nav-link"><span data-bn="💼 সুযোগ" data-en="💼 OPPORTUNITIES">💼 সুযোগ</span> <span class="nav-arrow">⌄</span></a>
-                    <div class="mega-menu mega-menu-large">
-                        <div class="mega-col">
-                            <h4 class="mega-heading" data-bn="💼 ক্যারিয়ার" data-en="💼 Career">💼 ক্যারিয়ার</h4>
-                            <a href="#jobs" data-bn="💼 চাকরি" data-en="💼 Jobs">💼 চাকরি</a>
-                            <a href="#business" data-bn="🏢 ব্যবসা" data-en="🏢 Business">🏢 ব্যবসা</a>
-                            <a href="#entrepreneurship" data-bn="🚀 উদ্যোক্তা" data-en="🚀 Entrepreneurship">🚀 উদ্যোক্তা</a>
-                            <a href="#freelancing" data-bn="💻 ফ্রিল্যান্সিং" data-en="💻 Freelancing">💻 ফ্রিল্যান্সিং</a>
-                        </div>
-                        <div class="mega-col">
-                            <h4 class="mega-heading" data-bn="🎓 উন্নয়ন" data-en="🎓 Growth">🎓 উন্নয়ন</h4>
-                            <a href="#training" data-bn="🛠️ প্রশিক্ষণ" data-en="🛠️ Training & Skills">🛠️ প্রশিক্ষণ</a>
-                            <a href="#marketplace" data-bn="🛒 মার্কেটপ্লেস" data-en="🛒 Marketplace">🛒 মার্কেটপ্লেস</a>
-                            <a href="#scholarships" data-bn="🎓 বৃত্তি" data-en="🎓 Scholarships">🎓 বৃত্তি</a>
-                            <a href="#opportunities" data-bn="✨ সুযোগ" data-en="✨ Opportunities">✨ সুযোগ</a>
-                        </div>
-                    </div>
-                </li>
-                <li class="nav-item has-mega">
-                    <a href="#more" class="nav-link"><span data-bn="⋮ আরও" data-en="⋮ MORE">⋮ আরও</span> <span class="nav-arrow">⌄</span></a>
-                    <div class="mega-menu mega-menu-xlarge">
-                        <div class="mega-col">
-                            <h4 class="mega-heading" data-bn="🔍 টুলস" data-en="🔍 Tools">🔍 টুলস</h4>
-                            <a href="#search" data-bn="🔎 অনুসন্ধান" data-en="🔎 Search">🔎 অনুসন্ধান</a>
-                            <a href="#map" data-bn="🗺️ ম্যাপ" data-en="🗺️ Interactive Map">🗺️ ম্যাপ</a>
-                            <a href="#nearby" data-bn="📍 কাছাকাছি" data-en="📍 Find Nearby">📍 কাছাকাছি</a>
-                            <a href="#govt-services" data-bn="🏛️ সরকারি সেবা" data-en="🏛️ Government Services">🏛️ সরকারি সেবা</a>
-                        </div>
-                        <div class="mega-col">
-                            <h4 class="mega-heading" data-bn="📞 যোগাযোগ" data-en="📞 Contact">📞 যোগাযোগ</h4>
-                            <a href="#emergency-contacts" data-bn="🚨 জরুরি যোগাযোগ" data-en="🚨 Emergency Contacts">🚨 জরুরি যোগাযোগ</a>
-                            <a href="#important-contacts" data-bn="☎️ গুরুত্বপূর্ণ" data-en="☎️ Important Contacts">☎️ গুরুত্বপূর্ণ</a>
-                            <a href="#news" data-bn="📰 সংবাদ" data-en="📰 News & Media">📰 সংবাদ</a>
-                            <a href="#events-calendar" data-bn="📅 ক্যালেন্ডার" data-en="📅 Events Calendar">📅 ক্যালেন্ডার</a>
-                        </div>
-                        <div class="mega-col">
-                            <h4 class="mega-heading" data-bn="👤 অ্যাকাউন্ট" data-en="👤 Account">👤 অ্যাকাউন্ট</h4>
-                            <a href="#login" data-bn="🔐 লগইন" data-en="🔐 Login">🔐 লগইন</a>
-                            <a href="#register" data-bn="📝 রেজিস্ট্রেশন" data-en="📝 Registration">📝 রেজিস্ট্রেশন</a>
-                            <a href="#profile" data-bn="👤 প্রোফাইল" data-en="👤 My Profile">👤 প্রোফাইল</a>
-                            <a href="#notifications" data-bn="🔔 নোটিফিকেশন" data-en="🔔 Notifications">🔔 নোটিফিকেশন</a>
-                        </div>
-                        <div class="mega-col">
-                            <h4 class="mega-heading" data-bn="⚙️ সেটিংস" data-en="⚙️ Settings">⚙️ সেটিংস</h4>
-                            <a href="#language" data-bn="🌐 ভাষা" data-en="🌐 Language">🌐 ভাষা</a>
-                            <a href="#theme" data-bn="🌙 থিম" data-en="🌙 Theme">🌙 থিম</a>
-                            <a href="#settings" data-bn="⚙️ সেটিংস" data-en="⚙️ Settings">⚙️ সেটিংস</a>
-                            <a href="#help" data-bn="💬 সহায়তা" data-en="💬 Help Center">💬 সহায়তা</a>
-                        </div>
-                    </div>
-                </li>
-            </ul>
-        </nav>
-    </div>
+          <div class="mega-menu" role="menu" aria-label="About menu">
+            <div class="mega-menu-inner">
+
+              <div class="mega-col">
+                <h4 class="mega-heading" data-bn="🌴 আমাদের মহেশখালী" data-en="🌴 Our Maheshkhali">🌴 আমাদের মহেশখালী</h4>
+                <a href="#about" role="menuitem" data-bn="🌴 মহেশখালী সম্পর্কে" data-en="🌴 About Maheshkhali">🌴 মহেশখালী সম্পর্কে</a>
+                <a href="#our-maheshkhali" role="menuitem" data-bn="🏝️ আমাদের দ্বীপ" data-en="🏝️ Our Island">🏝️ আমাদের দ্বীপ</a>
+                <a href="#vision" role="menuitem" data-bn="🎯 লক্ষ্য ও উদ্দেশ্য" data-en="🎯 Vision & Mission">🎯 লক্ষ্য ও উদ্দেশ্য</a>
+                <a href="#history" role="menuitem" data-bn="📜 ইতিহাস" data-en="📜 History">📜 ইতিহাস</a>
+                <a href="#geography" role="menuitem" data-bn="🗺️ ভূগোল" data-en="🗺️ Geography">🗺️ ভূগোল</a>
+              </div>
+
+              <div class="mega-col">
+                <h4 class="mega-heading" data-bn="👤 সম্পর্কে আরও" data-en="👤 More About">👤 সম্পর্কে আরও</h4>
+
+                <a href="#badsha-solyman" role="menuitem" class="mega-feature">
+                  <span class="mega-feature-icon" aria-hidden="true">👨‍💻</span>
+                  <span class="mega-feature-content">
+                    <strong data-bn="ডেভেলপার" data-en="Developer">ডেভেলপার</strong>
+                    <small data-bn="বাদশা সোলাইমান — মার্চেন্ট মেরিনার · প্রতিষ্ঠাতা · ওয়েব ডেভেলপার" data-en="Badsha Solyman — Merchant Mariner · Founder · Web Developer">বাদশা সোলাইমান — মার্চেন্ট মেরিনার · প্রতিষ্ঠাতা · ওয়েব ডেভেলপার</small>
+                  </span>
+                </a>
+
+                <a href="#badsha-solyman" role="menuitem" data-bn="⭐ পরিচিতি" data-en="⭐ Personality">⭐ পরিচিতি</a>
+                <a href="#team" role="menuitem" data-bn="👥 টিম আওয়ার মহেশখালী" data-en="👥 Team Our Maheshkhali">👥 টিম আওয়ার মহেশখালী</a>
+                <a href="#contact" role="menuitem" data-bn="📞 যোগাযোগ" data-en="📞 Contact">📞 যোগাযোগ</a>
+                <a href="#faq" role="menuitem" data-bn="❓ প্রশ্নোত্তর" data-en="❓ FAQ">❓ প্রশ্নোত্তর</a>
+              </div>
+
+              <div class="mega-col">
+                <h4 class="mega-heading" data-bn="📋 তথ্য" data-en="📋 Information">📋 তথ্য</h4>
+                <a href="#important-facts" role="menuitem" data-bn="📌 গুরুত্বপূর্ণ তথ্য" data-en="📌 Important Facts">📌 গুরুত্বপূর্ণ তথ্য</a>
+                <a href="#personalities" role="menuitem" data-bn="🌟 বিখ্যাত ব্যক্তিত্ব" data-en="🌟 Famous Personalities">🌟 বিখ্যাত ব্যক্তিত্ব</a>
+                <a href="#achievements" role="menuitem" data-bn="🏆 অর্জন" data-en="🏆 Achievements">🏆 অর্জন</a>
+                <a href="#privacy" role="menuitem" data-bn="🔒 গোপনীয়তা নীতি" data-en="🔒 Privacy Policy">🔒 গোপনীয়তা নীতি</a>
+                <a href="#terms" role="menuitem" data-bn="📄 শর্তাবলী" data-en="📄 Terms & Conditions">📄 শর্তাবলী</a>
+              </div>
+
+            </div>
+          </div>
+        </li>
+
+        <!-- ═══════════════════════════════════════════
+             3. EXPLORE
+        ═══════════════════════════════════════════ -->
+        <li class="nav-item has-mega" role="none">
+          <a href="#explore" class="nav-link" role="menuitem" aria-haspopup="true" aria-expanded="false">
+            <span data-bn="🌴 অন্বেষণ" data-en="🌴 EXPLORE">🌴 অন্বেষণ</span>
+            <span class="nav-arrow" aria-hidden="true">⌄</span>
+          </a>
+
+          <div class="mega-menu mega-menu-large" role="menu" aria-label="Explore menu">
+            <div class="mega-menu-inner">
+
+              <div class="mega-col">
+                <h4 class="mega-heading" data-bn="🌴 পরিচিতি" data-en="🌴 About">🌴 পরিচিতি</h4>
+                <a href="#about" role="menuitem" data-bn="🌴 মহেশখালী সম্পর্কে" data-en="🌴 About Maheshkhali">🌴 মহেশখালী সম্পর্কে</a>
+                <a href="#unions" role="menuitem" data-bn="🏘️ ৮টি ইউনিয়ন" data-en="🏘️ 8 Unions">🏘️ ৮টি ইউনিয়ন</a>
+                <a href="#villages" role="menuitem" data-bn="🏡 গ্রাম" data-en="🏡 Villages">🏡 গ্রাম</a>
+                <a href="#wards" role="menuitem" data-bn="🔢 ওয়ার্ড" data-en="🔢 Wards">🔢 ওয়ার্ড</a>
+                <a href="#history" role="menuitem" data-bn="📜 ইতিহাস ও ঐতিহ্য" data-en="📜 History & Heritage">📜 ইতিহাস ও ঐতিহ্য</a>
+              </div>
+
+              <div class="mega-col">
+                <h4 class="mega-heading" data-bn="🌊 পর্যটন" data-en="🌊 Tourism">🌊 পর্যটন</h4>
+                <a href="#tourism" role="menuitem" data-bn="🌊 পর্যটন" data-en="🌊 Tourism">🌊 পর্যটন</a>
+                <a href="#places" role="menuitem" data-bn="📍 দর্শনীয় স্থান" data-en="📍 Places & Attractions">📍 দর্শনীয় স্থান</a>
+                <a href="#beaches" role="menuitem" data-bn="🏖️ সৈকত" data-en="🏖️ Beaches">🏖️ সৈকত</a>
+                <a href="#hills" role="menuitem" data-bn="⛰️ পাহাড়" data-en="⛰️ Hills">⛰️ পাহাড়</a>
+                <a href="#islands" role="menuitem" data-bn="🏝️ দ্বীপ" data-en="🏝️ Islands">🏝️ দ্বীপ</a>
+              </div>
+
+              <div class="mega-col">
+                <h4 class="mega-heading" data-bn="🎭 সংস্কৃতি" data-en="🎭 Culture">🎭 সংস্কৃতি</h4>
+                <a href="#culture" role="menuitem" data-bn="🎭 সংস্কৃতি" data-en="🎭 Culture & Tradition">🎭 সংস্কৃতি</a>
+                <a href="#dialect" role="menuitem" data-bn="🗣️ আঞ্চলিক ভাষা" data-en="🗣️ Local Dialect">🗣️ আঞ্চলিক ভাষা</a>
+                <a href="#food" role="menuitem" data-bn="🍽️ স্থানীয় খাবার" data-en="🍽️ Local Food">🍽️ স্থানীয় খাবার</a>
+                <a href="#festivals" role="menuitem" data-bn="🎉 উৎসব" data-en="🎉 Festivals">🎉 উৎসব</a>
+              </div>
+
+              <div class="mega-col">
+                <h4 class="mega-heading" data-bn="📸 মিডিয়া" data-en="📸 Media">📸 মিডিয়া</h4>
+                <a href="#gallery" role="menuitem" data-bn="📸 ফটো গ্যালারি" data-en="📸 Photo Gallery">📸 ফটো গ্যালারি</a>
+                <a href="#video" role="menuitem" data-bn="🎥 ভিডিও" data-en="🎥 Video Gallery">🎥 ভিডিও</a>
+                <a href="#map" role="menuitem" data-bn="🗺️ ম্যাপ" data-en="🗺️ Interactive Map">🗺️ ম্যাপ</a>
+                <a href="#virtual" role="menuitem" data-bn="🌐 ভার্চুয়াল ট্যুর" data-en="🌐 Virtual Tour">🌐 ভার্চুয়াল ট্যুর</a>
+              </div>
+
+            </div>
+          </div>
+        </li>
+
+        <!-- ═══════════════════════════════════════════
+             4. COMMUNITY
+        ═══════════════════════════════════════════ -->
+        <li class="nav-item has-mega" role="none">
+          <a href="#community" class="nav-link" role="menuitem" aria-haspopup="true" aria-expanded="false">
+            <span data-bn="👥 কমিউনিটি" data-en="👥 COMMUNITY">👥 কমিউনিটি</span>
+            <span class="nav-arrow" aria-hidden="true">⌄</span>
+          </a>
+
+          <div class="mega-menu mega-menu-large" role="menu" aria-label="Community menu">
+            <div class="mega-menu-inner">
+
+              <div class="mega-col">
+                <h4 class="mega-heading" data-bn="👥 কমিউনিটি" data-en="👥 Community">👥 কমিউনিটি</h4>
+                <a href="#community" role="menuitem" data-bn="👥 আমাদের কমিউনিটি" data-en="👥 Our Community">👥 আমাদের কমিউনিটি</a>
+                <a href="#members" role="menuitem" data-bn="👨‍👩‍👧‍👦 সদস্যবৃন্দ" data-en="👨‍👩‍👧‍👦 Members">👨‍👩‍👧‍👦 সদস্যবৃন্দ</a>
+                <a href="#volunteer" role="menuitem" data-bn="🤝 স্বেচ্ছাসেবক" data-en="🤝 Volunteer">🤝 স্বেচ্ছাসেবক</a>
+                <a href="#stories" role="menuitem" data-bn="📖 কমিউনিটি গল্প" data-en="📖 Community Stories">📖 কমিউনিটি গল্প</a>
+                <a href="#activities" role="menuitem" data-bn="🎯 কার্যক্রম" data-en="🎯 Activities">🎯 কার্যক্রম</a>
+              </div>
+
+              <div class="mega-col">
+                <h4 class="mega-heading" data-bn="🏢 প্রতিষ্ঠান" data-en="🏢 Organizations">🏢 প্রতিষ্ঠান</h4>
+                <a href="#local-services" role="menuitem" data-bn="🛠️ স্থানীয় সেবা" data-en="🛠️ Local Services">🛠️ স্থানীয় সেবা</a>
+                <a href="#organizations" role="menuitem" data-bn="🏢 সংগঠন" data-en="🏢 Organizations">🏢 সংগঠন</a>
+                <a href="#ngos" role="menuitem" data-bn="🤝 এনজিও" data-en="🤝 NGOs">🤝 এনজিও</a>
+                <a href="#clubs" role="menuitem" data-bn="🎯 ক্লাব" data-en="🎯 Clubs">🎯 ক্লাব</a>
+              </div>
+
+              <div class="mega-col">
+                <h4 class="mega-heading" data-bn="📚 সেবা" data-en="📚 Services">📚 সেবা</h4>
+                <a href="#health" role="menuitem" data-bn="🏥 স্বাস্থ্য" data-en="🏥 Health">🏥 স্বাস্থ্য</a>
+                <a href="#education" role="menuitem" data-bn="🎓 শিক্ষা" data-en="🎓 Education">🎓 শিক্ষা</a>
+                <a href="#training" role="menuitem" data-bn="🛠️ প্রশিক্ষণ" data-en="🛠️ Training">🛠️ প্রশিক্ষণ</a>
+                <a href="#support" role="menuitem" data-bn="🤝 সহায়তা" data-en="🤝 Support">🤝 সহায়তা</a>
+              </div>
+
+              <div class="mega-col">
+                <h4 class="mega-heading" data-bn="🎉 ইভেন্ট" data-en="🎉 Events">🎉 ইভেন্ট</h4>
+                <a href="#events" role="menuitem" data-bn="📅 ইভেন্ট ক্যালেন্ডার" data-en="📅 Events Calendar">📅 ইভেন্ট ক্যালেন্ডার</a>
+                <a href="#meetings" role="menuitem" data-bn="👥 মিটিং" data-en="👥 Meetings">👥 মিটিং</a>
+                <a href="#emergency" role="menuitem" data-bn="🚨 জরুরি সেবা" data-en="🚨 Emergency">🚨 জরুরি সেবা</a>
+              </div>
+
+            </div>
+          </div>
+        </li>
+
+        <!-- ═══════════════════════════════════════════
+             5. OPPORTUNITIES
+        ═══════════════════════════════════════════ -->
+        <li class="nav-item has-mega" role="none">
+          <a href="#opportunities" class="nav-link" role="menuitem" aria-haspopup="true" aria-expanded="false">
+            <span data-bn="💼 সুযোগ" data-en="💼 OPPORTUNITIES">💼 সুযোগ</span>
+            <span class="nav-arrow" aria-hidden="true">⌄</span>
+          </a>
+
+          <div class="mega-menu mega-menu-large" role="menu" aria-label="Opportunities menu">
+            <div class="mega-menu-inner">
+
+              <div class="mega-col">
+                <h4 class="mega-heading" data-bn="💼 ক্যারিয়ার" data-en="💼 Career">💼 ক্যারিয়ার</h4>
+                <a href="#jobs" role="menuitem" data-bn="💼 চাকরি" data-en="💼 Jobs">💼 চাকরি</a>
+                <a href="#business" role="menuitem" data-bn="🏢 ব্যবসা" data-en="🏢 Business">🏢 ব্যবসা</a>
+                <a href="#entrepreneurship" role="menuitem" data-bn="🚀 উদ্যোক্তা" data-en="🚀 Entrepreneurship">🚀 উদ্যোক্তা</a>
+                <a href="#freelancing" role="menuitem" data-bn="💻 ফ্রিল্যান্সিং" data-en="💻 Freelancing">💻 ফ্রিল্যান্সিং</a>
+                <a href="#cv-builder" role="menuitem" data-bn="📄 CV বিল্ডার" data-en="📄 CV Builder">📄 CV বিল্ডার</a>
+              </div>
+
+              <div class="mega-col">
+                <h4 class="mega-heading" data-bn="🎓 শিক্ষা ও উন্নয়ন" data-en="🎓 Education & Growth">🎓 শিক্ষা ও উন্নয়ন</h4>
+                <a href="#scholarships" role="menuitem" data-bn="🎓 বৃত্তি" data-en="🎓 Scholarships">🎓 বৃত্তি</a>
+                <a href="#training" role="menuitem" data-bn="🛠️ প্রশিক্ষণ" data-en="🛠️ Training & Skills">🛠️ প্রশিক্ষণ</a>
+                <a href="#courses" role="menuitem" data-bn="📚 কোর্স" data-en="📚 Courses">📚 কোর্স</a>
+                <a href="#internships" role="menuitem" data-bn="🎯 ইন্টার্নশিপ" data-en="🎯 Internships">🎯 ইন্টার্নশিপ</a>
+              </div>
+
+              <div class="mega-col">
+                <h4 class="mega-heading" data-bn="🛒 মার্কেটপ্লেস" data-en="🛒 Marketplace">🛒 মার্কেটপ্লেস</h4>
+                <a href="#marketplace" role="menuitem" data-bn="🛒 মার্কেটপ্লেস" data-en="🛒 Marketplace">🛒 মার্কেটপ্লেস</a>
+                <a href="#local-products" role="menuitem" data-bn="🛍️ স্থানীয় পণ্য" data-en="🛍️ Local Products">🛍️ স্থানীয় পণ্য</a>
+                <a href="#services" role="menuitem" data-bn="🛠️ সেবা" data-en="🛠️ Services">🛠️ সেবা</a>
+                <a href="#buy-sell" role="menuitem" data-bn="💰 ক্রয়-বিক্রয়" data-en="💰 Buy & Sell">💰 ক্রয়-বিক্রয়</a>
+              </div>
+
+              <div class="mega-col">
+                <h4 class="mega-heading" data-bn="🌟 সুযোগ" data-en="🌟 Opportunities">🌟 সুযোগ</h4>
+                <a href="#opportunities" role="menuitem" data-bn="✨ সকল সুযোগ" data-en="✨ All Opportunities">✨ সকল সুযোগ</a>
+                <a href="#funding" role="menuitem" data-bn="💰 ফান্ডিং" data-en="💰 Funding">💰 ফান্ডিং</a>
+                <a href="#competitions" role="menuitem" data-bn="🏆 প্রতিযোগিতা" data-en="🏆 Competitions">🏆 প্রতিযোগিতা</a>
+                <a href="#grants" role="menuitem" data-bn="🎁 অনুদান" data-en="🎁 Grants">🎁 অনুদান</a>
+              </div>
+
+            </div>
+          </div>
+        </li>
+
+        <!-- ═══════════════════════════════════════════
+             6. MORE
+        ═══════════════════════════════════════════ -->
+        <li class="nav-item has-mega" role="none">
+          <a href="#more" class="nav-link" role="menuitem" aria-haspopup="true" aria-expanded="false">
+            <span data-bn="⋮ আরও" data-en="⋮ MORE">⋮ আরও</span>
+            <span class="nav-arrow" aria-hidden="true">⌄</span>
+          </a>
+
+          <div class="mega-menu mega-menu-xlarge" role="menu" aria-label="More menu">
+            <div class="mega-menu-inner">
+
+              <div class="mega-col">
+                <h4 class="mega-heading" data-bn="🔍 টুলস" data-en="🔍 Tools">🔍 টুলস</h4>
+                <a href="#search" role="menuitem" data-bn="🔎 অনুসন্ধান" data-en="🔎 Search">🔎 অনুসন্ধান</a>
+                <a href="#map" role="menuitem" data-bn="🗺️ মহেশখালী ম্যাপ" data-en="🗺️ Maheshkhali Map">🗺️ মহেশখালী ম্যাপ</a>
+                <a href="#nearby" role="menuitem" data-bn="📍 কাছাকাছি" data-en="📍 Find Nearby">📍 কাছাকাছি</a>
+                <a href="#govt-services" role="menuitem" data-bn="🏛️ সরকারি সেবা" data-en="🏛️ Government Services">🏛️ সরকারি সেবা</a>
+                <a href="#utilities" role="menuitem" data-bn="⚡ ইউটিলিটি" data-en="⚡ Utilities">⚡ ইউটিলিটি</a>
+              </div>
+
+              <div class="mega-col">
+                <h4 class="mega-heading" data-bn="📞 যোগাযোগ" data-en="📞 Contact">📞 যোগাযোগ</h4>
+                <a href="#emergency-contacts" role="menuitem" data-bn="🚨 জরুরি যোগাযোগ" data-en="🚨 Emergency Contacts">🚨 জরুরি যোগাযোগ</a>
+                <a href="#important-contacts" role="menuitem" data-bn="☎️ গুরুত্বপূর্ণ নম্বর" data-en="☎️ Important Contacts">☎️ গুরুত্বপূর্ণ নম্বর</a>
+                <a href="#news" role="menuitem" data-bn="📰 সংবাদ ও মিডিয়া" data-en="📰 News & Media">📰 সংবাদ ও মিডিয়া</a>
+                <a href="#events-calendar" role="menuitem" data-bn="📅 ইভেন্ট ক্যালেন্ডার" data-en="📅 Events Calendar">📅 ইভেন্ট ক্যালেন্ডার</a>
+                <a href="#feedback" role="menuitem" data-bn="💬 মতামত" data-en="💬 Feedback">💬 মতামত</a>
+              </div>
+
+              <div class="mega-col">
+                <h4 class="mega-heading" data-bn="👤 অ্যাকাউন্ট" data-en="👤 Account">👤 অ্যাকাউন্ট</h4>
+                <a href="#login" role="menuitem" data-bn="🔐 লগইন" data-en="🔐 Login">🔐 লগইন</a>
+                <a href="#register" role="menuitem" data-bn="📝 রেজিস্ট্রেশন" data-en="📝 Registration">📝 রেজিস্ট্রেশন</a>
+                <a href="#profile" role="menuitem" data-bn="👤 আমার প্রোফাইল" data-en="👤 My Profile">👤 আমার প্রোফাইল</a>
+                <a href="#notifications" role="menuitem" data-bn="🔔 নোটিফিকেশন" data-en="🔔 Notifications">🔔 নোটিফিকেশন</a>
+                <a href="#saved" role="menuitem" data-bn="💾 সংরক্ষিত" data-en="💾 Saved Items">💾 সংরক্ষিত</a>
+              </div>
+
+              <div class="mega-col">
+                <h4 class="mega-heading" data-bn="⚙️ সেটিংস" data-en="⚙️ Settings">⚙️ সেটিংস</h4>
+                <a href="#language" role="menuitem" data-bn="🌐 ভাষা" data-en="🌐 Language">🌐 ভাষা</a>
+                <a href="#theme" role="menuitem" data-bn="🌙 থিম" data-en="🌙 Theme">🌙 থিম</a>
+                <a href="#accessibility" role="menuitem" data-bn="♿ অ্যাক্সেসিবিলিটি" data-en="♿ Accessibility">♿ অ্যাক্সেসিবিলিটি</a>
+                <a href="#settings" role="menuitem" data-bn="⚙️ সাধারণ সেটিংস" data-en="⚙️ General Settings">⚙️ সাধারণ সেটিংস</a>
+                <a href="#help" role="menuitem" data-bn="💬 সহায়তা কেন্দ্র" data-en="💬 Help Center">💬 সহায়তা কেন্দ্র</a>
+              </div>
+
+            </div>
+          </div>
+        </li>
+
+      </ul>
+    </nav>
+
+  </div>
 </header>
-
 <!-- JS সবার শেষে -->
 <script src="js/header.js"></script>
 
 <!-- =========================================================
      🏝️ HERO SECTION — 3D OCEAN + ISLAND (Bay of Bengal)
+     Our Maheshkhali
 ========================================================= -->
 
-<section class="hero-section" id="home">
-    
+<section class="hero-section" id="home" aria-label="Hero — Our Maheshkhali">
+
     <!-- ========== 3D ANIMATED OCEAN BACKGROUND ========== -->
     <div class="hero-ocean-bg" aria-hidden="true">
-        
+
         <!-- Sky Gradient -->
         <div class="ocean-sky"></div>
-        
+
         <!-- Sun / Moon -->
         <div class="ocean-sun"></div>
         <div class="ocean-sun-glow"></div>
-        
+
         <!-- Stars (Dark/Evening) -->
         <div class="ocean-stars"></div>
-        
+
         <!-- Clouds -->
         <div class="ocean-cloud ocean-cloud-1"></div>
         <div class="ocean-cloud ocean-cloud-2"></div>
         <div class="ocean-cloud ocean-cloud-3"></div>
-        
+
         <!-- Ocean Waves (5 Layers) -->
         <div class="ocean-waves">
             <div class="ocean-wave wave-1"></div>
@@ -611,28 +897,22 @@
             <div class="ocean-wave wave-4"></div>
             <div class="ocean-wave wave-5"></div>
         </div>
-        
+
         <!-- Ocean Reflection -->
         <div class="ocean-reflection"></div>
-        
+
         <!-- 3D ISLAND (Our Maheshkhali) -->
         <div class="hero-island" id="heroIsland">
-            
-            <!-- Island Glow -->
+
             <div class="island-glow"></div>
-            
-            <!-- Island Base (3D Layer) -->
+
             <div class="island-base">
-                
-                <!-- Sand Beach -->
                 <div class="island-beach"></div>
-                
-                <!-- Hills -->
+
                 <div class="island-hill hill-1"></div>
                 <div class="island-hill hill-2"></div>
                 <div class="island-hill hill-3"></div>
-                
-                <!-- Trees -->
+
                 <div class="island-trees">
                     <span class="tree tree-1">🌴</span>
                     <span class="tree tree-2">🌴</span>
@@ -640,77 +920,77 @@
                     <span class="tree tree-4">🌴</span>
                     <span class="tree tree-5">🌴</span>
                 </div>
-                
-                <!-- Small Building (Village) -->
+
                 <div class="island-village">
                     <span>🏠</span>
                     <span>🏘️</span>
                     <span>🕌</span>
                 </div>
-                
             </div>
-            
-            <!-- Island Label -->
+
             <div class="island-label">
                 <span class="island-label-icon">🏝️</span>
                 <span class="island-label-text">OUR MAHESHKHALI</span>
-                <span class="island-label-sub" 
-                      data-bn="বঙ্গোপসাগরের বুকে" 
+                <span class="island-label-sub"
+                      data-bn="বঙ্গোপসাগরের বুকে"
                       data-en="In the Bay of Bengal">
                     বঙ্গোপসাগরের বুকে
                 </span>
             </div>
-            
-            <!-- Island Reflection on Water -->
+
             <div class="island-reflection"></div>
-            
+
         </div>
-        
+
         <!-- Boats / Ships -->
         <div class="ocean-boat boat-1">⛵</div>
         <div class="ocean-boat boat-2">🚤</div>
-        
+
         <!-- Birds -->
         <div class="ocean-birds">
             <span class="bird bird-1">🕊️</span>
             <span class="bird bird-2">🕊️</span>
             <span class="bird bird-3">🕊️</span>
         </div>
-        
+
     </div>
 
     <!-- ========== HERO CONTENT (On Top of Ocean) ========== -->
     <div class="container hero-container">
-        
+
         <div class="hero-content">
-            <span class="eyebrow" 
-                  data-bn="🌴 আমাদের মহেশখালী" 
+            <span class="eyebrow"
+                  data-bn="🌴 আমাদের মহেশখালী"
                   data-en="🌴 OUR MAHESHKHALI">
                 🌴 আমাদের মহেশখালী
             </span>
+
             <h1 class="hero-title">
-    <span data-bn="মহেশখালী —" data-en="Maheshkhali —">মহেশখালী —</span>
-    <br>
-    <span class="hero-title-accent"
-          data-bn="এক দ্বীপ, অনেক গল্প।"
-          data-en="One Island, Many Stories.">এক দ্বীপ, অনেক গল্প।</span>
-</h1>
-            <h2 data-bn="প্রকৃতি, ঐতিহ্য, মানুষ ও সম্ভাবনার এক অনন্য দ্বীপ।" 
+                <span data-bn="মহেশখালী —" data-en="Maheshkhali —">মহেশখালী —</span>
+                <br>
+                <span class="hero-title-accent"
+                      data-bn="এক দ্বীপ, অনেক গল্প।"
+                      data-en="One Island, Many Stories.">এক দ্বীপ, অনেক গল্প।</span>
+            </h1>
+
+            <h2 data-bn="প্রকৃতি, ঐতিহ্য, মানুষ ও সম্ভাবনার এক অনন্য দ্বীপ।"
                 data-en="A unique island of nature, heritage, people and possibilities.">
                 প্রকৃতি, ঐতিহ্য, মানুষ ও সম্ভাবনার এক অনন্য দ্বীপ।
             </h2>
-            <p data-bn="একটি ডিজিটাল প্ল্যাটফর্ম থেকে মহেশখালীর ইতিহাস, ঐতিহ্য, পর্যটন, শিক্ষা, স্বাস্থ্য, ব্যবসা এবং কমিউনিটি সম্পর্কে জানুন।" 
+
+            <p data-bn="একটি ডিজিটাল প্ল্যাটফর্ম থেকে মহেশখালীর ইতিহাস, ঐতিহ্য, পর্যটন, শিক্ষা, স্বাস্থ্য, ব্যবসা এবং কমিউনিটি সম্পর্কে জানুন।"
                data-en="Explore the history, heritage, tourism, education, health, businesses, local products and community of Maheshkhali from one digital platform.">
                 একটি ডিজিটাল প্ল্যাটফর্ম থেকে মহেশখালীর ইতিহাস, ঐতিহ্য, পর্যটন, শিক্ষা, স্বাস্থ্য, ব্যবসা এবং কমিউনিটি সম্পর্কে জানুন।
             </p>
+
             <div class="hero-actions">
-                <a href="#unions" class="button button-primary" 
-                   data-bn="🧭 মহেশখালী অন্বেষণ" 
+                <a href="#unions" class="button button-primary"
+                   data-bn="🧭 মহেশখালী অন্বেষণ"
                    data-en="🧭 Explore Maheshkhali">
                     🧭 মহেশখালী অন্বেষণ
                 </a>
-                <a href="#community" class="button button-secondary" 
-                   data-bn="👥 কমিউনিটিতে যোগদান" 
+                <a href="#community" class="button button-secondary"
+                   data-bn="👥 কমিউনিটিতে যোগদান"
                    data-en="👥 Join Community">
                     👥 কমিউনিটিতে যোগদান
                 </a>
@@ -734,7 +1014,20 @@
             <div class="floating-card"><span>🌊</span><strong>07 · Kutubjom</strong></div>
             <div class="floating-card"><span>🌿</span><strong>08 · Chhota Maheshkhali</strong></div>
         </div>
-        
+
+    </div>
+
+    <!-- ========== HERO FOOTER STRIP (Last Line) ========== -->
+    <div class="hero-footer-strip">
+        <div class="container hero-footer-inner">
+            <span class="hero-footer-icon" aria-hidden="true">🌴</span>
+            <p class="hero-footer-text"
+               data-bn="আমাদের মহেশখালী, সবার ডিজিটাল প্লাটফর্ম"
+               data-en="Our Maheshkhali, Everyone's Digital Platform">
+                আমাদের মহেশখালী, সবার ডিজিটাল প্লাটফর্ম
+            </p>
+            <span class="hero-footer-icon" aria-hidden="true">🌊</span>
+        </div>
     </div>
 
 </section>
@@ -7789,16 +8082,18 @@
 </div>
 
 <!-- =========================================================
-     🌴 BEST FOOTER (3D Animated, SEO Friendly)
+     🌴 PREMIUM FOOTER — OUR MAHESHKHALI
+     3D Animated • SEO Friendly • Stylish
+     Developer: Badsha Solyman (3D Rotating Avatar)
 ========================================================= -->
 
-<footer class="site-footer">
+<footer class="site-footer" itemscope itemtype="https://schema.org/WPFooter">
 
-    <!-- Animated Wave Top Border -->
-    <div class="footer-top-wave"></div>
+    <!-- Top Animated Wave -->
+    <div class="footer-top-wave" aria-hidden="true"></div>
 
-    <!-- Floating Particles Background -->
-    <div class="footer-particles">
+    <!-- Floating Particles -->
+    <div class="footer-particles" aria-hidden="true">
         <span class="fp fp-1">🌴</span>
         <span class="fp fp-2">🌊</span>
         <span class="fp fp-3">🏝️</span>
@@ -7810,48 +8105,47 @@
     <div class="container footer-container">
 
         <!-- =========================================================
-             FOOTER HERO (Brand + Social)
+             FOOTER HERO
         ========================================================== -->
         <div class="footer-hero">
             <div class="footer-logo-3d">
-                <span class="fl-icon">🏝️</span>
+                <span class="fl-icon" aria-hidden="true">🏝️</span>
                 <div class="fl-text">
                     <h2 class="fl-title">OUR MAHESHKHALI</h2>
-                    <p class="fl-tagline" 
-                       data-bn="এক দ্বীপ। এক কমিউনিটি। এক প্ল্যাটফর্ম।" 
+                    <p class="fl-tagline"
+                       data-bn="এক দ্বীপ। এক কমিউনিটি। এক প্ল্যাটফর্ম।"
                        data-en="One Island. One Community. One Platform.">
                         এক দ্বীপ। এক কমিউনিটি। এক প্ল্যাটফর্ম।
                     </p>
                 </div>
             </div>
 
-            <p class="footer-mission" 
-               data-bn="জানুন আপনার দ্বীপ। সংযুক্ত হোন আপনার কমিউনিটির সাথে। গড়ুন ভবিষ্যৎ।" 
+            <p class="footer-mission"
+               data-bn="জানুন আপনার দ্বীপ। সংযুক্ত হোন আপনার কমিউনিটির সাথে। গড়ুন ভবিষ্যৎ।"
                data-en="Know Your Island. Connect Your Community. Build the Future.">
                 জানুন আপনার দ্বীপ। সংযুক্ত হোন আপনার কমিউনিটির সাথে। গড়ুন ভবিষ্যৎ।
             </p>
 
-            <!-- Social Icons -->
-            <div class="footer-social-top">
-                <a href="#" class="fs-btn fs-facebook" aria-label="Facebook" title="Facebook"><span>📘</span></a>
-                <a href="#" class="fs-btn fs-youtube" aria-label="YouTube" title="YouTube"><span>▶️</span></a>
-                <a href="#" class="fs-btn fs-instagram" aria-label="Instagram" title="Instagram"><span>📸</span></a>
-                <a href="#" class="fs-btn fs-tiktok" aria-label="TikTok" title="TikTok"><span>🎵</span></a>
-                <a href="#" class="fs-btn fs-x" aria-label="X" title="X"><span>𝕏</span></a>
-                <a href="#" class="fs-btn fs-linkedin" aria-label="LinkedIn" title="LinkedIn"><span>💼</span></a>
-                <a href="#" class="fs-btn fs-whatsapp" aria-label="WhatsApp" title="WhatsApp"><span>💬</span></a>
-            </div>
+            <nav class="footer-social-top" aria-label="Social media links">
+                <a href="#" class="fs-btn" aria-label="Facebook" title="Facebook" rel="noopener"><span>📘</span></a>
+                <a href="#" class="fs-btn" aria-label="YouTube" title="YouTube" rel="noopener"><span>▶️</span></a>
+                <a href="#" class="fs-btn" aria-label="Instagram" title="Instagram" rel="noopener"><span>📸</span></a>
+                <a href="#" class="fs-btn" aria-label="TikTok" title="TikTok" rel="noopener"><span>🎵</span></a>
+                <a href="#" class="fs-btn" aria-label="X" title="X" rel="noopener"><span>𝕏</span></a>
+                <a href="#" class="fs-btn" aria-label="LinkedIn" title="LinkedIn" rel="noopener"><span>💼</span></a>
+                <a href="#" class="fs-btn" aria-label="WhatsApp" title="WhatsApp" rel="noopener"><span>💬</span></a>
+            </nav>
         </div>
 
         <!-- =========================================================
-             MAIN FOOTER LINKS (4 Columns)
+             MAIN FOOTER GRID
         ========================================================== -->
         <div class="footer-grid">
 
-            <!-- COLUMN 1 -->
+            <!-- Column 1 -->
             <div class="footer-column">
                 <h4 class="fc-heading">
-                    <span class="fc-icon">🔗</span>
+                    <span class="fc-icon" aria-hidden="true">🔗</span>
                     <span data-bn="দ্রুত লিংক" data-en="Quick Links">দ্রুত লিংক</span>
                 </h4>
                 <ul class="fc-list">
@@ -7860,14 +8154,14 @@
                     <li><a href="#education"><span class="fc-bullet">▸</span><span data-bn="শিক্ষা" data-en="Education">শিক্ষা</span></a></li>
                     <li><a href="#health"><span class="fc-bullet">▸</span><span data-bn="স্বাস্থ্য" data-en="Health">স্বাস্থ্য</span></a></li>
                     <li><a href="#tourism"><span class="fc-bullet">▸</span><span data-bn="পর্যটন" data-en="Tourism">পর্যটন</span></a></li>
-                    <li><a href="#emergency" class="fc-emergency"><span class="fc-bullet">🚨</span><span data-bn="জরুরি তথ্য" data-en="Emergency Information">জরুরি তথ্য</span></a></li>
+                    <li><a href="#emergency" class="fc-emergency"><span class="fc-bullet">🚨</span><span data-bn="জরুরি তথ্য" data-en="Emergency">জরুরি তথ্য</span></a></li>
                 </ul>
             </div>
 
-            <!-- COLUMN 2 -->
+            <!-- Column 2 -->
             <div class="footer-column">
                 <h4 class="fc-heading">
-                    <span class="fc-icon">👥</span>
+                    <span class="fc-icon" aria-hidden="true">👥</span>
                     <span data-bn="কমিউনিটি" data-en="Community">কমিউনিটি</span>
                 </h4>
                 <ul class="fc-list">
@@ -7880,10 +8174,10 @@
                 </ul>
             </div>
 
-            <!-- COLUMN 3 -->
+            <!-- Column 3 -->
             <div class="footer-column">
                 <h4 class="fc-heading">
-                    <span class="fc-icon">📚</span>
+                    <span class="fc-icon" aria-hidden="true">📚</span>
                     <span data-bn="তথ্য" data-en="Information">তথ্য</span>
                 </h4>
                 <ul class="fc-list">
@@ -7896,43 +8190,72 @@
                 </ul>
             </div>
 
-            <!-- COLUMN 4 -->
+            <!-- Column 4 -->
             <div class="footer-column">
                 <h4 class="fc-heading">
-                    <span class="fc-icon">📞</span>
-                    <span data-bn="যোগাযোগ ও সংযোগ" data-en="Contact & Connect">যোগাযোগ ও সংযোগ</span>
+                    <span class="fc-icon" aria-hidden="true">📞</span>
+                    <span data-bn="যোগাযোগ" data-en="Contact">যোগাযোগ</span>
                 </h4>
                 <ul class="fc-list fc-contact-list">
-                    <li><a href="tel:+8801886033345"><span class="fc-bullet fc-phone">📞</span><span>+880 1886-033345</span></a></li>
-                    <li><a href="https://wa.me/8801886033345" target="_blank" rel="noopener"><span class="fc-bullet fc-whatsapp">💬</span><span>WhatsApp</span></a></li>
-                    <li><a href="mailto:info@ourmaheshkhali.com"><span class="fc-bullet fc-email">✉️</span><span>info@ourmaheshkhali.com</span></a></li>
-                    <li><a href="https://www.ourmaheshkhali.com" target="_blank" rel="noopener"><span class="fc-bullet fc-web">🌐</span><span>www.ourmaheshkhali.com</span></a></li>
-                    <li><a href="#location"><span class="fc-bullet fc-loc">📍</span><span data-bn="মহেশখালী, কক্সবাজার" data-en="Maheshkhali, Cox's Bazar">মহেশখালী, কক্সবাজার</span></a></li>
+                    <li><a href="tel:+8801886033345"><span class="fc-bullet">📞</span><span>+880 1886-033345</span></a></li>
+                    <li><a href="https://wa.me/8801886033345" target="_blank" rel="noopener"><span class="fc-bullet">💬</span><span>WhatsApp</span></a></li>
+                    <li><a href="mailto:info@ourmaheshkhali.com"><span class="fc-bullet">✉️</span><span>info@ourmaheshkhali.com</span></a></li>
+                    <li><a href="https://www.ourmaheshkhali.com" target="_blank" rel="noopener"><span class="fc-bullet">🌐</span><span>www.ourmaheshkhali.com</span></a></li>
+                    <li><a href="#location"><span class="fc-bullet">📍</span><span data-bn="মহেশখালী, কক্সবাজার" data-en="Maheshkhali, Cox's Bazar">মহেশখালী, কক্সবাজার</span></a></li>
                 </ul>
             </div>
 
         </div>
 
         <!-- =========================================================
-             DEVELOPER CARD (3D)
+             DEVELOPER — 3D ROTATING SIGNAL / AVATAR
         ========================================================== -->
-        <div class="footer-developer-card">
-            <div class="fdc-glow"></div>
-            <div class="fdc-content">
-                <div class="fdc-icon">👨‍💻</div>
-                <div class="fdc-info">
-                    <span class="fdc-label" data-bn="ডেভেলপ করেছেন" data-en="Developed by">ডেভেলপ করেছেন</span>
-                    <h3 class="fdc-name">BADSHA SOLYMAN</h3>
-                    <p class="fdc-roles" 
-                       data-bn="মার্চেন্ট মেরিনার ⚓ | প্রতিষ্ঠাতা 🚀 | ওয়েব ডেভেলপার 💻" 
-                       data-en="Merchant Mariner ⚓ | Founder 🚀 | Web Developer 💻">
-                        মার্চেন্ট মেরিনার ⚓ | প্রতিষ্ঠাতা 🚀 | ওয়েব ডেভেলপার 💻
-                    </p>
+        <div class="developer-3d-wrap">
+            <div class="dev-3d-scene">
+                <div class="dev-3d-cube">
+                    <!-- 6 faces -->
+                    <div class="dev-face dev-front">
+                        <div class="dev-avatar">👨‍💻</div>
+                    </div>
+                    <div class="dev-face dev-back">
+                        <div class="dev-avatar">⚓</div>
+                    </div>
+                    <div class="dev-face dev-right">
+                        <div class="dev-avatar">🚀</div>
+                    </div>
+                    <div class="dev-face dev-left">
+                        <div class="dev-avatar">💻</div>
+                    </div>
+                    <div class="dev-face dev-top">
+                        <div class="dev-avatar">🌴</div>
+                    </div>
+                    <div class="dev-face dev-bottom">
+                        <div class="dev-avatar">🌊</div>
+                    </div>
                 </div>
-                <div class="fdc-social">
-                    <a href="#" aria-label="Facebook" title="Facebook">📘</a>
-                    <a href="#" aria-label="LinkedIn" title="LinkedIn">💼</a>
-                    <a href="#" aria-label="GitHub" title="GitHub">🐙</a>
+
+                <!-- Orbiting signal ring -->
+                <div class="dev-signal-ring" aria-hidden="true"></div>
+                <div class="dev-signal-ring dev-signal-ring-2" aria-hidden="true"></div>
+
+                <!-- Pulse beacon -->
+                <div class="dev-beacon" aria-hidden="true"></div>
+            </div>
+
+            <div class="dev-info-3d">
+                <span class="dev-label"
+                      data-bn="ডেভেলপ করেছেন"
+                      data-en="Developed by">ডেভেলপ করেছেন</span>
+                <h3 class="dev-name" itemprop="author">BADSHA SOLYMAN</h3>
+                <p class="dev-roles"
+                   data-bn="মার্চেন্ট মেরিনার ⚓ | প্রতিষ্ঠাতা 🚀 | ওয়েব ডেভেলপার 💻"
+                   data-en="Merchant Mariner ⚓ | Founder 🚀 | Web Developer 💻">
+                    মার্চেন্ট মেরিনার ⚓ | প্রতিষ্ঠাতা 🚀 | ওয়েব ডেভেলপার 💻
+                </p>
+                <div class="dev-social">
+                    <a href="#" aria-label="Facebook" title="Facebook" rel="noopener">📘</a>
+                    <a href="#" aria-label="LinkedIn" title="LinkedIn" rel="noopener">💼</a>
+                    <a href="#" aria-label="GitHub" title="GitHub" rel="noopener">🐙</a>
                 </div>
             </div>
         </div>
@@ -7942,38 +8265,32 @@
         ========================================================== -->
         <div class="footer-bottom">
             <div class="fb-copyright">
-                <p data-bn="© ২০২৬ OUR MAHESHKHALI। সর্বস্বত্ব সংরক্ষিত।" 
+                <p data-bn="© ২০২৬ OUR MAHESHKHALI। সর্বস্বত্ব সংরক্ষিত।"
                    data-en="© 2026 OUR MAHESHKHALI. All rights reserved.">
                     © ২০২৬ OUR MAHESHKHALI। সর্বস্বত্ব সংরক্ষিত।
                 </p>
             </div>
 
-            <div class="fb-legal">
+            <nav class="fb-legal" aria-label="Legal links">
                 <a href="#privacy" title="Privacy Policy">
-                    <span class="fbl-icon">🔒</span>
-                    <span data-bn="প্রাইভেসি পলিসি" data-en="Privacy Policy">প্রাইভেসি পলিসি</span>
+                    <span>🔒</span><span data-bn="প্রাইভেসি" data-en="Privacy">প্রাইভেসি</span>
                 </a>
                 <a href="#terms" title="Terms & Conditions">
-                    <span class="fbl-icon">📄</span>
-                    <span data-bn="শর্তাবলী" data-en="Terms & Conditions">শর্তাবলী</span>
+                    <span>📄</span><span data-bn="শর্তাবলী" data-en="Terms">শর্তাবলী</span>
                 </a>
                 <a href="#disclaimer" title="Disclaimer">
-                    <span class="fbl-icon">⚖️</span>
-                    <span data-bn="ডিসক্লেইমার" data-en="Disclaimer">ডিসক্লেইমার</span>
+                    <span>⚖️</span><span data-bn="ডিসক্লেইমার" data-en="Disclaimer">ডিসক্লেইমার</span>
                 </a>
                 <a href="#sitemap" title="Sitemap">
-                    <span class="fbl-icon">🗂️</span>
-                    <span data-bn="সাইটম্যাপ" data-en="Sitemap">সাইটম্যাপ</span>
+                    <span>🗂️</span><span data-bn="সাইটম্যাপ" data-en="Sitemap">সাইটম্যাপ</span>
                 </a>
-            </div>
+            </nav>
         </div>
 
     </div>
 
-    <!-- =========================================================
-         WATERMARK (একদম নিচের শেষ লাইন)
-    ========================================================== -->
-    <div class="footer-watermark">
+    <!-- Watermark -->
+    <div class="footer-watermark" aria-hidden="true">
         <span class="fw-text">BADSHA SOLYMAN</span>
         <span class="fw-dot">•</span>
         <span class="fw-text">WEB DEVELOPER</span>
@@ -10539,7 +10856,81 @@ END OF UNIVERSAL AI MASTER COMMAND
     initAll();
   }
 })();
-</script>
+</script><!-- ═══════════════════════════════════════════
+     🗺️ INTERACTIVE MAP MODAL
+     Maheshkhali 8 Unions · Matarbari First
+═══════════════════════════════════════════ -->
+<div class="map-modal" id="map-modal" role="dialog" aria-modal="true" aria-labelledby="map-modal-title" hidden>
+
+  <div class="map-modal__scrim" data-close></div>
+
+  <div class="map-modal__panel">
+
+    <!-- ═══ HEADER ═══ -->
+    <header class="map-modal__head">
+      <div class="map-modal__title-wrap">
+        <span class="map-modal__icon" aria-hidden="true">🗺️</span>
+        <div>
+          <h2 id="map-modal-title" class="map-modal__title"
+              data-bn="মহেশখালী ইন্টারঅ্যাকটিভ ম্যাপ"
+              data-en="Maheshkhali Interactive Map">মহেশখালী ইন্টারঅ্যাকটিভ ম্যাপ</h2>
+          <p class="map-modal__sub"
+             data-bn="৮টি ইউনিয়ন · ক্লিক করে Google Maps এ দেখুন"
+             data-en="8 Unions · Click to view on Google Maps">৮টি ইউনিয়ন · ক্লিক করে Google Maps এ দেখুন</p>
+        </div>
+      </div>
+      <button type="button" class="map-modal__close" data-close aria-label="Close">✕</button>
+    </header>
+
+    <!-- ═══ SEARCH ═══ -->
+    <div class="map-modal__search">
+      <span aria-hidden="true">🔍</span>
+      <input type="search" id="map-search"
+             placeholder="Search union…"
+             data-bn-placeholder="ইউনিয়ন খুঁজুন…"
+             data-en-placeholder="Search union…"
+             autocomplete="off">
+    </div>
+
+    <!-- ═══ BODY ═══ -->
+    <div class="map-modal__body">
+      <aside class="map-list" id="map-list" aria-label="Union list"></aside>
+
+      <div class="map-canvas" id="map-canvas">
+        <div class="map-canvas__grid" aria-hidden="true"></div>
+        <div class="map-canvas__water" aria-hidden="true"></div>
+        <div class="map-canvas__island" id="map-island"></div>
+        <div class="map-canvas__compass" aria-hidden="true">
+          <span>N</span><span>▲</span>
+        </div>
+        <div class="map-canvas__legend" aria-label="Legend">
+          <div><span class="legend-dot"></span> <span data-bn="ইউনিয়ন" data-en="Union">ইউনিয়ন</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ═══ FOOTER ═══ -->
+    <footer class="map-modal__foot">
+      🌴 Maheshkhali · Cox's Bazar · Bangladesh
+    </footer>
+
+  </div>
+</div><!-- 👇 কার্সরের HTML এখানে বসান 👇 -->
+<div class="cursor-3d" id="cursor3D" aria-hidden="true">
+    <div class="cursor-ring"></div>
+    <div class="cursor-ring cursor-ring-2"></div>
+    <div class="cursor-core">
+        <span class="cursor-icon">🏝️</span>
+    </div>
+    <div class="cursor-orbit">
+        <span class="cursor-dot"></span>
+    </div>
+</div>
+
+<div class="cursor-glow" id="cursorGlow" aria-hidden="true"></div>
+
+<div class="cursor-sparkles" id="cursorSparkles" aria-hidden="true"></div>
+<!-- 👆 এখানে শেষ 👆 -->
 <script src="assets/js/script.js" defer></script>
 </body>
 </html>
