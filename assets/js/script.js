@@ -6230,4 +6230,838 @@ if (footer && particles.length) {
             document.body.style.overflow = '';
         }
     });
+})();/* =========================================================
+   🎯 MEGA MENU DETAILS MODAL — FULLY FUNCTIONAL
+========================================================= */
+
+const MEGA_DATA = {
+    '#jobs': {
+        icon: '💼', category: 'Career', title: 'Jobs', bnTitle: 'চাকরি',
+        descBn: 'মহেশখালী ও কক্সবাজার এলাকার সর্বশেষ চাকরির খবর এক জায়গায়।',
+        descEn: 'Latest job circulars from Maheshkhali and Cox\'s Bazar area.',
+        points: ['সরকারি চাকরি', 'বেসরকারি চাকরি', 'এনজিও', 'পার্ট-টাইম', 'রিমোট জব'],
+        stats: [{ v: '500+', l: 'Live Jobs' }, { v: '50+', l: 'Companies' }]
+    },
+    '#business': {
+        icon: '🏢', category: 'Career', title: 'Business', bnTitle: 'ব্যবসা',
+        descBn: 'মহেশখালীর স্থানীয় ব্যবসা, দোকান, হোটেল, রেস্টুরেন্ট সহ সব ডিরেক্টরি।',
+        descEn: 'Directory of all local businesses, shops, hotels and restaurants.',
+        points: ['ব্যবসা ডিরেক্টরি', 'সরাসরি যোগাযোগ', 'ম্যাপ', 'রিভিউ'],
+        stats: [{ v: '300+', l: 'Businesses' }, { v: '8', l: 'Unions' }]
+    },
+    '#entrepreneurship': {
+        icon: '🚀', category: 'Career', title: 'Entrepreneurship', bnTitle: 'উদ্যোক্তা',
+        descBn: 'নতুন উদ্যোক্তাদের জন্য গাইড, পরামর্শ, সফলতার গল্প।',
+        descEn: 'Guides, mentorship and success stories for new entrepreneurs.',
+        points: ['স্টার্টআপ গাইড', 'সফলতার গল্প', 'মেন্টরশিপ', 'বিজনেস প্ল্যান'],
+        stats: [{ v: '100+', l: 'Success Stories' }]
+    },
+    '#freelancing': {
+        icon: '💻', category: 'Career', title: 'Freelancing', bnTitle: 'ফ্রিল্যান্সিং',
+        descBn: 'ফ্রিল্যান্সিং শেখার গাইড, প্ল্যাটফর্ম, পেমেন্ট মেথড।',
+        descEn: 'Learn freelancing with guides, platforms and payment methods.',
+        points: ['Fiverr / Upwork', 'পেমেন্ট মেথড', 'পোর্টফোলিও', 'ক্লায়েন্ট হ্যান্ডলিং'],
+        stats: [{ v: '200+', l: 'Freelancers' }]
+    },
+    '#cv-builder': {
+        icon: '📄', category: 'Career', title: 'CV Builder', bnTitle: 'CV বিল্ডার',
+        descBn: 'সহজে প্রফেশনাল CV তৈরি করুন কয়েক মিনিটে।',
+        descEn: 'Create professional CVs in minutes with ready templates.',
+        points: ['ফ্রি টেমপ্লেট', 'লাইভ প্রিভিউ', 'PDF ডাউনলোড'],
+        stats: [{ v: '10+', l: 'Templates' }, { v: '100%', l: 'Free' }]
+    },
+    '#scholarships': {
+        icon: '🎓', category: 'Education & Growth', title: 'Scholarships', bnTitle: 'বৃত্তি',
+        descBn: 'দেশে ও বিদেশে পড়াশোনার জন্য বৃত্তির তথ্য।',
+        descEn: 'Scholarships info for studying at home and abroad.',
+        points: ['সরকারি বৃত্তি', 'বেসরকারি বৃত্তি', 'বিদেশি বৃত্তি', 'আবেদনের গাইড'],
+        stats: [{ v: '80+', l: 'Scholarships' }]
+    },
+    '#training': {
+        icon: '🛠️', category: 'Education & Growth', title: 'Training & Skills', bnTitle: 'প্রশিক্ষণ',
+        descBn: 'কম্পিউটার, হস্তশিল্প, কৃষি, মৎস্য সহ সব প্রশিক্ষণ।',
+        descEn: 'Computer, handicraft, agriculture, fisheries and all training courses.',
+        points: ['কম্পিউটার প্রশিক্ষণ', 'হস্তশিল্প', 'কৃষি ও মৎস্য', 'সেলাই'],
+        stats: [{ v: '50+', l: 'Courses' }]
+    },
+    '#courses': {
+        icon: '📚', category: 'Education & Growth', title: 'Courses', bnTitle: 'কোর্স',
+        descBn: 'অনলাইন ও অফলাইন কোর্স — স্কিল, ল্যাঙ্গুয়েজ, টেক, ব্যবসা।',
+        descEn: 'Online and offline courses — skill, language, tech, business.',
+        points: ['অনলাইন কোর্স', 'ল্যাঙ্গুয়েজ', 'টেক কোর্স', 'বিজনেস'],
+        stats: [{ v: '120+', l: 'Courses' }]
+    },
+    '#internships': {
+        icon: '🎯', category: 'Education & Growth', title: 'Internships', bnTitle: 'ইন্টার্নশিপ',
+        descBn: 'শিক্ষার্থীদের জন্য ইন্টার্নশিপের সুযোগ।',
+        descEn: 'Internship opportunities for students.',
+        points: ['পেইড ইন্টার্নশিপ', 'রিমোট', 'সার্টিফিকেট', 'রেকমেন্ডেশন'],
+        stats: [{ v: '40+', l: 'Open' }]
+    },
+    '#marketplace': {
+        icon: '🛒', category: 'Marketplace', title: 'Marketplace', bnTitle: 'মার্কেটপ্লেস',
+        descBn: 'স্থানীয় পণ্য কিনুন ও বিক্রি করুন।',
+        descEn: 'Buy and sell local products directly.',
+        points: ['পণ্য কিনুন', 'বিক্রি করুন', 'সরাসরি যোগাযোগ', 'কোনো কমিশন নেই'],
+        stats: [{ v: '500+', l: 'Products' }, { v: '0%', l: 'Commission' }]
+    },
+    '#local-products': {
+        icon: '🛍️', category: 'Marketplace', title: 'Local Products', bnTitle: 'স্থানীয় পণ্য',
+        descBn: 'মহেশখালীর ঐতিহ্যবাহী পণ্য — লবণ, মাছ, শুঁটকি, নারিকেল, সুপারি।',
+        descEn: 'Traditional products — salt, fish, dried fish, coconut, betel nut.',
+        points: ['লবণ ও মাছ', 'শুঁটকি', 'নারিকেল', 'হস্তশিল্প'],
+        stats: [{ v: '100+', l: 'Products' }]
+    },
+    '#services': {
+        icon: '🛠️', category: 'Marketplace', title: 'Services', bnTitle: 'সেবা',
+        descBn: 'স্থানীয় সেবা — ইলেকট্রিশিয়ান, প্লাম্বার, ড্রাইভার, টিউটর।',
+        descEn: 'Local services — electrician, plumber, driver, tutor.',
+        points: ['ইলেকট্রিশিয়ান', 'প্লাম্বার', 'টিউটর', 'ফটোগ্রাফার'],
+        stats: [{ v: '200+', l: 'Providers' }]
+    },
+    '#buy-sell': {
+        icon: '💰', category: 'Marketplace', title: 'Buy & Sell', bnTitle: 'ক্রয়-বিক্রয়',
+        descBn: 'নতুন ও পুরাতন জিনিস কেনাবেচা করুন।',
+        descEn: 'Buy and sell new and used items.',
+        points: ['স্মার্টফোন', 'বাইক', 'ফার্নিচার', 'ইলেকট্রনিক্স'],
+        stats: [{ v: '300+', l: 'Listings' }]
+    },
+    '#opportunities': {
+        icon: '✨', category: 'Opportunities', title: 'All Opportunities', bnTitle: 'সকল সুযোগ',
+        descBn: 'মহেশখালীর সব সুযোগ এক জায়গায়।',
+        descEn: 'All kinds of opportunities in one place.',
+        points: ['চাকরি', 'বৃত্তি', 'ফান্ডিং', 'প্রতিযোগিতা'],
+        stats: [{ v: '1000+', l: 'Opportunities' }]
+    },
+    '#funding': {
+        icon: '💰', category: 'Opportunities', title: 'Funding', bnTitle: 'ফান্ডিং',
+        descBn: 'স্টার্টআপ ও ব্যবসার জন্য ফান্ডিং ও ইনভেস্টর।',
+        descEn: 'Funding and investor info for startups and businesses.',
+        points: ['স্টার্টআপ ফান্ডিং', 'ব্যাংক লোন', 'গ্রামীণ ফান্ড', 'ইনভেস্টর'],
+        stats: [{ v: '30+', l: 'Sources' }]
+    },
+    '#competitions': {
+        icon: '🏆', category: 'Opportunities', title: 'Competitions', bnTitle: 'প্রতিযোগিতা',
+        descBn: 'কুইজ, রচনা, প্রোগ্রামিং সহ সব প্রতিযোগিতা।',
+        descEn: 'Quiz, essay, programming and all competitions.',
+        points: ['কুইজ', 'রচনা', 'প্রোগ্রামিং', 'উদ্যোক্তা'],
+        stats: [{ v: '20+', l: 'Active' }]
+    },
+    '#grants': {
+        icon: '🎁', category: 'Opportunities', title: 'Grants', bnTitle: 'অনুদান',
+        descBn: 'এনজিও, সরকারি ও আন্তর্জাতিক অনুদান।',
+        descEn: 'NGO, government and international grants.',
+        points: ['এনজিও', 'সরকারি', 'আন্তর্জাতিক'],
+        stats: [{ v: '15+', l: 'Active' }]
+    }
+};
+
+/* ---------- উপাদান ---------- */
+const overlay    = document.getElementById('megaDetailsOverlay');
+const closeBtn   = document.getElementById('megaDetailsClose');
+const cancelBtn  = document.getElementById('megaDetailsCancel');
+const iconEl     = document.getElementById('megaDetailsIcon');
+const categoryEl = document.getElementById('megaDetailsCategory');
+const titleEl    = document.getElementById('megaDetailsTitle');
+const bodyEl     = document.getElementById('megaDetailsBody');
+const ctaEl      = document.getElementById('megaDetailsCTA');
+
+/* ---------- মডাল খোলা ---------- */
+function openMegaDetails(href) {
+    const data = MEGA_DATA[href];
+    if (!data || !overlay) return;
+
+    const isEn = document.documentElement.lang === 'en';
+
+    iconEl.textContent = data.icon || '📌';
+    categoryEl.textContent = data.category || '';
+    titleEl.textContent = isEn ? (data.title || '') : (data.bnTitle || data.title || '');
+
+    const desc = isEn ? data.descEn : data.descBn;
+    const pointsTitle = isEn ? '✨ Highlights' : '✨ বিশেষত্ব';
+    const statsTitle  = isEn ? '📊 Quick Stats' : '📊 এক নজরে';
+
+    let html = `<p>${desc || ''}</p>`;
+
+    if (data.points && data.points.length) {
+        html += `<h4>${pointsTitle}</h4><ul>`;
+        data.points.forEach(p => html += `<li>${p}</li>`);
+        html += `</ul>`;
+    }
+
+    if (data.stats && data.stats.length) {
+        html += `<h4>${statsTitle}</h4><div class="mega-stats">`;
+        data.stats.forEach(s => {
+            html += `<div class="mega-stat">
+                        <span class="mega-stat-value">${s.v}</span>
+                        <span class="mega-stat-label">${s.l}</span>
+                     </div>`;
+        });
+        html += `</div>`;
+    }
+
+    bodyEl.innerHTML = html;
+    ctaEl.setAttribute('href', href);
+
+    overlay.classList.add('active');
+    overlay.setAttribute('aria-hidden', 'false');
+    document.body.style.overflow = 'hidden';
+}
+
+/* ---------- মডাল বন্ধ ---------- */
+function closeMegaDetails() {
+    if (!overlay) return;
+    overlay.classList.remove('active');
+    overlay.setAttribute('aria-hidden', 'true');
+    document.body.style.overflow = '';
+}
+
+/* ---------- সব মেগা মেনু লিংকে ক্লিক ---------- */
+document.querySelectorAll('.mega-menu a[href^="#"]').forEach(link => {
+    link.addEventListener('click', (e) => {
+        const href = link.getAttribute('href');
+        if (MEGA_DATA[href]) {
+            e.preventDefault();
+            openMegaDetails(href);
+        }
+    });
+});
+
+/* ---------- ক্লোজ ইভেন্ট ---------- */
+closeBtn?.addEventListener('click', closeMegaDetails);
+cancelBtn?.addEventListener('click', closeMegaDetails);
+
+overlay?.addEventListener('click', (e) => {
+    if (e.target === overlay) closeMegaDetails();
+});
+
+document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && overlay?.classList.contains('active')) {
+        closeMegaDetails();
+    }
+});/* =========================================================
+   🎯 COMMUNITY MEGA MENU — DATA + FUNCTIONS
+   (আলাদা variable name — conflict এড়াতে)
+========================================================= */
+
+/* ---------- COMMUNITY ডাটা ---------- */
+const COMMUNITY_DATA = {
+    '#community': {
+        icon: '👥', category: 'Community', title: 'Our Community', bnTitle: 'আমাদের কমিউনিটি',
+        descBn: 'মহেশখালীর মানুষের একটি ডিজিটাল কমিউনিটি প্ল্যাটফর্ম। সংযুক্ত হোন, আলোচনা করুন, একসাথে কাজ করুন।',
+        descEn: 'A digital community platform for the people of Maheshkhali.',
+        points: ['সদস্য যোগদান', 'আলোচনা ফোরাম', 'কমিউনিটি নোটিশ', 'সহায়তা নেটওয়ার্ক'],
+        stats: [{ v: '10K+', l: 'Members' }, { v: '24/7', l: 'Active' }]
+    },
+    '#members': {
+        icon: '👨‍👩‍👧‍👦', category: 'Community', title: 'Members', bnTitle: 'সদস্যবৃন্দ',
+        descBn: 'আমাদের কমিউনিটির গর্বিত সদস্যবৃন্দ।',
+        descEn: 'Proud members of our community.',
+        points: ['স্থানীয় মানুষ', 'শিক্ষার্থী', 'উদ্যোক্তা', 'পেশাজীবী'],
+        stats: [{ v: '10K+', l: 'Total' }, { v: '500+', l: 'Active' }]
+    },
+    '#volunteer': {
+        icon: '🤝', category: 'Community', title: 'Volunteer', bnTitle: 'স্বেচ্ছাসেবক',
+        descBn: 'স্বেচ্ছাসেবক হয়ে সমাজের উন্নয়নে অংশ নিন।',
+        descEn: 'Become a volunteer and contribute to society.',
+        points: ['দুর্যোগ সেবা', 'শিক্ষা সহায়তা', 'স্বাস্থ্য ক্যাম্প', 'পরিবেশ সুরক্ষা'],
+        stats: [{ v: '200+', l: 'Volunteers' }]
+    },
+    '#stories': {
+        icon: '📖', category: 'Community', title: 'Community Stories', bnTitle: 'কমিউনিটি গল্প',
+        descBn: 'মহেশখালীর মানুষের সফলতার গল্প ও অনুপ্রেরণা।',
+        descEn: 'Success stories and inspirations.',
+        points: ['সফলতার গল্প', 'অনুপ্রেরণা', 'অর্জন', 'স্মৃতি'],
+        stats: [{ v: '150+', l: 'Stories' }]
+    },
+    '#activities': {
+        icon: '🎯', category: 'Community', title: 'Activities', bnTitle: 'কার্যক্রম',
+        descBn: 'কমিউনিটির চলমান ও পূর্ববর্তী কার্যক্রম।',
+        descEn: 'Ongoing and past activities.',
+        points: ['সামাজিক উদ্যোগ', 'প্রকল্প', 'ক্যাম্পেইন', 'মিটিং'],
+        stats: [{ v: '80+', l: 'Activities' }]
+    },
+    '#local-services': {
+        icon: '🛠️', category: 'Organizations', title: 'Local Services', bnTitle: 'স্থানীয় সেবা',
+        descBn: 'স্থানীয় সেবা প্রদানকারী ব্যক্তি ও প্রতিষ্ঠান।',
+        descEn: 'Local service providers.',
+        points: ['ইলেকট্রিশিয়ান', 'প্লাম্বার', 'মিস্ত্রি', 'ড্রাইভার'],
+        stats: [{ v: '300+', l: 'Providers' }]
+    },
+    '#organizations': {
+        icon: '🏢', category: 'Organizations', title: 'Organizations', bnTitle: 'সংগঠন',
+        descBn: 'মহেশখালীর সামাজিক, সাংস্কৃতিক ও পেশাজীবী সংগঠন।',
+        descEn: 'Social, cultural and professional organizations.',
+        points: ['সামাজিক সংগঠন', 'সাংস্কৃতিক', 'পেশাজীবী', 'যুব সংগঠন'],
+        stats: [{ v: '50+', l: 'Organizations' }]
+    },
+    '#ngos': {
+        icon: '🤝', category: 'Organizations', title: 'NGOs', bnTitle: 'এনজিও',
+        descBn: 'মহেশখালীতে কাজ করা জাতীয় ও আন্তর্জাতিক এনজিও।',
+        descEn: 'National and international NGOs.',
+        points: ['জাতীয় এনজিও', 'আন্তর্জাতিক', 'উন্নয়ন প্রকল্প', 'সহায়তা'],
+        stats: [{ v: '20+', l: 'NGOs' }]
+    },
+    '#clubs': {
+        icon: '🎯', category: 'Organizations', title: 'Clubs', bnTitle: 'ক্লাব',
+        descBn: 'খেলাধুলা, সাহিত্য ও সাংস্কৃতিক ক্লাবের তথ্য।',
+        descEn: 'Sports, literature and cultural clubs.',
+        points: ['স্পোর্টস ক্লাব', 'সাহিত্য ক্লাব', 'সাংস্কৃতিক', 'তরুণ ক্লাব'],
+        stats: [{ v: '30+', l: 'Clubs' }]
+    },
+    '#health': {
+        icon: '🏥', category: 'Services', title: 'Health', bnTitle: 'স্বাস্থ্য',
+        descBn: 'মহেশখালীর হাসপাতাল, ক্লিনিক, ডাক্তার ও স্বাস্থ্য সেবা।',
+        descEn: 'Hospitals, clinics and doctors.',
+        points: ['হাসপাতাল', 'ক্লিনিক', 'ডাক্তার তালিকা', 'এম্বুলেন্স'],
+        stats: [{ v: '15+', l: 'Health Centers' }, { v: '50+', l: 'Doctors' }]
+    },
+    '#education': {
+        icon: '🎓', category: 'Services', title: 'Education', bnTitle: 'শিক্ষা',
+        descBn: 'স্কুল, কলেজ, মাদ্রাসা ও সব শিক্ষা প্রতিষ্ঠান।',
+        descEn: 'Schools, colleges, madrasas.',
+        points: ['স্কুল', 'কলেজ', 'মাদ্রাসা', 'কোচিং সেন্টার'],
+        stats: [{ v: '100+', l: 'Institutes' }]
+    },
+    '#training': {
+        icon: '🛠️', category: 'Services', title: 'Training', bnTitle: 'প্রশিক্ষণ',
+        descBn: 'কম্পিউটার, হস্তশিল্প, সেলাই ও কৃষি প্রশিক্ষণ।',
+        descEn: 'Computer, handicraft, sewing and agriculture training.',
+        points: ['কম্পিউটার', 'হস্তশিল্প', 'সেলাই', 'কৃষি'],
+        stats: [{ v: '50+', l: 'Courses' }]
+    },
+    '#support': {
+        icon: '🤝', category: 'Services', title: 'Support', bnTitle: 'সহায়তা',
+        descBn: 'আর্থিক, চিকিৎসা, শিক্ষা ও সামাজিক সহায়তা।',
+        descEn: 'Financial, medical, education and social support.',
+        points: ['আর্থিক সহায়তা', 'চিকিৎসা সহায়তা', 'শিক্ষা সহায়তা', 'বিধবা ভাতা'],
+        stats: [{ v: '500+', l: 'Beneficiaries' }]
+    },
+    '#events': {
+        icon: '📅', category: 'Events', title: 'Events Calendar', bnTitle: 'ইভেন্ট ক্যালেন্ডার',
+        descBn: 'মহেশখালীর আসন্ন ও চলমান সব ইভেন্ট ও উৎসব।',
+        descEn: 'Calendar of events and festivals.',
+        points: ['উৎসব', 'মেলা', 'সাংস্কৃতিক অনুষ্ঠান', 'স্পোর্টস'],
+        stats: [{ v: '25+', l: 'Upcoming' }]
+    },
+    '#meetings': {
+        icon: '👥', category: 'Events', title: 'Meetings', bnTitle: 'মিটিং',
+        descBn: 'কমিউনিটি মিটিং ও ইউনিয়ন পরিষদের সভা।',
+        descEn: 'Community meetings and union parishad sessions.',
+        points: ['কমিউনিটি মিটিং', 'ইউনিয়ন সভা', 'পরিকল্পনা সভা', 'আলোচনা'],
+        stats: [{ v: '40+', l: 'Meetings' }]
+    },
+    '#emergency': {
+        icon: '🚨', category: 'Events', title: 'Emergency', bnTitle: 'জরুরি সেবা',
+        descBn: 'দুর্যোগ, দুর্ঘটনা ও জরুরি পরিস্থিতিতে দ্রুত সহায়তা।',
+        descEn: 'Quick help during emergency situations.',
+        points: ['৯৯৯ হেল্পলাইন', 'এম্বুলেন্স', 'ফায়ার সার্ভিস', 'দুর্যোগ সহায়তা'],
+        stats: [{ v: '24/7', l: 'Available' }]
+    }
+};
+
+
+/* ---------- COMMUNITY Modal — আলাদা নাম (conflict এড়াতে) ---------- */
+(function initCommunityModal() {
+    const cOverlay    = document.getElementById('megaDetailsOverlay');
+    const cCloseBtn   = document.getElementById('megaDetailsClose');
+    const cCancelBtn  = document.getElementById('megaDetailsCancel');
+    const cIconEl     = document.getElementById('megaDetailsIcon');
+    const cCategoryEl = document.getElementById('megaDetailsCategory');
+    const cTitleEl    = document.getElementById('megaDetailsTitle');
+    const cBodyEl     = document.getElementById('megaDetailsBody');
+    const cCtaEl      = document.getElementById('megaDetailsCTA');
+
+    if (!cOverlay) return;
+
+    function openCommunityModal(href) {
+        const data = COMMUNITY_DATA[href];
+        if (!data) return;
+
+        const isEn = document.documentElement.lang === 'en';
+
+        cIconEl.textContent = data.icon || '📌';
+        cCategoryEl.textContent = data.category || '';
+        cTitleEl.textContent = isEn ? (data.title || '') : (data.bnTitle || data.title || '');
+
+        const desc = isEn ? data.descEn : data.descBn;
+        const pointsTitle = isEn ? '✨ Highlights' : '✨ বিশেষত্ব';
+        const statsTitle  = isEn ? '📊 Quick Stats' : '📊 এক নজরে';
+
+        let html = `<p>${desc || ''}</p>`;
+
+        if (data.points && data.points.length) {
+            html += `<h4>${pointsTitle}</h4><ul>`;
+            data.points.forEach(p => html += `<li>${p}</li>`);
+            html += `</ul>`;
+        }
+
+        if (data.stats && data.stats.length) {
+            html += `<h4>${statsTitle}</h4><div class="mega-stats">`;
+            data.stats.forEach(s => {
+                html += `<div class="mega-stat">
+                            <span class="mega-stat-value">${s.v}</span>
+                            <span class="mega-stat-label">${s.l}</span>
+                         </div>`;
+            });
+            html += `</div>`;
+        }
+
+        cBodyEl.innerHTML = html;
+        cCtaEl.setAttribute('href', href);
+
+        cOverlay.classList.add('active');
+        cOverlay.setAttribute('aria-hidden', 'false');
+        document.body.style.overflow = 'hidden';
+    }
+
+    function closeCommunityModal() {
+        cOverlay.classList.remove('active');
+        cOverlay.setAttribute('aria-hidden', 'true');
+        document.body.style.overflow = '';
+    }
+
+    // COMMUNITY menu লিংকে ক্লিক
+    document.querySelectorAll('.mega-menu a[href^="#"]').forEach(link => {
+        link.addEventListener('click', (e) => {
+            const href = link.getAttribute('href');
+            if (COMMUNITY_DATA[href]) {
+                e.preventDefault();
+                openCommunityModal(href);
+            }
+        });
+    });
+
+    // Close
+    cCloseBtn?.addEventListener('click', closeCommunityModal);
+    cCancelBtn?.addEventListener('click', closeCommunityModal);
+
+    cOverlay.addEventListener('click', (e) => {
+        if (e.target === cOverlay) closeCommunityModal();
+    });
+
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && cOverlay.classList.contains('active')) {
+            closeCommunityModal();
+        }
+    });
+})();/* =========================================================
+   🎯 EXPLORE MEGA MENU — DATA + FUNCTIONS
+========================================================= */
+
+/* ---------- EXPLORE ডাটা ---------- */
+const EXPLORE_DATA = {
+
+    /* ═══ পরিচিতি (About) ═══ */
+    '#about': {
+        icon: '🌴', category: 'About', title: 'About Maheshkhali', bnTitle: 'মহেশখালী সম্পর্কে',
+        descBn: 'মহেশখালী বাংলাদেশের কক্সবাজার জেলার একটি দ্বীপ উপজেলা। বঙ্গোপসাগরের বুকে অবস্থিত এই দ্বীপ প্রাকৃতিক সৌন্দর্য, ঐতিহ্য ও সম্ভাবনায় ভরপুর।',
+        descEn: 'Maheshkhali is an island upazila in Cox\'s Bazar district of Bangladesh. Located in the Bay of Bengal, this island is full of natural beauty, heritage and potential.',
+        points: ['মোট আয়তন: ৩৬২.১৮ বর্গ কিমি', '৮টি ইউনিয়ন', 'জনসংখ্যা: প্রায় ৩ লক্ষ', 'কক্সবাজার থেকে ১২ কিমি দূরে'],
+        stats: [{ v: '362 km²', l: 'Area' }, { v: '8', l: 'Unions' }, { v: '3L+', l: 'People' }]
+    },
+    '#unions': {
+        icon: '🏘️', category: 'About', title: '8 Unions', bnTitle: '৮টি ইউনিয়ন',
+        descBn: 'মহেশখালী উপজেলায় মোট ৮টি ইউনিয়ন পরিষদ আছে। প্রতিটি ইউনিয়নের নিজস্ব চেয়ারম্যান, সদস্য ও কর্মকর্তা রয়েছেন।',
+        descEn: 'Maheshkhali upazila has 8 union parishads. Each union has its own chairman, members and officials.',
+        points: ['১. মাতারবাড়ি', '২. ধলঘাটা', '৩. কালারমারছড়া', '৪. শাপলাপুর', '৫. হোয়ানক', '৬. বড় মহেশখালী', '৭. কুতুবজোম', '৮. ছোট মহেশখালী'],
+        stats: [{ v: '8', l: 'Unions' }, { v: '~40', l: 'Wards' }]
+    },
+    '#villages': {
+        icon: '🏡', category: 'About', title: 'Villages', bnTitle: 'গ্রাম',
+        descBn: 'মহেশখালীর শতাধিক গ্রাম ছড়িয়ে আছে ৮টি ইউনিয়নের মধ্যে। প্রতিটা গ্রামের নিজস্ব ইতিহাস ও ঐতিহ্য রয়েছে।',
+        descEn: 'Hundreds of villages are spread across 8 unions of Maheshkhali. Each village has its own history and tradition.',
+        points: ['প্রাকৃতিক সৌন্দর্য', 'কৃষি ও মৎস্য', 'লবণ চাষ', 'শুঁটকি শিল্প'],
+        stats: [{ v: '200+', l: 'Villages' }]
+    },
+    '#wards': {
+        icon: '🔢', category: 'About', title: 'Wards', bnTitle: 'ওয়ার্ড',
+        descBn: 'প্রতিটি ইউনিয়ন কয়েকটি ওয়ার্ডে বিভক্ত। প্রতিটা ওয়ার্ডে একজন করে সদস্য নির্বাচিত হন।',
+        descEn: 'Each union is divided into several wards. Each ward elects one member.',
+        points: ['প্রতি ইউনিয়নে ৯টি ওয়ার্ড', 'মোট ~৭২টি ওয়ার্ড', 'স্থানীয় প্রতিনিধি', 'গ্রাম আদালত'],
+        stats: [{ v: '~72', l: 'Wards' }]
+    },
+    '#history': {
+        icon: '📜', category: 'About', title: 'History & Heritage', bnTitle: 'ইতিহাস ও ঐতিহ্য',
+        descBn: 'মহেশখালীর ইতিহাস হাজার বছরের পুরনো। আরাকান রাজত্ব, মোগল আমল এবং ব্রিটিশ শাসনের সাক্ষী এই দ্বীপ।',
+        descEn: 'The history of Maheshkhali is thousands of years old. This island witnessed Arakan rule, Mughal era and British rule.',
+        points: ['আদিনাথ মন্দির (১০০০+ বছর)', 'আরাকান রাজত্ব', 'মোগল আমল', 'ব্রিটিশ শাসন', 'লবণ চাষের ইতিহাস'],
+        stats: [{ v: '1000+', l: 'Years Old' }]
+    },
+
+    /* ═══ পর্যটন (Tourism) ═══ */
+    '#tourism': {
+        icon: '🌊', category: 'Tourism', title: 'Tourism', bnTitle: 'পর্যটন',
+        descBn: 'মহেশখালী পর্যটকদের জন্য এক স্বর্গ। সমুদ্র সৈকত, পাহাড়, দ্বীপ, মন্দির — সব মিলিয়ে এক অনন্য অভিজ্ঞতা।',
+        descEn: 'Maheshkhali is a paradise for tourists. Sea beaches, hills, islands and temples offer a unique experience.',
+        points: ['সমুদ্র সৈকত', 'পাহাড় ও টিলা', 'দ্বীপ ভ্রমণ', 'ঐতিহাসিক স্থান'],
+        stats: [{ v: '50+', l: 'Places' }]
+    },
+    '#places': {
+        icon: '📍', category: 'Tourism', title: 'Places & Attractions', bnTitle: 'দর্শনীয় স্থান',
+        descBn: 'মহেশখালীর অন্যতম দর্শনীয় স্থানগুলো — আদিনাথ মন্দির, বাঁকখালী নদী, মহেশখালী চ্যানেল সহ আরো অনেক।',
+        descEn: 'Top attractions of Maheshkhali — Adinath Temple, Bankkhali River, Maheshkhali Channel and many more.',
+        points: ['আদিনাথ মন্দির', 'বাঁকখালী নদী', 'মহেশখালী চ্যানেল', 'সোনাদিয়া দ্বীপ', 'মাতারবাড়ি'],
+        stats: [{ v: '20+', l: 'Attractions' }]
+    },
+    '#beaches': {
+        icon: '🏖️', category: 'Tourism', title: 'Beaches', bnTitle: 'সৈকত',
+        descBn: 'মহেশখালীর নির্জন ও সুন্দর সমুদ্র সৈকতগুলো — শান্ত, পরিষ্কার এবং প্রাকৃতিক সৌন্দর্যে ভরপুর।',
+        descEn: 'The quiet and beautiful beaches of Maheshkhali — calm, clean and full of natural beauty.',
+        points: ['শান্ত পরিবেশ', 'পরিষ্কার পানি', 'সূর্যোদয়-সূর্যাস্ত', 'ক্যাম্পিং'],
+        stats: [{ v: '10+', l: 'Beaches' }]
+    },
+    '#hills': {
+        icon: '⛰️', category: 'Tourism', title: 'Hills', bnTitle: 'পাহাড়',
+        descBn: 'মহেশখালীর ছোট ছোট পাহাড় ও টিলা — সবুজে ঢাকা, প্রকৃতির সৌন্দর্যে ভরপুর।',
+        descEn: 'Small hills and mounds of Maheshkhali — covered in greenery, full of natural beauty.',
+        points: ['ট্রেকিং', 'প্যানোরামিক ভিউ', 'সূর্যোদয়', 'প্রকৃতি'],
+        stats: [{ v: '15+', l: 'Hills' }]
+    },
+    '#islands': {
+        icon: '🏝️', category: 'Tourism', title: 'Islands', bnTitle: 'দ্বীপ',
+        descBn: 'মহেশখালীর আশেপাশে ছোট বড় অনেক দ্বীপ — সোনাদিয়া, কুতুবদিয়া, সেন্ট মার্টিন সহ।',
+        descEn: 'Many small and big islands around Maheshkhali — Sonadia, Kutubdia, Saint Martin and more.',
+        points: ['সোনাদিয়া দ্বীপ', 'সেন্ট মার্টিন', 'কুতুবদিয়া', 'ছেঁড়া দ্বীপ'],
+        stats: [{ v: '8+', l: 'Islands' }]
+    },
+
+    /* ═══ সংস্কৃতি (Culture) ═══ */
+    '#culture': {
+        icon: '🎭', category: 'Culture', title: 'Culture & Tradition', bnTitle: 'সংস্কৃতি ও ঐতিহ্য',
+        descBn: 'মহেশখালীর সংস্কৃতি হিন্দু-মুসলিম-বৌদ্ধ সম্প্রদায়ের সহাবস্থানের এক অনন্য উদাহরণ।',
+        descEn: 'The culture of Maheshkhali is a unique example of Hindu-Muslim-Buddhist coexistence.',
+        points: ['হিন্দু-মুসলিম সম্প্রীতি', 'আদিনাথ মন্দির', 'বৌদ্ধ বিহার', 'মসজিদ', 'লোকসংস্কৃতি'],
+        stats: [{ v: '1000+', l: 'Years' }]
+    },
+    '#dialect': {
+        icon: '🗣️', category: 'Culture', title: 'Local Dialect', bnTitle: 'আঞ্চলিক ভাষা',
+        descBn: 'মহেশখালীর আঞ্চলিক ভাষা চট্টগ্রামের আঞ্চলিক ভাষার সাথে মিলে। নিজস্ব শব্দভাণ্ডার ও টোন আছে।',
+        descEn: 'The local dialect of Maheshkhali resembles the Chittagong dialect. It has its own vocabulary and tone.',
+        points: ['চট্টগ্রামের টোন', 'আরাকানি প্রভাব', 'নিজস্ব শব্দ', 'লোকগীতি'],
+        stats: [{ v: '500+', l: 'Local Words' }]
+    },
+    '#food': {
+        icon: '🍽️', category: 'Culture', title: 'Local Food', bnTitle: 'স্থানীয় খাবার',
+        descBn: 'মহেশখালীর স্থানীয় খাবার — মাছ, শুঁটকি, নারিকেল, লবণ, মিষ্টি ইত্যাদি।',
+        descEn: 'Local food of Maheshkhali — fish, dried fish, coconut, salt, sweets etc.',
+        points: ['শুঁটকি ভুনা', 'মাছের ঝোল', 'নারিকেলের পিঠা', 'চিংড়ি', 'লবণ'],
+        stats: [{ v: '30+', l: 'Dishes' }]
+    },
+    '#festivals': {
+        icon: '🎉', category: 'Culture', title: 'Festivals', bnTitle: 'উৎসব',
+        descBn: 'মহেশখালীর উৎসব — ঈদ, পূজা, বৈশাখী মেলা, আদিনাথ মেলা সহ অনেক।',
+        descEn: 'Festivals of Maheshkhali — Eid, Puja, Boishakhi Mela, Adinath Mela and many more.',
+        points: ['ঈদ-উল-ফিতর', 'ঈদ-উল-আজহা', 'দুর্গা পূজা', 'বৈশাখী মেলা', 'আদিনাথ মেলা'],
+        stats: [{ v: '20+', l: 'Festivals' }]
+    },
+
+    /* ═══ মিডিয়া (Media) ═══ */
+    '#gallery': {
+        icon: '📸', category: 'Media', title: 'Photo Gallery', bnTitle: 'ফটো গ্যালারি',
+        descBn: 'মহেশখালীর সুন্দর সুন্দর ছবির গ্যালারি — প্রকৃতি, মানুষ, ঐতিহ্য সব।',
+        descEn: 'Beautiful photo gallery of Maheshkhali — nature, people and heritage.',
+        points: ['প্রাকৃতিক ছবি', 'মানুষের ছবি', 'ঐতিহ্যের ছবি', 'ইভেন্টের ছবি'],
+        stats: [{ v: '500+', l: 'Photos' }]
+    },
+    '#video': {
+        icon: '🎥', category: 'Media', title: 'Video Gallery', bnTitle: 'ভিডিও গ্যালারি',
+        descBn: 'মহেশখালীর ভিডিও গ্যালারি — ড্রোন শট, ডকুমেন্টারি, ইভেন্ট কভারেজ।',
+        descEn: 'Video gallery of Maheshkhali — drone shots, documentaries and event coverage.',
+        points: ['ড্রোন শট', 'ডকুমেন্টারি', 'ইভেন্ট কভারেজ', 'ট্রাভেল ভ্লগ'],
+        stats: [{ v: '100+', l: 'Videos' }]
+    },
+    '#map': {
+        icon: '🗺️', category: 'Media', title: 'Interactive Map', bnTitle: 'ইন্টারঅ্যাকটিভ ম্যাপ',
+        descBn: 'মহেশখালীর ইন্টারঅ্যাকটিভ ম্যাপ — সব স্থান, রাস্তা ও দর্শনীয় স্থান দেখুন।',
+        descEn: 'Interactive map of Maheshkhali — see all places, roads and attractions.',
+        points: ['সব স্থান', 'রাস্তা', 'দর্শনীয় স্থান', 'হোটেল'],
+        stats: [{ v: 'Live', l: 'Map' }]
+    },
+    '#virtual': {
+        icon: '🌐', category: 'Media', title: 'Virtual Tour', bnTitle: 'ভার্চুয়াল ট্যুর',
+        descBn: 'ঘরে বসেই মহেশখালী ভ্রমণ করুন — 360° ভিডিও, ভার্চুয়াল রিয়েলিটি ট্যুর।',
+        descEn: 'Explore Maheshkhali from home — 360° videos and virtual reality tours.',
+        points: ['360° ভিডিও', 'VR ট্যুর', 'ইন্টারঅ্যাকটিভ', 'গাইডেড ট্যুর'],
+        stats: [{ v: '10+', l: 'Tours' }]
+    }
+};
+
+
+/* ---------- EXPLORE Modal — আলাদা নাম (conflict এড়াতে) ---------- */
+(function initExploreModal() {
+    const eOverlay    = document.getElementById('megaDetailsOverlay');
+    const eCloseBtn   = document.getElementById('megaDetailsClose');
+    const eCancelBtn  = document.getElementById('megaDetailsCancel');
+    const eIconEl     = document.getElementById('megaDetailsIcon');
+    const eCategoryEl = document.getElementById('megaDetailsCategory');
+    const eTitleEl    = document.getElementById('megaDetailsTitle');
+    const eBodyEl     = document.getElementById('megaDetailsBody');
+    const eCtaEl      = document.getElementById('megaDetailsCTA');
+
+    if (!eOverlay) return;
+
+    function openExploreModal(href) {
+        const data = EXPLORE_DATA[href];
+        if (!data) return;
+
+        const isEn = document.documentElement.lang === 'en';
+
+        eIconEl.textContent = data.icon || '📌';
+        eCategoryEl.textContent = data.category || '';
+        eTitleEl.textContent = isEn ? (data.title || '') : (data.bnTitle || data.title || '');
+
+        const desc = isEn ? data.descEn : data.descBn;
+        const pointsTitle = isEn ? '✨ Highlights' : '✨ বিশেষত্ব';
+        const statsTitle  = isEn ? '📊 Quick Stats' : '📊 এক নজরে';
+
+        let html = `<p>${desc || ''}</p>`;
+
+        if (data.points && data.points.length) {
+            html += `<h4>${pointsTitle}</h4><ul>`;
+            data.points.forEach(p => html += `<li>${p}</li>`);
+            html += `</ul>`;
+        }
+
+        if (data.stats && data.stats.length) {
+            html += `<h4>${statsTitle}</h4><div class="mega-stats">`;
+            data.stats.forEach(s => {
+                html += `<div class="mega-stat">
+                            <span class="mega-stat-value">${s.v}</span>
+                            <span class="mega-stat-label">${s.l}</span>
+                         </div>`;
+            });
+            html += `</div>`;
+        }
+
+        eBodyEl.innerHTML = html;
+        eCtaEl.setAttribute('href', href);
+
+        eOverlay.classList.add('active');
+        eOverlay.setAttribute('aria-hidden', 'false');
+        document.body.style.overflow = 'hidden';
+    }
+
+    function closeExploreModal() {
+        eOverlay.classList.remove('active');
+        eOverlay.setAttribute('aria-hidden', 'true');
+        document.body.style.overflow = '';
+    }
+
+    document.querySelectorAll('.mega-menu a[href^="#"]').forEach(link => {
+        link.addEventListener('click', (e) => {
+            const href = link.getAttribute('href');
+            if (EXPLORE_DATA[href]) {
+                e.preventDefault();
+                openExploreModal(href);
+            }
+        });
+    });
+
+    eCloseBtn?.addEventListener('click', closeExploreModal);
+    eCancelBtn?.addEventListener('click', closeExploreModal);
+
+    eOverlay.addEventListener('click', (e) => {
+        if (e.target === eOverlay) closeExploreModal();
+    });
+
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && eOverlay.classList.contains('active')) {
+            closeExploreModal();
+        }
+    });
+})();/* =========================================================
+   🎯 ABOUT MEGA MENU — DATA + FUNCTIONS
+========================================================= */
+
+const ABOUT_DATA = {
+
+    /* ═══ আমাদের মহেশখালী (Our Maheshkhali) ═══ */
+    '#about': {
+        icon: '🌴', category: 'Our Maheshkhali', title: 'About Maheshkhali', bnTitle: 'মহেশখালী সম্পর্কে',
+        descBn: 'মহেশখালী বাংলাদেশের কক্সবাজার জেলার একটি দ্বীপ উপজেলা। বঙ্গোপসাগরের বুকে অবস্থিত এই দ্বীপ প্রাকৃতিক সৌন্দর্য, ঐতিহ্য ও সম্ভাবনায় ভরপুর।',
+        descEn: 'Maheshkhali is an island upazila in Cox\'s Bazar district of Bangladesh. Located in the Bay of Bengal, this island is full of natural beauty, heritage and potential.',
+        points: ['মোট আয়তন: ৩৬২.১৮ বর্গ কিমি', '৮টি ইউনিয়ন', 'জনসংখ্যা: প্রায় ৩ লক্ষ', 'কক্সবাজার থেকে ১২ কিমি দূরে'],
+        stats: [{ v: '362 km²', l: 'Area' }, { v: '8', l: 'Unions' }, { v: '3L+', l: 'People' }]
+    },
+    '#our-maheshkhali': {
+        icon: '🏝️', category: 'Our Maheshkhali', title: 'Our Island', bnTitle: 'আমাদের দ্বীপ',
+        descBn: 'আমাদের দ্বীপ মহেশখালী — প্রাকৃতিক সৌন্দর্যে ভরপুর, যেখানে পাহাড়, সমুদ্র, নদী ও সবুজ প্রকৃতি একসাথে মিলেছে।',
+        descEn: 'Our island Maheshkhali — full of natural beauty, where hills, sea, rivers and green nature meet together.',
+        points: ['প্রাকৃতিক সৌন্দর্য', 'পাহাড় ও সমুদ্র', 'শান্ত পরিবেশ', 'সবুজ প্রকৃতি'],
+        stats: [{ v: '100%', l: 'Natural' }]
+    },
+    '#vision': {
+        icon: '🎯', category: 'Our Maheshkhali', title: 'Vision & Mission', bnTitle: 'লক্ষ্য ও উদ্দেশ্য',
+        descBn: 'আমাদের লক্ষ্য — মহেশখালীকে একটি ডিজিটাল প্ল্যাটফর্মের মাধ্যমে সবার কাছে পৌঁছে দেওয়া এবং স্থানীয় উন্নয়নে সহায়তা করা।',
+        descEn: 'Our vision — to bring Maheshkhali to everyone through a digital platform and help in local development.',
+        points: ['ডিজিটাল প্ল্যাটফর্ম', 'স্থানীয় উন্নয়ন', 'কমিউনিটি সংযোগ', 'তথ্য সেবা'],
+        stats: [{ v: '2026', l: 'Founded' }]
+    },
+    '#history': {
+        icon: '📜', category: 'Our Maheshkhali', title: 'History', bnTitle: 'ইতিহাস',
+        descBn: 'মহেশখালীর ইতিহাস হাজার বছরের পুরনো। আরাকান রাজত্ব, মোগল আমল এবং ব্রিটিশ শাসনের সাক্ষী এই দ্বীপ।',
+        descEn: 'The history of Maheshkhali is thousands of years old. This island witnessed Arakan rule, Mughal era and British rule.',
+        points: ['আদিনাথ মন্দির (১০০০+ বছর)', 'আরাকান রাজত্ব', 'মোগল আমল', 'ব্রিটিশ শাসন'],
+        stats: [{ v: '1000+', l: 'Years Old' }]
+    },
+    '#geography': {
+        icon: '🗺️', category: 'Our Maheshkhali', title: 'Geography', bnTitle: 'ভূগোল',
+        descBn: 'মহেশখালী বঙ্গোপসাগরের একটি দ্বীপ। চারদিকে নদী ও সাগর, ভিতরে পাহাড় ও টিলা।',
+        descEn: 'Maheshkhali is an island in the Bay of Bengal. Surrounded by rivers and sea, with hills and mounds inside.',
+        points: ['বঙ্গোপসাগর', 'বাঁকখালী নদী', 'পাহাড় ও টিলা', 'উপকূলীয় এলাকা'],
+        stats: [{ v: '362 km²', l: 'Area' }]
+    },
+
+    /* ═══ সম্পর্কে আরও (More About) ═══ */
+    '#badsha-solyman': {
+        icon: '👨‍💻', category: 'More About', title: 'Badsha Solyman', bnTitle: 'বাদশা সোলাইমান',
+        descBn: 'বাদশা সোলাইমান — একজন মার্চেন্ট মেরিনার, প্রতিষ্ঠাতা এবং ওয়েব ডেভেলপার। আমাদের মহেশখালী প্ল্যাটফর্মের প্রতিষ্ঠাতা।',
+        descEn: 'Badsha Solyman — a Merchant Mariner, Founder and Web Developer. The founder of Our Maheshkhali platform.',
+        points: ['মার্চেন্ট মেরিনার ⚓', 'প্রতিষ্ঠাতা 🚀', 'ওয়েব ডেভেলপার 💻', 'মহেশখালীর সন্তান 🌴'],
+        stats: [{ v: 'Merchant', l: 'Mariner' }, { v: 'Founder', l: '& Dev' }]
+    },
+    '#team': {
+        icon: '👥', category: 'More About', title: 'Team Our Maheshkhali', bnTitle: 'টিম আওয়ার মহেশখালী',
+        descBn: 'আমাদের টিম — যারা দিন-রাত পরিশ্রম করে এই প্ল্যাটফর্মকে সবার জন্য উপযোগী করে তুলছেন।',
+        descEn: 'Our team — who work day and night to make this platform useful for everyone.',
+        points: ['ডেভেলপার', 'ডিজাইনার', 'কনটেন্ট রাইটার', 'কমিউনিটি মডারেটর'],
+        stats: [{ v: '10+', l: 'Members' }]
+    },
+    '#contact': {
+        icon: '📞', category: 'More About', title: 'Contact', bnTitle: 'যোগাযোগ',
+        descBn: 'যেকোনো প্রশ্ন, পরামর্শ বা সহযোগিতার জন্য আমাদের সাথে যোগাযোগ করুন।',
+        descEn: 'Contact us for any questions, suggestions or cooperation.',
+        points: ['📞 +880 1886-033345', '💬 WhatsApp', '✉️ info@ourmaheshkhali.com', '📍 মহেশখালী, কক্সবাজার'],
+        stats: [{ v: '24/7', l: 'Support' }]
+    },
+    '#faq': {
+        icon: '❓', category: 'More About', title: 'FAQ', bnTitle: 'প্রশ্নোত্তর',
+        descBn: 'সচরাচর জিজ্ঞাসিত প্রশ্ন ও উত্তর — এই প্ল্যাটফর্ম সম্পর্কে সবকিছু জানুন।',
+        descEn: 'Frequently Asked Questions and answers — know everything about this platform.',
+        points: ['কীভাবে যোগদান করবেন', 'সদস্য সুবিধা', 'ব্যবসা ডিরেক্টরি', 'যোগাযোগ পদ্ধতি'],
+        stats: [{ v: '30+', l: 'Questions' }]
+    },
+
+    /* ═══ তথ্য (Information) ═══ */
+    '#important-facts': {
+        icon: '📌', category: 'Information', title: 'Important Facts', bnTitle: 'গুরুত্বপূর্ণ তথ্য',
+        descBn: 'মহেশখালী সম্পর্কে গুরুত্বপূর্ণ সব তথ্য এক জায়গায়।',
+        descEn: 'All important facts about Maheshkhali in one place.',
+        points: ['মোট আয়তন: ৩৬২.১৮ কিমি²', '৮টি ইউনিয়ন', 'প্রায় ৩ লক্ষ মানুষ', 'কক্সবাজার জেলায় অবস্থিত'],
+        stats: [{ v: '50+', l: 'Facts' }]
+    },
+    '#personalities': {
+        icon: '🌟', category: 'Information', title: 'Famous Personalities', bnTitle: 'বিখ্যাত ব্যক্তিত্ব',
+        descBn: 'মহেশখালীর গর্বিত সন্তানরা — যারা দেশ ও বিদেশে নাম কামিয়েছেন।',
+        descEn: 'Proud sons of Maheshkhali — who earned name at home and abroad.',
+        points: ['শিক্ষাবিদ', 'ব্যবসায়ী', 'ক্রীড়াবিদ', 'শিল্পী', 'রাজনীতিবিদ'],
+        stats: [{ v: '30+', l: 'Personalities' }]
+    },
+    '#achievements': {
+        icon: '🏆', category: 'Information', title: 'Achievements', bnTitle: 'অর্জন',
+        descBn: 'আমাদের মহেশখালী প্ল্যাটফর্মের অর্জন এবং স্বীকৃতি।',
+        descEn: 'Achievements and recognition of Our Maheshkhali platform.',
+        points: ['১০ হাজার+ সদস্য', '৮টি ইউনিয়ন কভারেজ', 'সব ডিভাইসে কাজ করে', 'সম্পূর্ণ বিনামূল্যে'],
+        stats: [{ v: '10K+', l: 'Users' }]
+    },
+    '#privacy': {
+        icon: '🔒', category: 'Information', title: 'Privacy Policy', bnTitle: 'গোপনীয়তা নীতি',
+        descBn: 'আপনার ব্যক্তিগত তথ্যের গোপনীয়তা আমাদের সর্বোচ্চ অগ্রাধিকার।',
+        descEn: 'Your personal information privacy is our top priority.',
+        points: ['তথ্য সুরক্ষা', 'কোনো থার্ড-পার্টি শেয়ার নেই', 'নিরাপদ ডেটা', 'আপনার অধিকার'],
+        stats: [{ v: '100%', l: 'Secure' }]
+    },
+    '#terms': {
+        icon: '📄', category: 'Information', title: 'Terms & Conditions', bnTitle: 'শর্তাবলী',
+        descBn: 'আমাদের প্ল্যাটফর্ম ব্যবহারের শর্তাবলী — সহজ ভাষায় জানুন।',
+        descEn: 'Terms and conditions of using our platform — know in simple language.',
+        points: ['ব্যবহারের শর্ত', 'কনটেন্ট নীতি', 'দায়বদ্ধতা', 'পরিবর্তনের অধিকার'],
+        stats: [{ v: '2026', l: 'Updated' }]
+    }
+};
+
+
+/* ---------- ABOUT Modal — আলাদা নাম (conflict এড়াতে) ---------- */
+(function initAboutModal() {
+    const aOverlay    = document.getElementById('megaDetailsOverlay');
+    const aCloseBtn   = document.getElementById('megaDetailsClose');
+    const aCancelBtn  = document.getElementById('megaDetailsCancel');
+    const aIconEl     = document.getElementById('megaDetailsIcon');
+    const aCategoryEl = document.getElementById('megaDetailsCategory');
+    const aTitleEl    = document.getElementById('megaDetailsTitle');
+    const aBodyEl     = document.getElementById('megaDetailsBody');
+    const aCtaEl      = document.getElementById('megaDetailsCTA');
+
+    if (!aOverlay) return;
+
+    function openAboutModal(href) {
+        const data = ABOUT_DATA[href];
+        if (!data) return;
+
+        const isEn = document.documentElement.lang === 'en';
+
+        aIconEl.textContent = data.icon || '📌';
+        aCategoryEl.textContent = data.category || '';
+        aTitleEl.textContent = isEn ? (data.title || '') : (data.bnTitle || data.title || '');
+
+        const desc = isEn ? data.descEn : data.descBn;
+        const pointsTitle = isEn ? '✨ Highlights' : '✨ বিশেষত্ব';
+        const statsTitle  = isEn ? '📊 Quick Stats' : '📊 এক নজরে';
+
+        let html = `<p>${desc || ''}</p>`;
+
+        if (data.points && data.points.length) {
+            html += `<h4>${pointsTitle}</h4><ul>`;
+            data.points.forEach(p => html += `<li>${p}</li>`);
+            html += `</ul>`;
+        }
+
+        if (data.stats && data.stats.length) {
+            html += `<h4>${statsTitle}</h4><div class="mega-stats">`;
+            data.stats.forEach(s => {
+                html += `<div class="mega-stat">
+                            <span class="mega-stat-value">${s.v}</span>
+                            <span class="mega-stat-label">${s.l}</span>
+                         </div>`;
+            });
+            html += `</div>`;
+        }
+
+        aBodyEl.innerHTML = html;
+        aCtaEl.setAttribute('href', href);
+
+        aOverlay.classList.add('active');
+        aOverlay.setAttribute('aria-hidden', 'false');
+        document.body.style.overflow = 'hidden';
+    }
+
+    function closeAboutModal() {
+        aOverlay.classList.remove('active');
+        aOverlay.setAttribute('aria-hidden', 'true');
+        document.body.style.overflow = '';
+    }
+
+    document.querySelectorAll('.mega-menu a[href^="#"]').forEach(link => {
+        link.addEventListener('click', (e) => {
+            const href = link.getAttribute('href');
+            if (ABOUT_DATA[href]) {
+                e.preventDefault();
+                openAboutModal(href);
+            }
+        });
+    });
+
+    aCloseBtn?.addEventListener('click', closeAboutModal);
+    aCancelBtn?.addEventListener('click', closeAboutModal);
+
+    aOverlay.addEventListener('click', (e) => {
+        if (e.target === aOverlay) closeAboutModal();
+    });
+
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && aOverlay.classList.contains('active')) {
+            closeAboutModal();
+        }
+    });
 })();
