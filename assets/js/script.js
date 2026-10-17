@@ -7064,4 +7064,882 @@ const ABOUT_DATA = {
             closeAboutModal();
         }
     });
+})();/* =========================================================
+   🎯 MORE MEGA MENU — DATA + FUNCTIONS
+========================================================= */
+
+const MORE_DATA = {
+
+    /* ═══ টুলস (Tools) ═══ */
+    '#search': {
+        icon: '🔎', category: 'Tools', title: 'Search', bnTitle: 'অনুসন্ধান',
+        descBn: 'মহেশখালীর সব তথ্য এক জায়গায় খুঁজুন — ব্যবসা, সেবা, স্থান, ব্যক্তি সব।',
+        descEn: 'Search all information of Maheshkhali in one place — business, services, places, people.',
+        points: ['ব্যবসা খুঁজুন', 'সেবা খুঁজুন', 'স্থান খুঁজুন', 'ব্যক্তি খুঁজুন'],
+        stats: [{ v: 'Fast', l: 'Search' }, { v: '1000+', l: 'Results' }]
+    },
+    '#map': {
+        icon: '🗺️', category: 'Tools', title: 'Maheshkhali Map', bnTitle: 'মহেশখালী ম্যাপ',
+        descBn: 'মহেশখালীর ইন্টারঅ্যাকটিভ ম্যাপ — সব স্থান, রাস্তা ও দর্শনীয় স্থান দেখুন।',
+        descEn: 'Interactive map of Maheshkhali — see all places, roads and attractions.',
+        points: ['৮টি ইউনিয়ন', 'সব রাস্তা', 'দর্শনীয় স্থান', 'লাইভ লোকেশন'],
+        stats: [{ v: 'Live', l: 'Map' }]
+    },
+    '#nearby': {
+        icon: '📍', category: 'Tools', title: 'Find Nearby', bnTitle: 'কাছাকাছি',
+        descBn: 'আপনার কাছের সব সেবা খুঁজুন — হাসপাতাল, ব্যাংক, দোকান, হোটেল, মসজিদ।',
+        descEn: 'Find all nearby services — hospitals, banks, shops, hotels, mosques.',
+        points: ['হাসপাতাল', 'ব্যাংক', 'দোকান', 'হোটেল', 'মসজিদ'],
+        stats: [{ v: 'GPS', l: 'Based' }]
+    },
+    '#govt-services': {
+        icon: '🏛️', category: 'Tools', title: 'Government Services', bnTitle: 'সরকারি সেবা',
+        descBn: 'সরকারি সেবা ও অফিসের তথ্য — ইউনিয়ন পরিষদ, উপজেলা, থানা, ডাকঘর।',
+        descEn: 'Info about government services and offices — union parishad, upazila, thana, post office.',
+        points: ['ইউনিয়ন পরিষদ', 'উপজেলা অফিস', 'থানা', 'ডাকঘর'],
+        stats: [{ v: '20+', l: 'Offices' }]
+    },
+    '#utilities': {
+        icon: '⚡', category: 'Tools', title: 'Utilities', bnTitle: 'ইউটিলিটি',
+        descBn: 'দৈনন্দিন কাজে সহায়ক টুলস — ক্যালকুলেটর, কনভার্টার, সময়সূচি।',
+        descEn: 'Useful tools for daily tasks — calculator, converter, time zone.',
+        points: ['ক্যালকুলেটর', 'কনভার্টার', 'সময়সূচি', 'ক্যালেন্ডার'],
+        stats: [{ v: '10+', l: 'Tools' }]
+    },
+
+    /* ═══ যোগাযোগ (Contact) ═══ */
+    '#emergency-contacts': {
+        icon: '🚨', category: 'Contact', title: 'Emergency Contacts', bnTitle: 'জরুরি যোগাযোগ',
+        descBn: 'জরুরি প্রয়োজনে সব হেল্পলাইন নম্বর — ৯৯৯, ফায়ার সার্ভিস, অ্যাম্বুলেন্স।',
+        descEn: 'All emergency helpline numbers — 999, fire service, ambulance.',
+        points: ['🚨 ৯৯৯', '🚑 অ্যাম্বুলেন্স', '🔥 ফায়ার সার্ভিস', '👮 পুলিশ'],
+        stats: [{ v: '24/7', l: 'Available' }]
+    },
+    '#important-contacts': {
+        icon: '☎️', category: 'Contact', title: 'Important Contacts', bnTitle: 'গুরুত্বপূর্ণ নম্বর',
+        descBn: 'মহেশখালীর গুরুত্বপূর্ণ সব নম্বর — প্রশাসন, শিক্ষা, স্বাস্থ্য, ব্যবসা।',
+        descEn: 'All important numbers of Maheshkhali — administration, education, health, business.',
+        points: ['প্রশাসন', 'শিক্ষা অফিস', 'স্বাস্থ্য অফিস', 'ব্যবসা'],
+        stats: [{ v: '100+', l: 'Contacts' }]
+    },
+    '#news': {
+        icon: '📰', category: 'Contact', title: 'News & Media', bnTitle: 'সংবাদ ও মিডিয়া',
+        descBn: 'মহেশখালীর সর্বশেষ সংবাদ ও মিডিয়া কভারেজ এক জায়গায়।',
+        descEn: 'Latest news and media coverage of Maheshkhali in one place.',
+        points: ['স্থানীয় সংবাদ', 'জাতীয় সংবাদ', 'মিডিয়া কভারেজ', 'সংবাদপত্র'],
+        stats: [{ v: 'Daily', l: 'Updates' }]
+    },
+    '#events-calendar': {
+        icon: '📅', category: 'Contact', title: 'Events Calendar', bnTitle: 'ইভেন্ট ক্যালেন্ডার',
+        descBn: 'মহেশখালীর আসন্ন ও চলমান সব ইভেন্ট, উৎসব ও অনুষ্ঠানের ক্যালেন্ডার।',
+        descEn: 'Calendar of all upcoming and ongoing events, festivals and programs.',
+        points: ['উৎসব', 'মিটিং', 'সাংস্কৃতিক অনুষ্ঠান', 'স্পোর্টস'],
+        stats: [{ v: '25+', l: 'Upcoming' }]
+    },
+    '#feedback': {
+        icon: '💬', category: 'Contact', title: 'Feedback', bnTitle: 'মতামত',
+        descBn: 'আপনার মতামত আমাদের কাছে গুরুত্বপূর্ণ। পরামর্শ, প্রশংসা বা অভিযোগ জানান।',
+        descEn: 'Your feedback is important to us. Share suggestions, praise or complaints.',
+        points: ['পরামর্শ', 'প্রশংসা', 'অভিযোগ', 'সার্ভে'],
+        stats: [{ v: '500+', l: 'Feedbacks' }]
+    },
+
+    /* ═══ অ্যাকাউন্ট (Account) ═══ */
+    '#login': {
+        icon: '🔐', category: 'Account', title: 'Login', bnTitle: 'লগইন',
+        descBn: 'আপনার অ্যাকাউন্টে লগইন করুন — সব সুবিধা পেতে।',
+        descEn: 'Login to your account — to get all benefits.',
+        points: ['নিরাপদ লগইন', 'সব ফিচার', 'সেভ করা আইটেম', 'কাস্টমাইজড'],
+        stats: [{ v: 'Secure', l: 'Login' }]
+    },
+    '#register': {
+        icon: '📝', category: 'Account', title: 'Registration', bnTitle: 'রেজিস্ট্রেশন',
+        descBn: 'নতুন অ্যাকাউন্ট তৈরি করুন — সম্পূর্ণ ফ্রি।',
+        descEn: 'Create a new account — completely free.',
+        points: ['সম্পূর্ণ ফ্রি', 'সহজ রেজিস্ট্রেশন', 'সব সুবিধা', 'তাৎক্ষণিক'],
+        stats: [{ v: 'Free', l: 'Signup' }]
+    },
+    '#profile': {
+        icon: '👤', category: 'Account', title: 'My Profile', bnTitle: 'আমার প্রোফাইল',
+        descBn: 'আপনার প্রোফাইল দেখা ও এডিট করুন — নাম, ছবি, তথ্য সব।',
+        descEn: 'View and edit your profile — name, photo, information everything.',
+        points: ['নাম ও ছবি', 'তথ্য এডিট', 'পাসওয়ার্ড পরিবর্তন', 'প্রাইভেসি'],
+        stats: [{ v: 'Personal', l: 'Profile' }]
+    },
+    '#notifications': {
+        icon: '🔔', category: 'Account', title: 'Notifications', bnTitle: 'নোটিফিকেশন',
+        descBn: 'আপনার সব নোটিফিকেশন — নতুন আপডেট, মেসেজ, ঘোষণা।',
+        descEn: 'All your notifications — new updates, messages, announcements.',
+        points: ['নতুন আপডেট', 'মেসেজ', 'ঘোষণা', 'ইভেন্ট'],
+        stats: [{ v: 'Live', l: 'Alerts' }]
+    },
+    '#saved': {
+        icon: '💾', category: 'Account', title: 'Saved Items', bnTitle: 'সংরক্ষিত',
+        descBn: 'আপনার সংরক্ষিত সব আইটেম — পোস্ট, স্থান, ব্যবসা, চাকরি।',
+        descEn: 'All your saved items — posts, places, businesses, jobs.',
+        points: ['সংরক্ষিত পোস্ট', 'সংরক্ষিত স্থান', 'সংরক্ষিত ব্যবসা', 'সংরক্ষিত চাকরি'],
+        stats: [{ v: 'Cloud', l: 'Saved' }]
+    },
+
+    /* ═══ সেটিংস (Settings) ═══ */
+    '#language': {
+        icon: '🌐', category: 'Settings', title: 'Language', bnTitle: 'ভাষা',
+        descBn: 'আপনার পছন্দের ভাষা বেছে নিন — বাংলা বা English।',
+        descEn: 'Choose your preferred language — Bangla or English.',
+        points: ['বাংলা', 'English', 'সব জায়গায় কাজ করে', 'সেভ হয়'],
+        stats: [{ v: '2', l: 'Languages' }]
+    },
+    '#theme': {
+        icon: '🌙', category: 'Settings', title: 'Theme', bnTitle: 'থিম',
+        descBn: 'ডার্ক বা লাইট থিম বেছে নিন — আপনার চোখের আরামের জন্য।',
+        descEn: 'Choose dark or light theme — for your eye comfort.',
+        points: ['🌙 ডার্ক', '☀️ লাইট', 'সেভ হয়', 'সব জায়গায় কাজ করে'],
+        stats: [{ v: '2', l: 'Themes' }]
+    },
+    '#accessibility': {
+        icon: '♿', category: 'Settings', title: 'Accessibility', bnTitle: 'অ্যাক্সেসিবিলিটি',
+        descBn: 'সবাই যেন ব্যবহার করতে পারে — বড় ফন্ট, হাই কনট্রাস্ট, স্ক্রিন রিডার সাপোর্ট।',
+        descEn: 'So everyone can use — large fonts, high contrast, screen reader support.',
+        points: ['বড় ফন্ট', 'হাই কনট্রাস্ট', 'স্ক্রিন রিডার', 'কীবোর্ড নেভিগেশন'],
+        stats: [{ v: '95', l: 'A11y Score' }]
+    },
+    '#settings': {
+        icon: '⚙️', category: 'Settings', title: 'General Settings', bnTitle: 'সাধারণ সেটিংস',
+        descBn: 'সব সাধারণ সেটিংস এক জায়গায় — নোটিফিকেশন, প্রাইভেসি, ডেটা।',
+        descEn: 'All general settings in one place — notifications, privacy, data.',
+        points: ['নোটিফিকেশন', 'প্রাইভেসি', 'ডেটা', 'অ্যাকাউন্ট'],
+        stats: [{ v: '10+', l: 'Options' }]
+    },
+    '#help': {
+        icon: '💬', category: 'Settings', title: 'Help Center', bnTitle: 'সহায়তা কেন্দ্র',
+        descBn: 'যেকোনো সমস্যায় সাহায্য নিন — গাইড, টিউটোরিয়াল, FAQ।',
+        descEn: 'Get help for any problem — guides, tutorials, FAQ.',
+        points: ['গাইড', 'টিউটোরিয়াল', 'FAQ', 'যোগাযোগ'],
+        stats: [{ v: '50+', l: 'Articles' }]
+    }
+};
+
+
+/* ---------- MORE Modal — আলাদা নাম (conflict এড়াতে) ---------- */
+(function initMoreModal() {
+    const mOverlay    = document.getElementById('megaDetailsOverlay');
+    const mCloseBtn   = document.getElementById('megaDetailsClose');
+    const mCancelBtn  = document.getElementById('megaDetailsCancel');
+    const mIconEl     = document.getElementById('megaDetailsIcon');
+    const mCategoryEl = document.getElementById('megaDetailsCategory');
+    const mTitleEl    = document.getElementById('megaDetailsTitle');
+    const mBodyEl     = document.getElementById('megaDetailsBody');
+    const mCtaEl      = document.getElementById('megaDetailsCTA');
+
+    if (!mOverlay) return;
+
+    function openMoreModal(href) {
+        const data = MORE_DATA[href];
+        if (!data) return;
+
+        const isEn = document.documentElement.lang === 'en';
+
+        mIconEl.textContent = data.icon || '📌';
+        mCategoryEl.textContent = data.category || '';
+        mTitleEl.textContent = isEn ? (data.title || '') : (data.bnTitle || data.title || '');
+
+        const desc = isEn ? data.descEn : data.descBn;
+        const pointsTitle = isEn ? '✨ Highlights' : '✨ বিশেষত্ব';
+        const statsTitle  = isEn ? '📊 Quick Stats' : '📊 এক নজরে';
+
+        let html = `<p>${desc || ''}</p>`;
+
+        if (data.points && data.points.length) {
+            html += `<h4>${pointsTitle}</h4><ul>`;
+            data.points.forEach(p => html += `<li>${p}</li>`);
+            html += `</ul>`;
+        }
+
+        if (data.stats && data.stats.length) {
+            html += `<h4>${statsTitle}</h4><div class="mega-stats">`;
+            data.stats.forEach(s => {
+                html += `<div class="mega-stat">
+                            <span class="mega-stat-value">${s.v}</span>
+                            <span class="mega-stat-label">${s.l}</span>
+                         </div>`;
+            });
+            html += `</div>`;
+        }
+
+        mBodyEl.innerHTML = html;
+        mCtaEl.setAttribute('href', href);
+
+        mOverlay.classList.add('active');
+        mOverlay.setAttribute('aria-hidden', 'false');
+        document.body.style.overflow = 'hidden';
+    }
+
+    function closeMoreModal() {
+        mOverlay.classList.remove('active');
+        mOverlay.setAttribute('aria-hidden', 'true');
+        document.body.style.overflow = '';
+    }
+
+    document.querySelectorAll('.mega-menu a[href^="#"]').forEach(link => {
+        link.addEventListener('click', (e) => {
+            const href = link.getAttribute('href');
+            if (MORE_DATA[href]) {
+                e.preventDefault();
+                openMoreModal(href);
+            }
+        });
+    });
+
+    mCloseBtn?.addEventListener('click', closeMoreModal);
+    mCancelBtn?.addEventListener('click', closeMoreModal);
+
+    mOverlay.addEventListener('click', (e) => {
+        if (e.target === mOverlay) closeMoreModal();
+    });
+
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && mOverlay.classList.contains('active')) {
+            closeMoreModal();
+        }
+    });
+})();/* =========================================================
+   🎡 SPIN / LEARNING HUB / PANELS — MAIN SCRIPT
+========================================================= */
+
+(function initSpinSystem() {
+
+    /* ---------- উপাদান ---------- */
+    const spinBtn       = document.getElementById('spinCounterBtn');
+    const spinCountEl   = document.getElementById('spinCount');
+    const hubOverlay    = document.getElementById('learningHubOverlay');
+    const hubClose      = document.getElementById('lhClose');
+    const lhSpinCount   = document.getElementById('lhSpinCount');
+    const lhScore       = document.getElementById('lhScore');
+    const lhXP          = document.getElementById('lhXP');
+    const lhStreak      = document.getElementById('lhStreak');
+    const lhLevel       = document.getElementById('lhLevel');
+
+    const knOverlay     = document.getElementById('knPanelOverlay');
+    const knClose       = document.getElementById('knClose');
+    const eduOverlay    = document.getElementById('eduPanelOverlay');
+    const eduClose      = document.getElementById('eduClose');
+    const bs9qOverlay   = document.getElementById('bs9qPanelOverlay');
+    const bs9qClose     = document.getElementById('bs9qClose');
+
+    /* ---------- State (localStorage) ---------- */
+    let state = {
+        spin:   parseInt(localStorage.getItem('spinCount')  || '0', 10),
+        score:  parseInt(localStorage.getItem('lhScore')    || '0', 10),
+        xp:     parseInt(localStorage.getItem('lhXP')       || '0', 10),
+        streak: parseInt(localStorage.getItem('lhStreak')   || '0', 10)
+    };
+
+    function saveState() {
+        localStorage.setItem('spinCount', state.spin);
+        localStorage.setItem('lhScore',   state.score);
+        localStorage.setItem('lhXP',      state.xp);
+        localStorage.setItem('lhStreak',  state.streak);
+    }
+
+    function getLevel() {
+        const xp = state.xp;
+        if (xp >= 1000) return { bn: 'মাস্টার',      en: 'Master'   };
+        if (xp >= 500)  return { bn: 'এক্সপার্ট',    en: 'Expert'   };
+        if (xp >= 200)  return { bn: 'অ্যাডভান্সড',  en: 'Advanced' };
+        if (xp >= 50)   return { bn: 'শিক্ষার্থী',    en: 'Learner'  };
+        return              { bn: 'শিক্ষানবিশ',    en: 'Beginner' };
+    }
+
+    function updateUI() {
+        if (spinCountEl) spinCountEl.textContent = state.spin;
+        if (lhSpinCount) lhSpinCount.textContent = state.spin;
+        if (lhScore)     lhScore.textContent     = state.score;
+        if (lhXP)        lhXP.textContent        = state.xp;
+        if (lhStreak)    lhStreak.textContent    = state.streak;
+        if (lhLevel) {
+            const lvl = getLevel();
+            const isEn = document.documentElement.lang === 'en';
+            lhLevel.textContent = isEn ? lvl.en : lvl.bn;
+            lhLevel.setAttribute('data-bn', lvl.bn);
+            lhLevel.setAttribute('data-en', lvl.en);
+        }
+    }
+    updateUI();
+
+    /* ---------- SPIN Button ---------- */
+    spinBtn?.addEventListener('click', () => {
+        state.spin++;
+        state.score += 5;
+        state.xp    += 10;
+        saveState();
+        updateUI();
+
+        openPanel(hubOverlay);
+
+        spinBtn.style.transform = 'scale(1.15)';
+        setTimeout(() => { spinBtn.style.transform = ''; }, 200);
+    });
+
+    /* ---------- Panel Open / Close ---------- */
+    function openPanel(overlay) {
+        if (!overlay) return;
+        overlay.classList.add('active');
+        overlay.setAttribute('aria-hidden', 'false');
+        document.body.style.overflow = 'hidden';
+    }
+
+    function closePanel(overlay) {
+        if (!overlay) return;
+        overlay.classList.remove('active');
+        overlay.setAttribute('aria-hidden', 'true');
+        document.body.style.overflow = '';
+    }
+
+    /* ---------- Close Events ---------- */
+    hubClose?.addEventListener('click', () => closePanel(hubOverlay));
+    knClose?.addEventListener('click', () => closePanel(knOverlay));
+    eduClose?.addEventListener('click', () => closePanel(eduOverlay));
+    bs9qClose?.addEventListener('click', () => closePanel(bs9qOverlay));
+
+    [hubOverlay, knOverlay, eduOverlay, bs9qOverlay].forEach(o => {
+        o?.addEventListener('click', (e) => {
+            if (e.target === o) closePanel(o);
+        });
+    });
+
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') {
+            [hubOverlay, knOverlay, eduOverlay, bs9qOverlay].forEach(o => {
+                if (o?.classList.contains('active')) closePanel(o);
+            });
+        }
+    });
+
+    /* ---------- Category Card Click ---------- */
+    const categoryMap = {
+        'knowledge':      knOverlay,
+        'education':      eduOverlay,
+        'bs9q':           bs9qOverlay
+        // ভবিষ্যতে আরো panel যোগ করা যাবে
+    };
+
+    document.querySelectorAll('.lh-cat-card').forEach(card => {
+        card.addEventListener('click', () => {
+            const cat = card.getAttribute('data-category');
+            closePanel(hubOverlay);
+
+            if (categoryMap[cat]) {
+                setTimeout(() => openPanel(categoryMap[cat]), 250);
+            } else {
+                console.log('Category clicked:', cat);
+            }
+        });
+
+        card.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter' || e.key === ' ') {
+                e.preventDefault();
+                card.click();
+            }
+        });
+    });
+
+    /* ---------- Nav Tabs (সব panel এ) ---------- */
+    function initNavTabs(navSelector, sectionSelector, jumpAttr, sectionAttr) {
+        const navBtns  = document.querySelectorAll(navSelector);
+        const sections = document.querySelectorAll(sectionSelector);
+
+        navBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                const target = btn.getAttribute(jumpAttr);
+
+                navBtns.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+
+                sections.forEach(sec => {
+                    if (sec.getAttribute(sectionAttr) === target) {
+                        sec.style.display = '';
+                    } else {
+                        sec.style.display = 'none';
+                    }
+                });
+            });
+        });
+
+        sections.forEach((sec, i) => {
+            sec.style.display = i === 0 ? '' : 'none';
+        });
+    }
+
+    initNavTabs('.kn-nav-btn',   '[data-kn-section]',   'data-kn-jump',   'data-kn-section');
+    initNavTabs('.edu-nav-btn',  '[data-edu-section]',  'data-edu-jump',  'data-edu-section');
+    initNavTabs('.bs9q-nav-btn', '[data-bs9q-section]', 'data-bs9q-jump', 'data-bs9q-section');
+
+    /* ---------- BS9Q Actions ---------- */
+    const bs9qFullText    = document.getElementById('bs9qFullText');
+    const bs9qCopyBtn     = document.getElementById('bs9qCopyBtn');
+    const bs9qDownloadBtn = document.getElementById('bs9qDownloadBtn');
+    const bs9qShareBtn    = document.getElementById('bs9qShareBtn');
+
+    /* Copy */
+    bs9qCopyBtn?.addEventListener('click', async () => {
+        const text = bs9qFullText?.value || '';
+        try {
+            await navigator.clipboard.writeText(text);
+            const label = bs9qCopyBtn.querySelector('span:last-child');
+            if (label) {
+                const original = label.textContent;
+                label.textContent = '✅ Copied!';
+                setTimeout(() => { label.textContent = original; }, 2000);
+            }
+        } catch (err) {
+            alert('কপি করা যায়নি');
+        }
+    });
+
+    /* Download */
+    bs9qDownloadBtn?.addEventListener('click', () => {
+        const text = bs9qFullText?.value || '';
+        const blob = new Blob([text], { type: 'text/plain;charset=utf-8' });
+        const url  = URL.createObjectURL(blob);
+        const a    = document.createElement('a');
+        a.href     = url;
+        a.download = 'BS-9Q-5F-Mindmap-Method.txt';
+        document.body.appendChild(a);
+        a.click();
+        a.remove();
+        URL.revokeObjectURL(url);
+    });
+
+    /* Share */
+    bs9qShareBtn?.addEventListener('click', async () => {
+        const text = bs9qFullText?.value || '';
+        if (navigator.share) {
+            try {
+                await navigator.share({
+                    title: 'BS~9Q-5F Mindmap Method™',
+                    text:  text.substring(0, 200) + '...'
+                });
+            } catch (err) {
+                console.log('Share cancelled');
+            }
+        } else {
+            alert('আপনার ব্রাউজারে Share সাপোর্ট নেই');
+        }
+    });
+
+    /* ---------- Suggest Buttons ---------- */
+    const lhSearchInput = document.getElementById('lhSearchInput');
+    document.querySelectorAll('.lh-suggest-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+            if (lhSearchInput) {
+                lhSearchInput.value = btn.textContent.trim();
+                lhSearchInput.focus();
+            }
+        });
+    });
+
+    /* ---------- Search Input (Enter চাপলে) ---------- */
+    lhSearchInput?.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter') {
+            const q = lhSearchInput.value.trim();
+            if (q) {
+                // ভবিষ্যতে search functionality যোগ করা যাবে
+                console.log('Searching:', q);
+            }
+        }
+    });
+
+})();/* =========================================================
+   💻 COMPUTER PANEL — Open / Close / Nav Tabs
+========================================================= */
+
+(function initComputerPanel() {
+
+    const compOverlay = document.getElementById('compPanelOverlay');
+    const compClose   = document.getElementById('compClose');
+
+    if (!compOverlay) return;
+
+    /* ---------- Open / Close ---------- */
+    function openCompPanel() {
+        compOverlay.classList.add('active');
+        compOverlay.setAttribute('aria-hidden', 'false');
+        document.body.style.overflow = 'hidden';
+    }
+
+    function closeCompPanel() {
+        compOverlay.classList.remove('active');
+        compOverlay.setAttribute('aria-hidden', 'true');
+        document.body.style.overflow = '';
+    }
+
+    compClose?.addEventListener('click', closeCompPanel);
+
+    compOverlay.addEventListener('click', (e) => {
+        if (e.target === compOverlay) closeCompPanel();
+    });
+
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && compOverlay.classList.contains('active')) {
+            closeCompPanel();
+        }
+    });
+
+    /* ---------- Category Card Click → Panel Open ---------- */
+    const computerCard = document.querySelector('.lh-cat-card[data-category="computer"]');
+    computerCard?.addEventListener('click', (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+
+        const hub = document.getElementById('learningHubOverlay');
+        hub?.classList.remove('active');
+        hub?.setAttribute('aria-hidden', 'true');
+
+        setTimeout(() => openCompPanel(), 250);
+    });
+
+    /* ---------- Nav Tabs ---------- */
+    const navBtns  = compOverlay.querySelectorAll('.comp-nav-btn');
+    const sections = compOverlay.querySelectorAll('.comp-section');
+
+    navBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+            const target = btn.getAttribute('data-comp-jump');
+
+            navBtns.forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+
+            sections.forEach(sec => {
+                sec.style.display = sec.getAttribute('data-comp-section') === target ? '' : 'none';
+            });
+
+            const body = compOverlay.querySelector('.comp-body');
+            if (body) body.scrollTop = 0;
+        });
+    });
+
+    // Initially show only first section
+    sections.forEach((sec, i) => {
+        sec.style.display = i === 0 ? '' : 'none';
+    });
+
+})();
+
+
+/* =========================================================
+   🎯 TYPING TEST — Real-time WPM & Accuracy
+   Bangla ↔ English Support
+   26 English Alphabet Practice
+========================================================= */
+
+(function initTypingTest() {
+
+    /* ---------- Practice Texts ----------
+       ২৬টি English alphabet সবই এখানে practice করা যাবে
+    ---------- */
+    const TEXTS = {
+        en: [
+            // ⭐ ২৬টি alphabet সব একসাথে (সবচেয়ে famous pangram)
+            "The quick brown fox jumps over the lazy dog.",
+            "Pack my box with five dozen liquor jugs.",
+            "How vexingly quick daft zebras jump!",
+            "The five boxing wizards jump quickly.",
+            "Sphinx of black quartz, judge my vow.",
+            "Bright vixens jump; dozy fowl quack.",
+            "Jackdaws love my big sphinx of quartz.",
+            "Waltz, bad nymph, for quick jigs vex.",
+            "Quick zephyrs blow, vexing daft Jim.",
+            "Two driven jocks help fax my big quiz.",
+            "Crazy Frederick bought many very exquisite opal jewels.",
+            "A very bad quack might jinx zippy fowls.",
+            "Glib jocks quiz nymph to vex dwarf.",
+            "Sixty zippers were quickly picked from the woven jute bag."
+        ],
+        bn: [
+            "দ্রুত বাদামী শিয়াল অলস কুকুরের উপর দিয়ে লাফিয়ে যায়।",
+            "আমার সোনার বাংলা আমি তোমায় ভালোবাসি।",
+            "চিরদিন তোমার আকাশ তোমার বাতাস আমার প্রাণে বাজায় বাঁশি।",
+            "সবাইকে স্বাগতম আমাদের মহেশখালী ডিজিটাল প্ল্যাটফর্মে।",
+            "বাংলা টাইপিং অনুশীলন করুন প্রতিদিন।",
+            "এখানে শিখুন, বাড়ুন, সফল হোন।"
+        ]
+    };
+
+    /* ---------- উপাদান ---------- */
+    const textDisplay = document.getElementById('ttTextDisplay');
+    const input       = document.getElementById('ttInput');
+    const timerEl     = document.getElementById('ttTimer');
+    const wpmEl       = document.getElementById('ttWpm');
+    const accEl       = document.getElementById('ttAccuracy');
+    const correctEl   = document.getElementById('ttCorrect');
+    const wrongEl     = document.getElementById('ttWrong');
+    const startBtn    = document.getElementById('ttStartBtn');
+    const resetBtn    = document.getElementById('ttResetBtn');
+    const durationSel = document.getElementById('ttDuration');
+    const resultBox   = document.getElementById('ttResult');
+    const finalWpm    = document.getElementById('ttFinalWpm');
+    const finalAcc    = document.getElementById('ttFinalAccuracy');
+    const finalCorr   = document.getElementById('ttFinalCorrect');
+    const finalWrng   = document.getElementById('ttFinalWrong');
+
+    if (!input || !textDisplay) return;
+
+    let startTime     = null;
+    let timerInterval = null;
+    let totalTime     = 60;
+    let isRunning     = false;
+    let currentText   = '';
+
+    /* ---------- বর্তমান ভাষার টেক্সট নিন ---------- */
+    function pickText() {
+        const lang = document.documentElement.lang === 'en' ? 'en' : 'bn';
+        const arr  = TEXTS[lang];
+        currentText = arr[Math.floor(Math.random() * arr.length)];
+    }
+
+    /* ---------- টেক্সট রেন্ডার ---------- */
+    function renderText() {
+        pickText();
+        textDisplay.innerHTML = '';
+        for (let i = 0; i < currentText.length; i++) {
+            const span = document.createElement('span');
+            span.className = 'tt-char';
+            span.textContent = currentText[i];
+            textDisplay.appendChild(span);
+        }
+        highlightCurrent(0);
+    }
+
+    /* ---------- বর্তমান ক্যারেক্টার হাইলাইট ---------- */
+    function highlightCurrent(index) {
+        const chars = textDisplay.querySelectorAll('.tt-char');
+        chars.forEach(c => c.classList.remove('current'));
+        if (chars[index]) chars[index].classList.add('current');
+    }
+
+    /* ---------- ক্যারেক্টার স্টেট আপডেট ---------- */
+    function updateChars() {
+        const typed = input.value;
+        const chars = textDisplay.querySelectorAll('.tt-char');
+        let correct = 0, wrong = 0;
+
+        chars.forEach((ch, i) => {
+            ch.classList.remove('correct', 'wrong', 'current');
+
+            if (i < typed.length) {
+                if (typed[i] === currentText[i]) {
+                    ch.classList.add('correct');
+                    correct++;
+                } else {
+                    ch.classList.add('wrong');
+                    wrong++;
+                }
+            } else if (i === typed.length) {
+                ch.classList.add('current');
+            }
+        });
+
+        correctEl.textContent = correct;
+        wrongEl.textContent   = wrong;
+
+        const totalTyped = correct + wrong;
+        const accuracy = totalTyped > 0 ? Math.round((correct / totalTyped) * 100) : 100;
+        accEl.textContent = accuracy + '%';
+
+        if (isRunning && startTime) {
+            const elapsedMin = (Date.now() - startTime) / 60000;
+            const wordsTyped = correct / 5;
+            const wpm = elapsedMin > 0 ? Math.round(wordsTyped / elapsedMin) : 0;
+            wpmEl.textContent = wpm;
+        }
+
+        return { correct, wrong, accuracy };
+    }
+
+    /* ---------- টেস্ট শুরু ---------- */
+    function startTest() {
+        if (isRunning) return;
+
+        isRunning = true;
+        startTime = Date.now();
+        totalTime = parseInt(durationSel.value, 10);
+        timerEl.textContent = totalTime;
+
+        input.disabled = false;
+        input.value    = '';
+        input.focus();
+
+        resultBox.style.display = 'none';
+        renderText();
+
+        const startLabel = startBtn.querySelector('span');
+        if (startLabel) startLabel.textContent = '⏸️ চলছে...';
+        startBtn.disabled = true;
+        durationSel.disabled = true;
+
+        timerInterval = setInterval(() => {
+            const elapsed = Math.floor((Date.now() - startTime) / 1000);
+            const remaining = Math.max(0, totalTime - elapsed);
+            timerEl.textContent = remaining;
+            if (remaining <= 0) endTest();
+        }, 250);
+    }
+
+    /* ---------- টেস্ট শেষ ---------- */
+    function endTest() {
+        isRunning = false;
+        clearInterval(timerInterval);
+
+        input.disabled = true;
+
+        const startLabel = startBtn.querySelector('span');
+        if (startLabel) {
+            const isEn = document.documentElement.lang === 'en';
+            startLabel.textContent = isEn ? '▶️ Start Again' : '▶️ আবার শুরু';
+        }
+        startBtn.disabled = false;
+        durationSel.disabled = false;
+
+        const stats = updateChars();
+
+        const elapsedMin = (Date.now() - startTime) / 60000;
+        const wordsTyped = stats.correct / 5;
+        const wpm = elapsedMin > 0 ? Math.round(wordsTyped / elapsedMin) : 0;
+
+        finalWpm.textContent  = wpm;
+        finalAcc.textContent  = stats.accuracy + '%';
+        finalCorr.textContent = stats.correct;
+        finalWrng.textContent = stats.wrong;
+
+        resultBox.style.display = 'block';
+    }
+
+    /* ---------- রিসেট ---------- */
+    function resetTest() {
+        clearInterval(timerInterval);
+        isRunning = false;
+        startTime = null;
+
+        input.value = '';
+        input.disabled = true;
+
+        timerEl.textContent = durationSel.value;
+        wpmEl.textContent   = '0';
+        accEl.textContent   = '100%';
+        correctEl.textContent = '0';
+        wrongEl.textContent   = '0';
+
+        const startLabel = startBtn.querySelector('span');
+        if (startLabel) {
+            const isEn = document.documentElement.lang === 'en';
+            startLabel.textContent = isEn ? '▶️ Start' : '▶️ শুরু করুন';
+        }
+        startBtn.disabled = false;
+        durationSel.disabled = false;
+
+        resultBox.style.display = 'none';
+        renderText();
+    }
+
+    /* ---------- Events ---------- */
+    input.addEventListener('input', () => {
+        if (!isRunning) return;
+        updateChars();
+        if (input.value.length >= currentText.length) endTest();
+    });
+
+    startBtn?.addEventListener('click', startTest);
+    resetBtn?.addEventListener('click', resetTest);
+
+    durationSel?.addEventListener('change', () => {
+        if (!isRunning) timerEl.textContent = durationSel.value;
+    });
+
+    /* ---------- Init ---------- */
+    input.disabled = true;
+    renderText();
+
+    /* ---------- Language Change হলে reset ---------- */
+    document.addEventListener('click', (e) => {
+        if (e.target.closest('#topLangBtn')) {
+            setTimeout(() => {
+                if (!isRunning) renderText();
+            }, 300);
+        }
+    });
+
+})();/* =========================================================
+   🌍 RELIGION PANEL — Open / Close / Nav Tabs
+========================================================= */
+
+(function initReligionPanel() {
+
+    const relOverlay = document.getElementById('relPanelOverlay');
+    const relClose   = document.getElementById('relClose');
+
+    if (!relOverlay) return;
+
+    /* ---------- Open / Close ---------- */
+    function openRelPanel() {
+        relOverlay.classList.add('active');
+        relOverlay.setAttribute('aria-hidden', 'false');
+        document.body.style.overflow = 'hidden';
+    }
+
+    function closeRelPanel() {
+        relOverlay.classList.remove('active');
+        relOverlay.setAttribute('aria-hidden', 'true');
+        document.body.style.overflow = '';
+    }
+
+    relClose?.addEventListener('click', closeRelPanel);
+
+    relOverlay.addEventListener('click', (e) => {
+        if (e.target === relOverlay) closeRelPanel();
+    });
+
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && relOverlay.classList.contains('active')) {
+            closeRelPanel();
+        }
+    });
+
+    /* ---------- Category Card Click → Panel Open ---------- */
+    const religionCard = document.querySelector('.lh-cat-card[data-category="religion"]');
+    religionCard?.addEventListener('click', (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+
+        const hub = document.getElementById('learningHubOverlay');
+        hub?.classList.remove('active');
+        hub?.setAttribute('aria-hidden', 'true');
+
+        setTimeout(() => openRelPanel(), 250);
+    });
+
+    /* ---------- Nav Tabs ---------- */
+    const navBtns  = relOverlay.querySelectorAll('.rel-nav-btn');
+    const sections = relOverlay.querySelectorAll('.rel-section');
+
+    navBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+            const target = btn.getAttribute('data-rel-jump');
+
+            navBtns.forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+
+            sections.forEach(sec => {
+                sec.style.display = sec.getAttribute('data-rel-section') === target ? '' : 'none';
+            });
+
+            const body = relOverlay.querySelector('.rel-body');
+            if (body) body.scrollTop = 0;
+        });
+    });
+
+    // Initially show only first section
+    sections.forEach((sec, i) => {
+        sec.style.display = i === 0 ? '' : 'none';
+    });
+
 })();
