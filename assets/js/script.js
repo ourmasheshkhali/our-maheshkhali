@@ -7942,4 +7942,1302 @@ const MORE_DATA = {
         sec.style.display = i === 0 ? '' : 'none';
     });
 
+})();/* =========================================================
+   🚀 SKILLS LAB PANEL — Open / Close / Nav Tabs
+========================================================= */
+
+(function initSkillPanel() {
+    const skillOverlay = document.getElementById('skillPanelOverlay');
+    const skillClose   = document.getElementById('skillClose');
+
+    if (!skillOverlay) return;
+
+    function openSkillPanel() {
+        skillOverlay.classList.add('active');
+        skillOverlay.setAttribute('aria-hidden', 'false');
+        document.body.style.overflow = 'hidden';
+    }
+
+    function closeSkillPanel() {
+        skillOverlay.classList.remove('active');
+        skillOverlay.setAttribute('aria-hidden', 'true');
+        document.body.style.overflow = '';
+    }
+
+    skillClose?.addEventListener('click', closeSkillPanel);
+
+    skillOverlay.addEventListener('click', (e) => {
+        if (e.target === skillOverlay) closeSkillPanel();
+    });
+
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && skillOverlay.classList.contains('active')) {
+            closeSkillPanel();
+        }
+    });
+
+    // Card Click to Open Panel
+    const skillCard = document.querySelector('.lh-cat-card[data-category="skills"]');
+    skillCard?.addEventListener('click', (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+
+        const hub = document.getElementById('learningHubOverlay');
+        hub?.classList.remove('active');
+        hub?.setAttribute('aria-hidden', 'true');
+
+        setTimeout(() => openSkillPanel(), 250);
+    });
+
+    // Nav Tabs
+    const navBtns  = skillOverlay.querySelectorAll('.skill-nav-btn');
+    const sections = skillOverlay.querySelectorAll('.skill-section');
+
+    navBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+            const target = btn.getAttribute('data-skill-jump');
+
+            navBtns.forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+
+            sections.forEach(sec => {
+                sec.style.display = sec.getAttribute('data-skill-section') === target ? '' : 'none';
+            });
+
+            const body = skillOverlay.querySelector('.skill-body');
+            if (body) body.scrollTop = 0;
+        });
+    });
+
+    // Initially show only first section
+    sections.forEach((sec, i) => {
+        sec.style.display = i === 0 ? '' : 'none';
+    });
+
+})();/* =========================================================
+   🎨 GRAPHIC DESIGN PANEL — Open / Close / Nav Tabs
+========================================================= */
+
+(function initDesignPanel() {
+    const designOverlay = document.getElementById('designPanelOverlay');
+    const designClose   = document.getElementById('designClose');
+
+    if (!designOverlay) return;
+
+    function openDesignPanel() {
+        designOverlay.classList.add('active');
+        designOverlay.setAttribute('aria-hidden', 'false');
+        document.body.style.overflow = 'hidden';
+    }
+
+    function closeDesignPanel() {
+        designOverlay.classList.remove('active');
+        designOverlay.setAttribute('aria-hidden', 'true');
+        document.body.style.overflow = '';
+    }
+
+    designClose?.addEventListener('click', closeDesignPanel);
+
+    designOverlay.addEventListener('click', (e) => {
+        if (e.target === designOverlay) closeDesignPanel();
+    });
+
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && designOverlay.classList.contains('active')) {
+            closeDesignPanel();
+        }
+    });
+
+    // Card Click to Open Panel
+    const designCard = document.querySelector('.lh-cat-card[data-category="graphic-design"]');
+    designCard?.addEventListener('click', (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+
+        const hub = document.getElementById('learningHubOverlay');
+        hub?.classList.remove('active');
+        hub?.setAttribute('aria-hidden', 'true');
+
+        setTimeout(() => openDesignPanel(), 250);
+    });
+
+    // Nav Tabs
+    const navBtns  = designOverlay.querySelectorAll('.design-nav-btn');
+    const sections = designOverlay.querySelectorAll('.design-section');
+
+    navBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+            const target = btn.getAttribute('data-design-jump');
+
+            navBtns.forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+
+            sections.forEach(sec => {
+                sec.style.display = sec.getAttribute('data-design-section') === target ? '' : 'none';
+            });
+
+            const body = designOverlay.querySelector('.design-body');
+            if (body) body.scrollTop = 0;
+        });
+    });
+
+    // Initially show only first section
+    sections.forEach((sec, i) => {
+        sec.style.display = i === 0 ? '' : 'none';
+    });
+
+})();/* =========================================================
+   🤖 AI HUB PANEL — Open / Close / Nav Tabs
+========================================================= */
+
+(function initAIPanel() {
+    const aiOverlay = document.getElementById('aiPanelOverlay');
+    const aiClose   = document.getElementById('aiClose');
+
+    if (!aiOverlay) return;
+
+    function openAIPanel() {
+        aiOverlay.classList.add('active');
+        aiOverlay.setAttribute('aria-hidden', 'false');
+        document.body.style.overflow = 'hidden';
+    }
+
+    function closeAIPanel() {
+        aiOverlay.classList.remove('active');
+        aiOverlay.setAttribute('aria-hidden', 'true');
+        document.body.style.overflow = '';
+    }
+
+    aiClose?.addEventListener('click', closeAIPanel);
+
+    aiOverlay.addEventListener('click', (e) => {
+        if (e.target === aiOverlay) closeAIPanel();
+    });
+
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && aiOverlay.classList.contains('active')) {
+            closeAIPanel();
+        }
+    });
+
+    // Card Click to Open Panel
+    const aiCard = document.querySelector('.lh-cat-card[data-category="ai"]');
+    aiCard?.addEventListener('click', (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+
+        const hub = document.getElementById('learningHubOverlay');
+        hub?.classList.remove('active');
+        hub?.setAttribute('aria-hidden', 'true');
+
+        setTimeout(() => openAIPanel(), 250);
+    });
+
+    // Nav Tabs
+    const navBtns  = aiOverlay.querySelectorAll('.ai-nav-btn');
+    const sections = aiOverlay.querySelectorAll('.ai-section');
+
+    navBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+            const target = btn.getAttribute('data-ai-jump');
+
+            navBtns.forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+
+            sections.forEach(sec => {
+                sec.style.display = sec.getAttribute('data-ai-section') === target ? '' : 'none';
+            });
+
+            const body = aiOverlay.querySelector('.ai-body');
+            if (body) body.scrollTop = 0;
+        });
+    });
+
+    // Initially show only first section
+    sections.forEach((sec, i) => {
+        sec.style.display = i === 0 ? '' : 'none';
+    });
+
+})();/* =========================================================
+   💻 DEVELOPER LAB PANEL — Open / Close / Nav Tabs
+========================================================= */
+
+(function initDevPanel() {
+    const devOverlay = document.getElementById('devPanelOverlay');
+    const devClose   = document.getElementById('devClose');
+
+    if (!devOverlay) return;
+
+    function openDevPanel() {
+        devOverlay.classList.add('active');
+        devOverlay.setAttribute('aria-hidden', 'false');
+        document.body.style.overflow = 'hidden';
+    }
+
+    function closeDevPanel() {
+        devOverlay.classList.remove('active');
+        devOverlay.setAttribute('aria-hidden', 'true');
+        document.body.style.overflow = '';
+    }
+
+    devClose?.addEventListener('click', closeDevPanel);
+
+    devOverlay.addEventListener('click', (e) => {
+        if (e.target === devOverlay) closeDevPanel();
+    });
+
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && devOverlay.classList.contains('active')) {
+            closeDevPanel();
+        }
+    });
+
+    // Card Click to Open Panel
+    const devCard = document.querySelector('.lh-cat-card[data-category="developer"]');
+    devCard?.addEventListener('click', (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+
+        const hub = document.getElementById('learningHubOverlay');
+        hub?.classList.remove('active');
+        hub?.setAttribute('aria-hidden', 'true');
+
+        setTimeout(() => openDevPanel(), 250);
+    });
+
+    // Nav Tabs
+    const navBtns  = devOverlay.querySelectorAll('.dev-nav-btn');
+    const sections = devOverlay.querySelectorAll('.dev-section');
+
+    navBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+            const target = btn.getAttribute('data-dev-jump');
+
+            navBtns.forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+
+            sections.forEach(sec => {
+                sec.style.display = sec.getAttribute('data-dev-section') === target ? '' : 'none';
+            });
+
+            const body = devOverlay.querySelector('.dev-body');
+            if (body) body.scrollTop = 0;
+        });
+    });
+
+    // Initially show only first section
+    sections.forEach((sec, i) => {
+        sec.style.display = i === 0 ? '' : 'none';
+    });
+
+})();/* =========================================================
+   🔬 RESEARCH LAB PANEL — Open / Close / Nav Tabs
+========================================================= */
+
+(function initResPanel() {
+    const resOverlay = document.getElementById('resPanelOverlay');
+    const resClose   = document.getElementById('resClose');
+
+    if (!resOverlay) return;
+
+    function openResPanel() {
+        resOverlay.classList.add('active');
+        resOverlay.setAttribute('aria-hidden', 'false');
+        document.body.style.overflow = 'hidden';
+    }
+
+    function closeResPanel() {
+        resOverlay.classList.remove('active');
+        resOverlay.setAttribute('aria-hidden', 'true');
+        document.body.style.overflow = '';
+    }
+
+    resClose?.addEventListener('click', closeResPanel);
+
+    resOverlay.addEventListener('click', (e) => {
+        if (e.target === resOverlay) closeResPanel();
+    });
+
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && resOverlay.classList.contains('active')) {
+            closeResPanel();
+        }
+    });
+
+    // Card Click to Open Panel
+    const resCard = document.querySelector('.lh-cat-card[data-category="research"]');
+    resCard?.addEventListener('click', (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+
+        const hub = document.getElementById('learningHubOverlay');
+        hub?.classList.remove('active');
+        hub?.setAttribute('aria-hidden', 'true');
+
+        setTimeout(() => openResPanel(), 250);
+    });
+
+    // Nav Tabs
+    const navBtns  = resOverlay.querySelectorAll('.res-nav-btn');
+    const sections = resOverlay.querySelectorAll('.res-section');
+
+    navBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+            const target = btn.getAttribute('data-res-jump');
+
+            navBtns.forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+
+            sections.forEach(sec => {
+                sec.style.display = sec.getAttribute('data-res-section') === target ? '' : 'none';
+            });
+
+            const body = resOverlay.querySelector('.res-body');
+            if (body) body.scrollTop = 0;
+        });
+    });
+
+    // Initially show only first section
+    sections.forEach((sec, i) => {
+        sec.style.display = i === 0 ? '' : 'none';
+    });
+
+})();/* =========================================================
+   💼 BUSINESS & E-COMMERCE PANEL (AGL)
+   Open / Close / Nav Tabs
+========================================================= */
+
+(function initBusPanel() {
+    const busOverlay = document.getElementById('busPanelOverlay');
+    const busClose   = document.getElementById('busClose');
+
+    if (!busOverlay) return;
+
+    function openBusPanel() {
+        busOverlay.classList.add('active');
+        busOverlay.setAttribute('aria-hidden', 'false');
+        document.body.style.overflow = 'hidden';
+    }
+
+    function closeBusPanel() {
+        busOverlay.classList.remove('active');
+        busOverlay.setAttribute('aria-hidden', 'true');
+        document.body.style.overflow = '';
+    }
+
+    busClose?.addEventListener('click', closeBusPanel);
+
+    busOverlay.addEventListener('click', (e) => {
+        if (e.target === busOverlay) closeBusPanel();
+    });
+
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && busOverlay.classList.contains('active')) {
+            closeBusPanel();
+        }
+    });
+
+    const busCard = document.querySelector('.lh-cat-card[data-category="business"]');
+    busCard?.addEventListener('click', (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+
+        const hub = document.getElementById('learningHubOverlay');
+        hub?.classList.remove('active');
+        hub?.setAttribute('aria-hidden', 'true');
+
+        setTimeout(() => openBusPanel(), 250);
+    });
+
+    const navBtns  = busOverlay.querySelectorAll('.bus-nav-btn');
+    const sections = busOverlay.querySelectorAll('.bus-section');
+
+    navBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+            const target = btn.getAttribute('data-bus-jump');
+
+            navBtns.forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+
+            sections.forEach(sec => {
+                sec.style.display = sec.getAttribute('data-bus-section') === target ? '' : 'none';
+            });
+
+            const body = busOverlay.querySelector('.bus-body');
+            if (body) body.scrollTop = 0;
+        });
+    });
+
+    sections.forEach((sec, i) => {
+        sec.style.display = i === 0 ? '' : 'none';
+    });
+
+})();/* =========================================================
+   🎬 CREATIVE STUDIO PANEL — Open / Close / Nav Tabs
+========================================================= */
+
+(function initCrePanel() {
+    const creOverlay = document.getElementById('crePanelOverlay');
+    const creClose   = document.getElementById('creClose');
+
+    if (!creOverlay) return;
+
+    function openCrePanel() {
+        creOverlay.classList.add('active');
+        creOverlay.setAttribute('aria-hidden', 'false');
+        document.body.style.overflow = 'hidden';
+    }
+
+    function closeCrePanel() {
+        creOverlay.classList.remove('active');
+        creOverlay.setAttribute('aria-hidden', 'true');
+        document.body.style.overflow = '';
+    }
+
+    creClose?.addEventListener('click', closeCrePanel);
+
+    creOverlay.addEventListener('click', (e) => {
+        if (e.target === creOverlay) closeCrePanel();
+    });
+
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && creOverlay.classList.contains('active')) {
+            closeCrePanel();
+        }
+    });
+
+    const creCard = document.querySelector('.lh-cat-card[data-category="creative"]');
+    creCard?.addEventListener('click', (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+
+        const hub = document.getElementById('learningHubOverlay');
+        hub?.classList.remove('active');
+        hub?.setAttribute('aria-hidden', 'true');
+
+        setTimeout(() => openCrePanel(), 250);
+    });
+
+    const navBtns  = creOverlay.querySelectorAll('.cre-nav-btn');
+    const sections = creOverlay.querySelectorAll('.cre-section');
+
+    navBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+            const target = btn.getAttribute('data-cre-jump');
+
+            navBtns.forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+
+            sections.forEach(sec => {
+                sec.style.display = sec.getAttribute('data-cre-section') === target ? '' : 'none';
+            });
+
+            const body = creOverlay.querySelector('.cre-body');
+            if (body) body.scrollTop = 0;
+        });
+    });
+
+    sections.forEach((sec, i) => {
+        sec.style.display = i === 0 ? '' : 'none';
+    });
+
+})();/* =========================================================
+   🌱 PROJECT LAB PANEL — Open / Close / Nav Tabs
+========================================================= */
+
+(function initProjPanel() {
+    const projOverlay = document.getElementById('projPanelOverlay');
+    const projClose   = document.getElementById('projClose');
+
+    if (!projOverlay) return;
+
+    function openProjPanel() {
+        projOverlay.classList.add('active');
+        projOverlay.setAttribute('aria-hidden', 'false');
+        document.body.style.overflow = 'hidden';
+    }
+
+    function closeProjPanel() {
+        projOverlay.classList.remove('active');
+        projOverlay.setAttribute('aria-hidden', 'true');
+        document.body.style.overflow = '';
+    }
+
+    projClose?.addEventListener('click', closeProjPanel);
+
+    projOverlay.addEventListener('click', (e) => {
+        if (e.target === projOverlay) closeProjPanel();
+    });
+
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && projOverlay.classList.contains('active')) {
+            closeProjPanel();
+        }
+    });
+
+    const projCard = document.querySelector('.lh-cat-card[data-category="project"]');
+    projCard?.addEventListener('click', (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+
+        const hub = document.getElementById('learningHubOverlay');
+        hub?.classList.remove('active');
+        hub?.setAttribute('aria-hidden', 'true');
+
+        setTimeout(() => openProjPanel(), 250);
+    });
+
+    const navBtns  = projOverlay.querySelectorAll('.proj-nav-btn');
+    const sections = projOverlay.querySelectorAll('.proj-section');
+
+    navBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+            const target = btn.getAttribute('data-proj-jump');
+
+            navBtns.forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+
+            sections.forEach(sec => {
+                sec.style.display = sec.getAttribute('data-proj-section') === target ? '' : 'none';
+            });
+
+            const body = projOverlay.querySelector('.proj-body');
+            if (body) body.scrollTop = 0;
+        });
+    });
+
+    sections.forEach((sec, i) => {
+        sec.style.display = i === 0 ? '' : 'none';
+    });
+
+})();/* =========================================================
+   🔗 UNIVERSAL TOOLBOX PANEL — Open / Close / Nav Tabs
+========================================================= */
+
+(function initToolPanel() {
+    const toolOverlay = document.getElementById('toolPanelOverlay');
+    const toolClose   = document.getElementById('toolClose');
+
+    if (!toolOverlay) return;
+
+    function openToolPanel() {
+        toolOverlay.classList.add('active');
+        toolOverlay.setAttribute('aria-hidden', 'false');
+        document.body.style.overflow = 'hidden';
+    }
+
+    function closeToolPanel() {
+        toolOverlay.classList.remove('active');
+        toolOverlay.setAttribute('aria-hidden', 'true');
+        document.body.style.overflow = '';
+    }
+
+    toolClose?.addEventListener('click', closeToolPanel);
+
+    toolOverlay.addEventListener('click', (e) => {
+        if (e.target === toolOverlay) closeToolPanel();
+    });
+
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && toolOverlay.classList.contains('active')) {
+            closeToolPanel();
+        }
+    });
+
+    const toolCard = document.querySelector('.lh-cat-card[data-category="tools"]');
+    toolCard?.addEventListener('click', (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+
+        const hub = document.getElementById('learningHubOverlay');
+        hub?.classList.remove('active');
+        hub?.setAttribute('aria-hidden', 'true');
+
+        setTimeout(() => openToolPanel(), 250);
+    });
+
+    const navBtns  = toolOverlay.querySelectorAll('.tool-nav-btn');
+    const sections = toolOverlay.querySelectorAll('.tool-section');
+
+    navBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+            const target = btn.getAttribute('data-tool-jump');
+
+            navBtns.forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+
+            sections.forEach(sec => {
+                sec.style.display = sec.getAttribute('data-tool-section') === target ? '' : 'none';
+            });
+
+            const body = toolOverlay.querySelector('.tool-body');
+            if (body) body.scrollTop = 0;
+        });
+    });
+
+    sections.forEach((sec, i) => {
+        sec.style.display = i === 0 ? '' : 'none';
+    });
+
+})();/* =========================================================
+   📖 DICTIONARY & LANGUAGE PANEL — Open / Close / Nav Tabs
+========================================================= */
+
+(function initDictPanel() {
+    const dictOverlay = document.getElementById('dictPanelOverlay');
+    const dictClose   = document.getElementById('dictClose');
+
+    if (!dictOverlay) return;
+
+    function openDictPanel() {
+        dictOverlay.classList.add('active');
+        dictOverlay.setAttribute('aria-hidden', 'false');
+        document.body.style.overflow = 'hidden';
+    }
+
+    function closeDictPanel() {
+        dictOverlay.classList.remove('active');
+        dictOverlay.setAttribute('aria-hidden', 'true');
+        document.body.style.overflow = '';
+    }
+
+    dictClose?.addEventListener('click', closeDictPanel);
+
+    dictOverlay.addEventListener('click', (e) => {
+        if (e.target === dictOverlay) closeDictPanel();
+    });
+
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && dictOverlay.classList.contains('active')) {
+            closeDictPanel();
+        }
+    });
+
+    const dictCard = document.querySelector('.lh-cat-card[data-category="dictionary"]');
+    dictCard?.addEventListener('click', (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+
+        const hub = document.getElementById('learningHubOverlay');
+        hub?.classList.remove('active');
+        hub?.setAttribute('aria-hidden', 'true');
+
+        setTimeout(() => openDictPanel(), 250);
+    });
+
+    const navBtns  = dictOverlay.querySelectorAll('.dict-nav-btn');
+    const sections = dictOverlay.querySelectorAll('.dict-section');
+
+    navBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+            const target = btn.getAttribute('data-dict-jump');
+
+            navBtns.forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+
+            sections.forEach(sec => {
+                sec.style.display = sec.getAttribute('data-dict-section') === target ? '' : 'none';
+            });
+
+            const body = dictOverlay.querySelector('.dict-body');
+            if (body) body.scrollTop = 0;
+        });
+    });
+
+    sections.forEach((sec, i) => {
+        sec.style.display = i === 0 ? '' : 'none';
+    });
+
+})();/* =========================================================
+   🎮 BRAIN & EXPLORE PANEL — Open / Close / Nav Tabs
+========================================================= */
+
+(function initBrainPanel() {
+    const brainOverlay = document.getElementById('brainPanelOverlay');
+    const brainClose   = document.getElementById('brainClose');
+
+    if (!brainOverlay) return;
+
+    function openBrainPanel() {
+        brainOverlay.classList.add('active');
+        brainOverlay.setAttribute('aria-hidden', 'false');
+        document.body.style.overflow = 'hidden';
+    }
+
+    function closeBrainPanel() {
+        brainOverlay.classList.remove('active');
+        brainOverlay.setAttribute('aria-hidden', 'true');
+        document.body.style.overflow = '';
+    }
+
+    brainClose?.addEventListener('click', closeBrainPanel);
+
+    brainOverlay.addEventListener('click', (e) => {
+        if (e.target === brainOverlay) closeBrainPanel();
+    });
+
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && brainOverlay.classList.contains('active')) {
+            closeBrainPanel();
+        }
+    });
+
+    const brainCard = document.querySelector('.lh-cat-card[data-category="games"]');
+    brainCard?.addEventListener('click', (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+
+        const hub = document.getElementById('learningHubOverlay');
+        hub?.classList.remove('active');
+        hub?.setAttribute('aria-hidden', 'true');
+
+        setTimeout(() => openBrainPanel(), 250);
+    });
+
+    const navBtns  = brainOverlay.querySelectorAll('.brain-nav-btn');
+    const sections = brainOverlay.querySelectorAll('.brain-section');
+
+    navBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+            const target = btn.getAttribute('data-brain-jump');
+
+            navBtns.forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+
+            sections.forEach(sec => {
+                sec.style.display = sec.getAttribute('data-brain-section') === target ? '' : 'none';
+            });
+
+            const body = brainOverlay.querySelector('.brain-body');
+            if (body) body.scrollTop = 0;
+        });
+    });
+
+    sections.forEach((sec, i) => {
+        sec.style.display = i === 0 ? '' : 'none';
+    });
+
+})();/* =========================================================
+   🎯 CHALLENGE ARENA PANEL — Open / Close / Nav Tabs
+========================================================= */
+
+(function initChalPanel() {
+    const chalOverlay = document.getElementById('chalPanelOverlay');
+    const chalClose   = document.getElementById('chalClose');
+
+    if (!chalOverlay) return;
+
+    function openChalPanel() {
+        chalOverlay.classList.add('active');
+        chalOverlay.setAttribute('aria-hidden', 'false');
+        document.body.style.overflow = 'hidden';
+    }
+
+    function closeChalPanel() {
+        chalOverlay.classList.remove('active');
+        chalOverlay.setAttribute('aria-hidden', 'true');
+        document.body.style.overflow = '';
+    }
+
+    chalClose?.addEventListener('click', closeChalPanel);
+
+    chalOverlay.addEventListener('click', (e) => {
+        if (e.target === chalOverlay) closeChalPanel();
+    });
+
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && chalOverlay.classList.contains('active')) {
+            closeChalPanel();
+        }
+    });
+
+    const chalCard = document.querySelector('.lh-cat-card[data-category="challenge"]');
+    chalCard?.addEventListener('click', (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+
+        const hub = document.getElementById('learningHubOverlay');
+        hub?.classList.remove('active');
+        hub?.setAttribute('aria-hidden', 'true');
+
+        setTimeout(() => openChalPanel(), 250);
+    });
+
+    const navBtns  = chalOverlay.querySelectorAll('.chal-nav-btn');
+    const sections = chalOverlay.querySelectorAll('.chal-section');
+
+    navBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+            const target = btn.getAttribute('data-chal-jump');
+
+            navBtns.forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+
+            sections.forEach(sec => {
+                sec.style.display = sec.getAttribute('data-chal-section') === target ? '' : 'none';
+            });
+
+            const body = chalOverlay.querySelector('.chal-body');
+            if (body) body.scrollTop = 0;
+        });
+    });
+
+    sections.forEach((sec, i) => {
+        sec.style.display = i === 0 ? '' : 'none';
+    });
+
+})();/* =========================================================
+   🌍 WORLD EXPLORER PANEL — Open / Close / Nav Tabs
+========================================================= */
+
+(function initWorldPanel() {
+    const worldOverlay = document.getElementById('worldPanelOverlay');
+    const worldClose   = document.getElementById('worldClose');
+
+    if (!worldOverlay) return;
+
+    function openWorldPanel() {
+        worldOverlay.classList.add('active');
+        worldOverlay.setAttribute('aria-hidden', 'false');
+        document.body.style.overflow = 'hidden';
+    }
+
+    function closeWorldPanel() {
+        worldOverlay.classList.remove('active');
+        worldOverlay.setAttribute('aria-hidden', 'true');
+        document.body.style.overflow = '';
+    }
+
+    worldClose?.addEventListener('click', closeWorldPanel);
+
+    worldOverlay.addEventListener('click', (e) => {
+        if (e.target === worldOverlay) closeWorldPanel();
+    });
+
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && worldOverlay.classList.contains('active')) {
+            closeWorldPanel();
+        }
+    });
+
+    const worldCard = document.querySelector('.lh-cat-card[data-category="world"]');
+    worldCard?.addEventListener('click', (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+
+        const hub = document.getElementById('learningHubOverlay');
+        hub?.classList.remove('active');
+        hub?.setAttribute('aria-hidden', 'true');
+
+        setTimeout(() => openWorldPanel(), 250);
+    });
+
+    const navBtns  = worldOverlay.querySelectorAll('.world-nav-btn');
+    const sections = worldOverlay.querySelectorAll('.world-section');
+
+    navBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+            const target = btn.getAttribute('data-world-jump');
+
+            navBtns.forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+
+            sections.forEach(sec => {
+                sec.style.display = sec.getAttribute('data-world-section') === target ? '' : 'none';
+            });
+
+            const body = worldOverlay.querySelector('.world-body');
+            if (body) body.scrollTop = 0;
+        });
+    });
+
+    sections.forEach((sec, i) => {
+        sec.style.display = i === 0 ? '' : 'none';
+    });
+
+})();/* =========================================================
+   🇧🇩 BANGLADESH HUB PANEL — Open / Close / Nav Tabs
+========================================================= */
+
+(function initBdPanel() {
+    const bdOverlay = document.getElementById('bdPanelOverlay');
+    const bdClose   = document.getElementById('bdClose');
+
+    if (!bdOverlay) return;
+
+    function openBdPanel() {
+        bdOverlay.classList.add('active');
+        bdOverlay.setAttribute('aria-hidden', 'false');
+        document.body.style.overflow = 'hidden';
+    }
+
+    function closeBdPanel() {
+        bdOverlay.classList.remove('active');
+        bdOverlay.setAttribute('aria-hidden', 'true');
+        document.body.style.overflow = '';
+    }
+
+    bdClose?.addEventListener('click', closeBdPanel);
+
+    bdOverlay.addEventListener('click', (e) => {
+        if (e.target === bdOverlay) closeBdPanel();
+    });
+
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && bdOverlay.classList.contains('active')) {
+            closeBdPanel();
+        }
+    });
+
+    const bdCard = document.querySelector('.lh-cat-card[data-category="bangladesh"]');
+    bdCard?.addEventListener('click', (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+
+        const hub = document.getElementById('learningHubOverlay');
+        hub?.classList.remove('active');
+        hub?.setAttribute('aria-hidden', 'true');
+
+        setTimeout(() => openBdPanel(), 250);
+    });
+
+    const navBtns  = bdOverlay.querySelectorAll('.bd-nav-btn');
+    const sections = bdOverlay.querySelectorAll('.bd-section');
+
+    navBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+            const target = btn.getAttribute('data-bd-jump');
+
+            navBtns.forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+
+            sections.forEach(sec => {
+                sec.style.display = sec.getAttribute('data-bd-section') === target ? '' : 'none';
+            });
+
+            const body = bdOverlay.querySelector('.bd-body');
+            if (body) body.scrollTop = 0;
+        });
+    });
+
+    sections.forEach((sec, i) => {
+        sec.style.display = i === 0 ? '' : 'none';
+    });
+
+})();/* =========================================================
+   🏝️ OUR MAHESHKHALI PANEL — Open / Close / Nav Tabs
+========================================================= */
+
+(function initMhkPanel() {
+    const mhkOverlay = document.getElementById('mhkPanelOverlay');
+    const mhkClose   = document.getElementById('mhkClose');
+
+    if (!mhkOverlay) return;
+
+    function openMhkPanel() {
+        mhkOverlay.classList.add('active');
+        mhkOverlay.setAttribute('aria-hidden', 'false');
+        document.body.style.overflow = 'hidden';
+    }
+
+    function closeMhkPanel() {
+        mhkOverlay.classList.remove('active');
+        mhkOverlay.setAttribute('aria-hidden', 'true');
+        document.body.style.overflow = '';
+    }
+
+    mhkClose?.addEventListener('click', closeMhkPanel);
+
+    mhkOverlay.addEventListener('click', (e) => {
+        if (e.target === mhkOverlay) closeMhkPanel();
+    });
+
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && mhkOverlay.classList.contains('active')) {
+            closeMhkPanel();
+        }
+    });
+
+    const mhkCard = document.querySelector('.lh-cat-card[data-category="maheshkhali"]');
+    mhkCard?.addEventListener('click', (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+
+        const hub = document.getElementById('learningHubOverlay');
+        hub?.classList.remove('active');
+        hub?.setAttribute('aria-hidden', 'true');
+
+        setTimeout(() => openMhkPanel(), 250);
+    });
+
+    const navBtns  = mhkOverlay.querySelectorAll('.mhk-nav-btn');
+    const sections = mhkOverlay.querySelectorAll('.mhk-section');
+
+    navBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+            const target = btn.getAttribute('data-mhk-jump');
+
+            navBtns.forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+
+            sections.forEach(sec => {
+                sec.style.display = sec.getAttribute('data-mhk-section') === target ? '' : 'none';
+            });
+
+            const body = mhkOverlay.querySelector('.mhk-body');
+            if (body) body.scrollTop = 0;
+        });
+    });
+
+    sections.forEach((sec, i) => {
+        sec.style.display = i === 0 ? '' : 'none';
+    });
+
+})();/* =========================================================
+   👤 MY DASHBOARD PANEL — Open / Close / Nav Tabs / Profile
+========================================================= */
+
+(function initDashPanel() {
+    const dashOverlay = document.getElementById('dashPanelOverlay');
+    const dashClose   = document.getElementById('dashClose');
+    const dashUserName = document.getElementById('dashUserName');
+    const dashUserEmail = document.getElementById('dashUserEmail');
+    const dashEditBtn = document.getElementById('dashEditBtn');
+    const dashAvatar = document.getElementById('dashAvatar');
+    const dashXP = document.getElementById('dashXP');
+    const dashScore = document.getElementById('dashScore');
+    const dashLevel = document.getElementById('dashLevel');
+
+    if (!dashOverlay) return;
+
+    /* ---------- User Data Handling ---------- */
+    function loadUserData() {
+        const savedName = localStorage.getItem('userName') || 'Guest User';
+        const savedEmail = localStorage.getItem('userEmail') || 'Not logged in';
+        
+        if (dashUserName) dashUserName.textContent = savedName;
+        if (dashUserEmail) dashUserEmail.textContent = savedEmail;
+        
+        if (savedName !== 'Guest User') {
+            dashAvatar.textContent = savedName.charAt(0).toUpperCase();
+        }
+
+        // Load stats from SPIN system
+        const spinXP = localStorage.getItem('lhXP') || '0';
+        const spinScore = localStorage.getItem('lhScore') || '0';
+        const spinLevel = localStorage.getItem('lhLevel') || 'Beginner';
+        
+        if (dashXP) dashXP.textContent = spinXP;
+        if (dashScore) dashScore.textContent = spinScore;
+        if (dashLevel) dashLevel.textContent = spinLevel;
+    }
+
+    /* ---------- Open / Close ---------- */
+    function openDashPanel() {
+        loadUserData();
+        dashOverlay.classList.add('active');
+        dashOverlay.setAttribute('aria-hidden', 'false');
+        document.body.style.overflow = 'hidden';
+    }
+
+    function closeDashPanel() {
+        dashOverlay.classList.remove('active');
+        dashOverlay.setAttribute('aria-hidden', 'true');
+        document.body.style.overflow = '';
+    }
+
+    dashClose?.addEventListener('click', closeDashPanel);
+
+    dashOverlay.addEventListener('click', (e) => {
+        if (e.target === dashOverlay) closeDashPanel();
+    });
+
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && dashOverlay.classList.contains('active')) {
+            closeDashPanel();
+        }
+    });
+
+    /* ---------- Edit Profile ---------- */
+    dashEditBtn?.addEventListener('click', () => {
+        const currentName = localStorage.getItem('userName') || '';
+        const newName = prompt("আপনার নাম লিখুন (Enter your name):", currentName);
+        
+        if (newName && newName.trim() !== '') {
+            localStorage.setItem('userName', newName.trim());
+            loadUserData();
+            alert('✅ নাম সফলভাবে আপডেট হয়েছে!');
+        }
+    });
+
+    /* ---------- Card Click to Open Panel ---------- */
+    const dashCard = document.querySelector('.lh-cat-card[data-category="my"]');
+    dashCard?.addEventListener('click', (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+
+        const hub = document.getElementById('learningHubOverlay');
+        hub?.classList.remove('active');
+        hub?.setAttribute('aria-hidden', 'true');
+
+        setTimeout(() => openDashPanel(), 250);
+    });
+
+    /* ---------- Nav Tabs ---------- */
+    const navBtns  = dashOverlay.querySelectorAll('.dash-nav-btn');
+    const sections = dashOverlay.querySelectorAll('.dash-section');
+
+    navBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+            const target = btn.getAttribute('data-dash-jump');
+
+            navBtns.forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+
+            sections.forEach(sec => {
+                sec.style.display = sec.getAttribute('data-dash-section') === target ? '' : 'none';
+            });
+
+            const body = dashOverlay.querySelector('.dash-body');
+            if (body) body.scrollTop = 0;
+        });
+    });
+
+    sections.forEach((sec, i) => {
+        sec.style.display = i === 0 ? '' : 'none';
+    });
+
+})();/* =========================================================
+   🤝 OUR MAHESHKHALI TEAM (OMT) PANEL — Open / Close / Registration
+========================================================= */
+
+(function initOmtPanel() {
+    const omtOverlay = document.getElementById('omtPanelOverlay');
+    const omtClose   = document.getElementById('omtClose');
+    const omtForm    = document.getElementById('omtRegForm');
+    const omtNameInput = document.getElementById('omtName');
+    const omtUnionInput = document.getElementById('omtUnion');
+    const membersList = document.getElementById('omtMembersList');
+
+    if (!omtOverlay) return;
+
+    /* ---------- Load & Save Members (LocalStorage) ---------- */
+    function loadMembers() {
+        const members = JSON.parse(localStorage.getItem('omtMembers') || '[]');
+        
+        // ফাউন্ডার ডিফল্ট কার্ড
+        let html = `
+            <div class="omt-member-card">
+                <div class="omt-member-avatar">👨‍💻</div>
+                <strong>Badsha Solyman</strong>
+                <small>Founder • Matarbari</small>
+            </div>
+        `;
+        
+        // রেজিস্টার্ড ইউজারদের কার্ড
+        members.forEach(m => {
+            html += `
+                <div class="omt-member-card">
+                    <div class="omt-member-avatar">👤</div>
+                    <strong>${m.name}</strong>
+                    <small>Member • ${m.union}</small>
+                </div>
+            `;
+        });
+        
+        if (membersList) membersList.innerHTML = html;
+    }
+
+    /* ---------- Register Form Submit ---------- */
+    omtForm?.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const name = omtNameInput.value.trim();
+        const union = omtUnionInput.value;
+
+        if (name && union) {
+            const members = JSON.parse(localStorage.getItem('omtMembers') || '[]');
+            
+            // ডুপ্লিকেট চেক
+            if (members.some(m => m.name.toLowerCase() === name.toLowerCase())) {
+                alert('⚠️ এই নামে ইতিমধ্যে রেজিস্ট্রেশন করা হয়েছে!');
+                return;
+            }
+
+            // নতুন মেম্বার সেভ
+            members.push({ name, union });
+            localStorage.setItem('omtMembers', JSON.stringify(members));
+            
+            alert('✅ সফলভাবে OMT-তে রেজিস্ট্রেশন সম্পন্ন হয়েছে! স্বাগতম।');
+            omtForm.reset();
+            loadMembers(); // লিস্ট রিলোড করুন
+            
+            // রেজিস্ট্রেশনের পর সোজা মেম্বার ট্যাবে চলে যাওয়া
+            const memberTab = document.querySelector('.omt-nav-btn[data-omt-jump="members"]');
+            if (memberTab) memberTab.click();
+        }
+    });
+
+    /* ---------- Open / Close ---------- */
+    function openOmtPanel() {
+        loadMembers();
+        omtOverlay.classList.add('active');
+        omtOverlay.setAttribute('aria-hidden', 'false');
+        document.body.style.overflow = 'hidden';
+    }
+
+    function closeOmtPanel() {
+        omtOverlay.classList.remove('active');
+        omtOverlay.setAttribute('aria-hidden', 'true');
+        document.body.style.overflow = '';
+    }
+
+    omtClose?.addEventListener('click', closeOmtPanel);
+    omtOverlay.addEventListener('click', (e) => {
+        if (e.target === omtOverlay) closeOmtPanel();
+    });
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && omtOverlay.classList.contains('active')) {
+            closeOmtPanel();
+        }
+    });
+
+    /* ---------- Card Click to Open Panel ---------- */
+    const omtCard = document.querySelector('.lh-cat-card[data-category="community"]');
+    omtCard?.addEventListener('click', (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+
+        const hub = document.getElementById('learningHubOverlay');
+        hub?.classList.remove('active');
+        hub?.setAttribute('aria-hidden', 'true');
+
+        setTimeout(() => openOmtPanel(), 250);
+    });
+
+    /* ---------- Nav Tabs ---------- */
+    const navBtns  = omtOverlay.querySelectorAll('.omt-nav-btn');
+    const sections = omtOverlay.querySelectorAll('.omt-section');
+
+    navBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+            const target = btn.getAttribute('data-omt-jump');
+
+            navBtns.forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+
+            sections.forEach(sec => {
+                sec.style.display = sec.getAttribute('data-omt-section') === target ? '' : 'none';
+            });
+
+            const body = omtOverlay.querySelector('.omt-body');
+            if (body) body.scrollTop = 0;
+        });
+    });
+
+    // Initialize
+    loadMembers();
+    sections.forEach((sec, i) => {
+        sec.style.display = i === 0 ? '' : 'none';
+    });
+
 })();
