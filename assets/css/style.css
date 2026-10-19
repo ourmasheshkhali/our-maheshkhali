@@ -22178,4 +22178,386 @@ body.light-theme .omt-form-group input, body.light-theme .omt-form-group select 
     width: 95% !important;
     margin: 0 auto !important;
     overflow-x: hidden !important;
+}/* =========================================================
+   🚨 EMERGENCY PANEL — Premium 3D Styles
+========================================================= */
+
+.emg-panel-overlay {
+    position: fixed; inset: 0; background: rgba(5, 10, 25, 0.85);
+    backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px);
+    z-index: 9999; display: flex; align-items: center; justify-content: center;
+    padding: 16px; opacity: 0; visibility: hidden;
+    transition: opacity 0.35s ease, visibility 0.35s ease;
 }
+
+.emg-panel-overlay.active { opacity: 1; visibility: visible; }
+
+.emg-panel {
+    position: relative; width: 100%; max-width: 800px; max-height: 92vh;
+    overflow-y: auto; background: linear-gradient(160deg, rgba(15, 22, 45, 0.98), rgba(25, 35, 65, 0.98));
+    border: 2px solid rgba(255, 60, 60, 0.5); border-radius: 22px; color: #fff;
+    font-family: 'Hind Siliguri', 'Segoe UI', system-ui, sans-serif;
+    box-shadow: 0 30px 80px rgba(0, 0, 0, 0.6), 0 0 80px rgba(255, 60, 60, 0.15);
+    transform: translateY(30px) scale(0.96); opacity: 0;
+    transition: transform 0.45s cubic-bezier(.2,.8,.2,1), opacity 0.35s ease;
+}
+
+.emg-panel-overlay.active .emg-panel { transform: translateY(0) scale(1); opacity: 1; }
+
+/* Header */
+.emg-header {
+    position: sticky; top: 0; z-index: 10; display: flex; align-items: center;
+    justify-content: space-between; padding: 18px 24px;
+    background: linear-gradient(180deg, rgba(15, 22, 45, 0.98), rgba(15, 22, 45, 0.9));
+    border-bottom: 1px solid rgba(255, 60, 60, 0.3); backdrop-filter: blur(10px);
+}
+
+.emg-header-left { display: flex; align-items: center; gap: 14px; }
+.emg-header-icon { font-size: 32px; filter: drop-shadow(0 0 12px rgba(255, 60, 60, 0.6)); }
+
+.emg-title {
+    font-size: clamp(1.1rem, 2.5vw, 1.4rem); font-weight: 800; margin: 0 0 2px;
+    background: linear-gradient(90deg, #ff3c3c, #ffaa00); background-size: 200% 100%;
+    -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;
+    animation: emgGradient 2s ease infinite;
+}
+
+@keyframes emgGradient {
+    0%, 100% { background-position: 0% 50%; }
+    50%      { background-position: 100% 50%; }
+}
+
+.emg-subtitle { font-size: 12px; color: rgba(255, 255, 255, 0.65); margin: 0; }
+
+.emg-close {
+    width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center;
+    justify-content: center; background: rgba(255, 255, 255, 0.08); border: 1px solid rgba(255, 255, 255, 0.18);
+    color: #fff; font-size: 16px; cursor: pointer; transition: transform 0.3s ease, background 0.3s ease;
+}
+
+.emg-close:hover { transform: rotate(90deg) scale(1.1); background: rgba(255, 60, 60, 0.3); }
+
+/* Body & Grid */
+.emg-body { padding: 24px; }
+.emg-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 14px; }
+
+.emg-card {
+    display: flex; flex-direction: column; align-items: center; text-align: center;
+    padding: 20px 14px; border-radius: 16px; background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.1); color: #fff; text-decoration: none;
+    transition: all 0.3s ease; transform-style: preserve-3d;
+}
+
+/* 3D Hover Effect */
+.emg-card:hover { 
+    transform: translateY(-5px) translateZ(20px) rotateX(5deg) scale(1.05); 
+    background: rgba(255, 255, 255, 0.08); 
+    border-color: rgba(255, 255, 255, 0.3);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4);
+}
+
+.emg-danger { border-color: rgba(255, 60, 60, 0.6); background: rgba(255, 60, 60, 0.1); }
+.emg-danger:hover { 
+    background: rgba(255, 60, 60, 0.2); 
+    border-color: #ff3c3c; 
+    box-shadow: 0 15px 30px rgba(255, 60, 60, 0.5); 
+    animation: emgPulse 1.5s infinite;
+}
+
+@keyframes emgPulse {
+    0%, 100% { box-shadow: 0 15px 30px rgba(255, 60, 60, 0.5); }
+    50% { box-shadow: 0 15px 40px rgba(255, 60, 60, 0.8); }
+}
+
+.emg-card-icon { font-size: 28px; margin-bottom: 8px; filter: drop-shadow(0 4px 6px rgba(0,0,0,0.3)); }
+.emg-card strong { font-size: 14px; margin-bottom: 4px; }
+.emg-number { font-size: 20px; font-weight: 800; color: #ffaa00; }
+.emg-danger .emg-number { color: #ff3c3c; }
+
+.emg-footer {
+    padding: 18px 24px; text-align: center; background: rgba(0, 0, 0, 0.3);
+    border-top: 1px solid rgba(255, 255, 255, 0.08); font-size: 12px; color: rgba(255, 255, 255, 0.6);
+}
+
+/* Mobile */
+@media (max-width: 560px) {
+    .emg-header, .emg-body { padding: 14px; }
+    .emg-grid { grid-template-columns: repeat(2, 1fr); }
+}/* =========================================================
+   👥 OUR TEAM MAHESHKHALI (OTM) PANEL — STYLES
+========================================================= */
+
+.otm-panel-overlay {
+    position: fixed; inset: 0; background: rgba(5, 10, 25, 0.85);
+    backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px);
+    z-index: 9999; display: flex; align-items: center; justify-content: center;
+    padding: 16px; opacity: 0; visibility: hidden;
+    transition: opacity 0.35s ease, visibility 0.35s ease;
+}
+
+.otm-panel-overlay.active { opacity: 1; visibility: visible; }
+
+.otm-panel {
+    position: relative; width: 100%; max-width: 900px; max-height: 92vh;
+    overflow-y: auto; background: linear-gradient(160deg, rgba(15, 22, 45, 0.98), rgba(25, 35, 65, 0.98));
+    border: 1px solid rgba(0, 224, 255, 0.3); border-radius: 22px; color: #fff;
+    font-family: 'Hind Siliguri', 'Segoe UI', system-ui, sans-serif;
+    box-shadow: 0 30px 80px rgba(0, 0, 0, 0.6), 0 0 80px rgba(0, 224, 255, 0.15);
+    transform: translateY(30px) scale(0.96); opacity: 0;
+    transition: transform 0.45s cubic-bezier(.2,.8,.2,1), opacity 0.35s ease;
+}
+
+.otm-panel-overlay.active .otm-panel { transform: translateY(0) scale(1); opacity: 1; }
+
+/* Header */
+.otm-header {
+    position: sticky; top: 0; z-index: 10; display: flex; align-items: center;
+    justify-content: space-between; padding: 18px 24px;
+    background: linear-gradient(180deg, rgba(15, 22, 45, 0.98), rgba(15, 22, 45, 0.9));
+    border-bottom: 1px solid rgba(0, 224, 255, 0.2); backdrop-filter: blur(10px);
+}
+
+.otm-header-left { display: flex; align-items: center; gap: 14px; }
+.otm-header-icon { font-size: 32px; filter: drop-shadow(0 0 12px rgba(0, 224, 255, 0.6)); }
+
+.otm-title {
+    font-size: clamp(1.1rem, 2.5vw, 1.4rem); font-weight: 800; margin: 0 0 2px;
+    background: linear-gradient(90deg, #00e0ff, #ff2e88); background-size: 200% 100%;
+    -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;
+    animation: otmGradient 6s ease infinite;
+}
+
+@keyframes otmGradient {
+    0%, 100% { background-position: 0% 50%; }
+    50%      { background-position: 100% 50%; }
+}
+
+.otm-subtitle { font-size: 12px; color: rgba(255, 255, 255, 0.65); margin: 0; }
+
+.otm-close {
+    width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center;
+    justify-content: center; background: rgba(255, 255, 255, 0.08); border: 1px solid rgba(255, 255, 255, 0.18);
+    color: #fff; font-size: 16px; cursor: pointer; transition: transform 0.3s ease, background 0.3s ease;
+}
+
+.otm-close:hover { transform: rotate(90deg) scale(1.1); background: rgba(255, 60, 60, 0.3); }
+
+/* Nav Tabs */
+.otm-nav {
+    display: flex; flex-wrap: wrap; gap: 8px; padding: 14px 20px;
+    background: rgba(0, 0, 0, 0.25); border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    position: sticky; top: 74px; z-index: 9;
+}
+
+.otm-nav-btn {
+    padding: 8px 15px; border-radius: 20px; background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.12); color: rgba(255, 255, 255, 0.85);
+    font-size: 12.5px; font-weight: 600; font-family: inherit; cursor: pointer; transition: all 0.3s ease;
+}
+
+.otm-nav-btn:hover { background: rgba(0, 224, 255, 0.15); border-color: rgba(0, 224, 255, 0.5); transform: translateY(-2px); }
+.otm-nav-btn.active { background: linear-gradient(135deg, #00e0ff, #ff2e88); border-color: transparent; color: #fff; box-shadow: 0 6px 18px rgba(0, 224, 255, 0.45); }
+
+/* Body & Grid */
+.otm-body { padding: 20px 24px 30px; }
+.otm-section { margin-bottom: 28px; }
+.otm-section-title { display: flex; align-items: center; gap: 8px; font-size: 16px; font-weight: 800; margin: 0 0 12px; padding-bottom: 10px; border-bottom: 1px solid rgba(255, 255, 255, 0.1); }
+.otm-intro { font-size: 13px; color: rgba(255, 255, 255, 0.7); margin: 0 0 16px; line-height: 1.6; }
+
+/* Form Styles */
+.otm-form-container {
+    background: rgba(255, 255, 255, 0.04); border: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 20px; border-radius: 16px; max-width: 500px;
+}
+
+.otm-form-group { margin-bottom: 16px; }
+.otm-form-group label { display: block; font-size: 13px; margin-bottom: 6px; color: rgba(255, 255, 255, 0.8); }
+.otm-form-group input, .otm-form-group select {
+    width: 100%; padding: 12px 14px; border-radius: 10px;
+    background: rgba(0, 0, 0, 0.2); border: 1px solid rgba(255, 255, 255, 0.15);
+    color: #fff; font-family: inherit; font-size: 14px; outline: none; transition: border 0.3s;
+}
+.otm-form-group input:focus, .otm-form-group select:focus { border-color: #00e0ff; }
+.otm-form-group select option { background: #1a1f3a; }
+
+.otm-submit-btn {
+    width: 100%; padding: 14px; border-radius: 10px; border: none;
+    background: linear-gradient(135deg, #00e0ff, #ff2e88); color: #fff;
+    font-size: 15px; font-weight: 800; cursor: pointer; transition: transform 0.3s, box-shadow 0.3s;
+}
+.otm-submit-btn:hover { transform: translateY(-2px); box-shadow: 0 8px 20px rgba(0, 224, 255, 0.4); }
+
+/* Members Grid */
+.otm-members-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 12px; }
+.otm-member-card {
+    background: rgba(255, 255, 255, 0.04); border: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 20px 16px; border-radius: 12px; text-align: center;
+    transition: transform 0.3s, border-color 0.3s;
+}
+.otm-member-card:hover { transform: translateY(-4px); border-color: rgba(0, 224, 255, 0.5); }
+.otm-member-avatar { font-size: 40px; margin-bottom: 8px; }
+.otm-member-card strong { display: block; font-size: 14px; color: #fff; margin-bottom: 4px; }
+.otm-member-card small { font-size: 12px; color: rgba(255, 255, 255, 0.6); }
+
+/* Links Grid */
+.otm-links-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 10px; }
+.otm-link-card {
+    display: flex; flex-direction: column; gap: 4px; padding: 14px 16px; border-radius: 12px;
+    background: rgba(255, 255, 255, 0.04); border: 1px solid rgba(255, 255, 255, 0.1);
+    color: #fff; text-decoration: none; transition: all 0.35s ease; transform-style: preserve-3d;
+}
+.otm-link-card:hover {
+    transform: translateY(-4px) translateZ(15px); background: rgba(0, 224, 255, 0.08);
+    border-color: rgba(0, 224, 255, 0.5); box-shadow: 0 12px 28px rgba(0, 224, 255, 0.25);
+}
+.otm-link-icon { font-size: 22px; display: block; margin-bottom: 4px; }
+.otm-link-card strong { font-size: 13.5px; font-weight: 700; }
+.otm-link-card small { font-size: 11.5px; color: rgba(255, 255, 255, 0.6); line-height: 1.4; }
+
+.otm-footer { padding: 18px 24px; text-align: center; background: rgba(0, 0, 0, 0.3); border-top: 1px solid rgba(255, 255, 255, 0.08); font-size: 12px; color: rgba(255, 255, 255, 0.6); }
+
+/* Mobile */
+@media (max-width: 560px) {
+    .otm-header, .otm-nav { padding: 12px 16px; }
+    .otm-body { padding: 16px; }
+    .otm-links-grid { grid-template-columns: 1fr; }
+    .otm-nav-btn { font-size: 11.5px; padding: 6px 12px; }
+}
+
+/* Light Theme */
+body.light-theme .otm-panel { background: #f0f4fb; color: #0f0c29; border-color: #ddd; }
+body.light-theme .otm-header { background: #fff; border-bottom: 1px solid #ddd; }
+body.light-theme .otm-nav, body.light-theme .otm-link-card, body.light-theme .otm-member-card, body.light-theme .otm-form-container { background: rgba(0,0,0,0.03); border-color: rgba(0,0,0,0.1); color: #0f0c29; }
+body.light-theme .otm-close { color: #000; background: rgba(0,0,0,0.06); }
+body.light-theme .otm-member-card strong { color: #000; }
+body.light-theme .otm-form-group input, body.light-theme .otm-form-group select { background: #fff; color: #000; border-color: #ddd; }/* =========================================================
+   📚 COLUMN 3 - INFO PANELS — 3D Animated Styles
+========================================================= */
+
+.info-full-panel {
+    position: fixed; inset: 0; background: rgba(5, 10, 25, 0.85);
+    backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px);
+    z-index: 9999; display: flex; align-items: center; justify-content: center;
+    padding: 16px; opacity: 0; visibility: hidden;
+    transition: opacity 0.35s ease, visibility 0.35s ease;
+}
+
+.info-full-panel.active { opacity: 1; visibility: visible; }
+
+.ifp-inner {
+    position: relative; width: 100%; max-width: 650px;
+    background: linear-gradient(160deg, rgba(15, 22, 45, 0.98), rgba(25, 35, 65, 0.98));
+    border: 1px solid rgba(0, 224, 255, 0.3); border-radius: 24px; color: #fff;
+    font-family: 'Hind Siliguri', 'Segoe UI', system-ui, sans-serif;
+    box-shadow: 0 30px 80px rgba(0, 0, 0, 0.6), 0 0 80px rgba(0, 224, 255, 0.15);
+    transform: translateY(30px) scale(0.95) rotateX(5deg); opacity: 0;
+    transition: transform 0.45s cubic-bezier(.2,.8,.2,1), opacity 0.35s ease;
+    overflow: hidden;
+}
+
+.info-full-panel.active .ifp-inner { 
+    transform: translateY(0) scale(1) rotateX(0deg); opacity: 1; 
+}
+
+/* Close Button */
+.ifp-close {
+    position: absolute; top: 16px; right: 16px; width: 36px; height: 36px;
+    border-radius: 50%; background: rgba(255, 255, 255, 0.08); border: 1px solid rgba(255, 255, 255, 0.18);
+    color: #fff; font-size: 16px; display: flex; align-items: center; justify-content: center;
+    cursor: pointer; transition: transform 0.3s ease, background 0.3s ease; z-index: 10;
+}
+
+.ifp-close:hover { transform: rotate(90deg) scale(1.1); background: rgba(255, 60, 60, 0.3); }
+
+/* Header */
+.ifp-header {
+    text-align: center; padding: 32px 24px 20px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    background: linear-gradient(180deg, rgba(0, 224, 255, 0.05), transparent);
+}
+
+.ifp-icon { 
+    font-size: 48px; display: inline-block; margin-bottom: 12px;
+    filter: drop-shadow(0 0 16px rgba(0, 224, 255, 0.6)); 
+}
+
+.ifp-header h2 {
+    font-size: 24px; font-weight: 800; margin: 0 0 6px;
+    background: linear-gradient(90deg, #00e0ff, #ff2e88);
+    -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;
+}
+
+.ifp-header p { font-size: 14px; color: rgba(255, 255, 255, 0.7); margin: 0; }
+
+/* Content */
+.ifp-content { padding: 24px 32px 32px; }
+.ifp-content > p { font-size: 15px; line-height: 1.8; color: rgba(255, 255, 255, 0.85); margin-bottom: 24px; }
+
+/* Features List */
+.ifp-features {
+    display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; margin-bottom: 28px;
+}
+
+.ifp-feature-item {
+    display: flex; align-items: center; gap: 8px; padding: 10px 14px;
+    background: rgba(255, 255, 255, 0.04); border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 12px; font-size: 13.5px; font-weight: 600;
+    transition: transform 0.3s ease, border-color 0.3s ease;
+}
+
+.ifp-feature-item:hover { transform: translateY(-2px); border-color: rgba(0, 224, 255, 0.5); }
+
+/* Button */
+.ifp-btn {
+    display: block; width: 100%; text-align: center; padding: 14px;
+    background: linear-gradient(135deg, #00e0ff, #ff2e88); color: #fff;
+    font-weight: 800; font-size: 15px; border-radius: 12px; border: none;
+    text-decoration: none; cursor: pointer; transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.ifp-btn:hover { transform: translateY(-3px); box-shadow: 0 10px 25px rgba(0, 224, 255, 0.4); }
+
+/* FAQ Accordion Specific Styles */
+.faq-item {
+    margin-bottom: 12px; border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 12px; background: rgba(255, 255, 255, 0.04); overflow: hidden;
+    transition: border-color 0.3s ease;
+}
+
+.faq-item:hover { border-color: rgba(0, 224, 255, 0.5); }
+
+.faq-question {
+    width: 100%; text-align: left; padding: 16px 20px;
+    background: transparent; border: none; color: #fff;
+    font-size: 15px; font-weight: 700; font-family: inherit;
+    cursor: pointer; display: flex; justify-content: space-between; align-items: center;
+    transition: background 0.3s ease;
+}
+
+.faq-question::after {
+    content: "▼"; font-size: 12px; color: #00e0ff; transition: transform 0.3s ease;
+}
+
+.faq-item.active .faq-question::after { transform: rotate(180deg); }
+.faq-item.active .faq-question { background: rgba(0, 224, 255, 0.1); }
+
+.faq-answer {
+    max-height: 0; overflow: hidden; transition: max-height 0.4s ease;
+    padding: 0 20px; color: rgba(255, 255, 255, 0.8); font-size: 14px; line-height: 1.7;
+}
+
+.faq-item.active .faq-answer { padding-bottom: 16px; }
+
+/* Mobile */
+@media (max-width: 560px) {
+    .ifp-header { padding: 24px 16px 16px; }
+    .ifp-content { padding: 20px 20px 24px; }
+    .ifp-features { grid-template-columns: 1fr; }
+}
+
+/* Light Theme */
+body.light-theme .ifp-inner { background: #fff; color: #0f0c29; border-color: rgba(0, 224, 255, 0.4); }
+body.light-theme .ifp-header { background: rgba(0, 224, 255, 0.05); border-bottom-color: rgba(0,0,0,0.1); }
+body.light-theme .ifp-feature-item, body.light-theme .faq-item { background: rgba(0,0,0,0.03); border-color: rgba(0,0,0,0.1); }
+body.light-theme .ifp-content > p, body.light-theme .faq-question, body.light-theme .faq-answer { color: #333; }
+body.light-theme .ifp-close { background: rgba(0,0,0,0.05); color: #000; }

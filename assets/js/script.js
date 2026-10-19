@@ -9240,4 +9240,255 @@ const MORE_DATA = {
         sec.style.display = i === 0 ? '' : 'none';
     });
 
+})();/* =========================================================
+   🚨 EMERGENCY PANEL — Open / Close / Language Support
+========================================================= */
+
+(function initEmergencyPanel() {
+    const emgOverlay = document.getElementById('emgPanelOverlay');
+    const emgClose   = document.getElementById('emgClose');
+    const emgLink    = document.getElementById('emergencyLink');
+
+    if (!emgOverlay) return;
+
+    function openEmgPanel() {
+        emgOverlay.classList.add('active');
+        emgOverlay.setAttribute('aria-hidden', 'false');
+        document.body.style.overflow = 'hidden';
+    }
+
+    function closeEmgPanel() {
+        emgOverlay.classList.remove('active');
+        emgOverlay.setAttribute('aria-hidden', 'true');
+        document.body.style.overflow = '';
+    }
+
+    emgClose?.addEventListener('click', closeEmgPanel);
+    emgOverlay.addEventListener('click', (e) => {
+        if (e.target === emgOverlay) closeEmgPanel();
+    });
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && emgOverlay.classList.contains('active')) {
+            closeEmgPanel();
+        }
+    });
+
+    // ফুটারের "জরুরি তথ্য" লিংকে ক্লিক করলে প্যানেল খুলবে
+    emgLink?.addEventListener('click', (e) => {
+        e.preventDefault();
+        openEmgPanel();
+    });
+
+})();/* =========================================================
+   👥 OUR TEAM MAHESHKHALI (OTM) PANEL — Logic
+========================================================= */
+
+(function initOtmPanel() {
+    const otmOverlay = document.getElementById('otmPanelOverlay');
+    const otmClose   = document.getElementById('otmClose');
+    const otmForm    = document.getElementById('otmRegForm');
+    const otmNameInput = document.getElementById('otmName');
+    const otmUnionInput = document.getElementById('otmUnion');
+    const membersList = document.getElementById('otmMembersList');
+
+    if (!otmOverlay) return;
+
+    /* ---------- Load & Save Members (LocalStorage) ---------- */
+    function loadMembers() {
+        const members = JSON.parse(localStorage.getItem('otmMembers') || '[]');
+        
+        // ফাউন্ডার ডিফল্ট কার্ড
+        let html = `
+            <div class="otm-member-card">
+                <div class="otm-member-avatar">👨‍💻</div>
+                <strong>Badsha Solyman</strong>
+                <small>Founder • Matarbari</small>
+            </div>
+        `;
+        
+        // রেজিস্টার্ড ইউজারদের কার্ড
+        members.forEach(m => {
+            html += `
+                <div class="otm-member-card">
+                    <div class="otm-member-avatar">👤</div>
+                    <strong>${m.name}</strong>
+                    <small>Member • ${m.union}</small>
+                </div>
+            `;
+        });
+        
+        if (membersList) membersList.innerHTML = html;
+    }
+
+    /* ---------- Register Form Submit ---------- */
+    otmForm?.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const name = otmNameInput.value.trim();
+        const union = otmUnionInput.value;
+
+        if (name && union) {
+            const members = JSON.parse(localStorage.getItem('otmMembers') || '[]');
+            
+            // ডুপ্লিকেট চেক
+            if (members.some(m => m.name.toLowerCase() === name.toLowerCase())) {
+                alert('⚠️ এই নামে ইতিমধ্যে রেজিস্ট্রেশন করা হয়েছে!');
+                return;
+            }
+
+            // নতুন মেম্বার সেভ
+            members.push({ name, union });
+            localStorage.setItem('otmMembers', JSON.stringify(members));
+            
+            alert('✅ সফলভাবে OTM-তে রেজিস্ট্রেশন সম্পন্ন হয়েছে! স্বাগতম।');
+            otmForm.reset();
+            loadMembers(); // লিস্ট রিলোড করুন
+            
+            // রেজিস্ট্রেশনের পর সোজা মেম্বার ট্যাবে চলে যাওয়া
+            const memberTab = document.querySelector('.otm-nav-btn[data-otm-jump="members"]');
+            if (memberTab) memberTab.click();
+        }
+    });
+
+    /* ---------- Open / Close ---------- */
+    function openOtmPanel() {
+        loadMembers();
+        otmOverlay.classList.add('active');
+        otmOverlay.setAttribute('aria-hidden', 'false');
+        document.body.style.overflow = 'hidden';
+    }
+
+    function closeOtmPanel() {
+        otmOverlay.classList.remove('active');
+        otmOverlay.setAttribute('aria-hidden', 'true');
+        document.body.style.overflow = '';
+    }
+
+    otmClose?.addEventListener('click', closeOtmPanel);
+    otmOverlay.addEventListener('click', (e) => {
+        if (e.target === otmOverlay) closeOtmPanel();
+    });
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && otmOverlay.classList.contains('active')) {
+            closeOtmPanel();
+        }
+    });
+
+    /* ---------- Footer Link → OTM Panel Open ---------- */
+    const otmLink = document.querySelector('.footer-column a[href="#otm"]');
+    otmLink?.addEventListener('click', (e) => {
+        e.preventDefault(); // ডিফল্ট লিংক রিডাইরেক্ট বন্ধ
+        openOtmPanel();
+    });
+
+    /* ---------- Nav Tabs ---------- */
+    const navBtns  = otmOverlay.querySelectorAll('.otm-nav-btn');
+    const sections = otmOverlay.querySelectorAll('.otm-section');
+
+    navBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+            const target = btn.getAttribute('data-otm-jump');
+
+            navBtns.forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+
+            sections.forEach(sec => {
+                sec.style.display = sec.getAttribute('data-otm-section') === target ? '' : 'none';
+            });
+
+            const body = otmOverlay.querySelector('.otm-body');
+            if (body) body.scrollTop = 0;
+        });
+    });
+
+    // Initialize
+    loadMembers();
+    sections.forEach((sec, i) => {
+        sec.style.display = i === 0 ? '' : 'none';
+    });
+
+})();/* =========================================================
+   📚 INFO PANELS (Column 3) — Open / Close / FAQ Logic
+========================================================= */
+
+(function initInfoPanels() {
+    
+    // লিংকের সাথে প্যানেলের আইডি ম্যাপিং
+    const infoLinksMap = {
+        '#news': 'panel-news',
+        '#notices': 'panel-notices',
+        '#events': 'panel-events',
+        '#gallery': 'panel-gallery',
+        '#map': 'panel-map',
+        '#faq': 'panel-faq'
+    };
+
+    // ১. প্যানেল খোলার লজিক
+    Object.keys(infoLinksMap).forEach(linkHref => {
+        const link = document.querySelector(`.footer-column a[href="${linkHref}"]`);
+        const panelId = infoLinksMap[linkHref];
+        const panel = document.getElementById(panelId);
+
+        link?.addEventListener('click', (e) => {
+            e.preventDefault(); // পেজ রিফ্রেশ বন্ধ
+            if (panel) {
+                panel.classList.add('active');
+                panel.setAttribute('aria-hidden', 'false');
+                document.body.style.overflow = 'hidden'; // পেছনের স্ক্রল বন্ধ
+            }
+        });
+    });
+
+    // ২. প্যানেল বন্ধ করার ফাংশন
+    window.closeInfoPanel = function(panelId) {
+        const panel = document.getElementById(panelId);
+        if (panel) {
+            panel.classList.remove('active');
+            panel.setAttribute('aria-hidden', 'true');
+            document.body.style.overflow = ''; // স্ক্রল আবার চালু
+        }
+    };
+
+    // ৩. ওভারলেতে ক্লিক করলে বন্ধ হবে
+    document.querySelectorAll('.info-full-panel').forEach(panel => {
+        panel.addEventListener('click', (e) => {
+            if (e.target === panel) {
+                closeInfoPanel(panel.id);
+            }
+        });
+    });
+
+    // ৪. ESC চাপলে বন্ধ হবে
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') {
+            document.querySelectorAll('.info-full-panel.active').forEach(panel => {
+                closeInfoPanel(panel.id);
+            });
+        }
+    });
+
+    // ৫. FAQ Accordion (প্রশ্নে ক্লিক করলে উত্তর খুলবে)
+    const faqItems = document.querySelectorAll('.faq-item');
+    faqItems.forEach(item => {
+        const question = item.querySelector('.faq-question');
+        const answer = item.querySelector('.faq-answer');
+
+        question?.addEventListener('click', () => {
+            // অন্য সব বন্ধ করে দেওয়া
+            faqItems.forEach(otherItem => {
+                if (otherItem !== item) {
+                    otherItem.classList.remove('active');
+                    otherItem.querySelector('.faq-answer').style.maxHeight = null;
+                }
+            });
+
+            // বর্তমানটা টগল করা
+            item.classList.toggle('active');
+            if (item.classList.contains('active')) {
+                answer.style.maxHeight = answer.scrollHeight + "px";
+            } else {
+                answer.style.maxHeight = null;
+            }
+        });
+    });
+
 })();
