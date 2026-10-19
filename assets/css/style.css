@@ -22560,4 +22560,119 @@ body.light-theme .ifp-inner { background: #fff; color: #0f0c29; border-color: rg
 body.light-theme .ifp-header { background: rgba(0, 224, 255, 0.05); border-bottom-color: rgba(0,0,0,0.1); }
 body.light-theme .ifp-feature-item, body.light-theme .faq-item { background: rgba(0,0,0,0.03); border-color: rgba(0,0,0,0.1); }
 body.light-theme .ifp-content > p, body.light-theme .faq-question, body.light-theme .faq-answer { color: #333; }
-body.light-theme .ifp-close { background: rgba(0,0,0,0.05); color: #000; }
+body.light-theme .ifp-close { background: rgba(0,0,0,0.05); color: #000; }/* =========================================================
+   📱 100% RESPONSIVE FIX (Mobile, Tablet, Desktop)
+========================================================= */
+
+/* ১. বেসিক সেটআপ (স্ক্রল বন্ধ করা) */
+html, body {
+    overflow-x: hidden !important;
+    width: 100% !important;
+    max-width: 100vw !important;
+}
+
+img, video, iframe {
+    max-width: 100% !important;
+    height: auto !important;
+}
+
+/* ---------- ২. ট্যাবলেট ও ছোট ল্যাপটপ (1024px এর নিচে) ---------- */
+@media (max-width: 1024px) {
+    /* টপ বার ও মেনু সেন্টার করা */
+    .container, .top-bar-inner, .live-status-inner, .navbar-inner {
+        flex-wrap: wrap !important;
+        justify-content: center !important;
+        text-align: center !important;
+        padding-left: 15px !important;
+        padding-right: 15px !important;
+    }
+
+    /* সব গ্রিড ২ কলামে আনা */
+    .lh-categories, .comp-links-grid, .bus-links-grid, .omt-links-grid, 
+    .footer-grid, .dash-links-grid, .edu-links-grid, .kn-card-grid, 
+    .agl-info-grid, .ifp-features, .cfp-features, .hero-floating-cards {
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: 15px !important;
+    }
+
+    /* হিরো সেকশন ১ কলামে আনা */
+    .hero-container {
+        grid-template-columns: 1fr !important;
+        text-align: center !important;
+        padding: 60px 15px 30px !important;
+    }
+    
+    .hero-actions {
+        justify-content: center !important;
+    }
+}
+
+/* ---------- ৩. মোবাইল ফোন (768px এর নিচে) ---------- */
+@media (max-width: 768px) {
+    /* সব গ্রিড ১ কলামে আনা (যাতে পাশাপাশি না থাকে) */
+    .lh-categories, .comp-links-grid, .bus-links-grid, .omt-links-grid, 
+    .footer-grid, .dash-links-grid, .edu-links-grid, .kn-card-grid, 
+    .agl-info-grid, .ifp-features, .cfp-features, .hero-floating-cards, .hero-actions {
+        grid-template-columns: 1fr !important;
+        gap: 12px !important;
+        width: 100% !important;
+    }
+
+    /* ফন্ট সাইজ ছোট করা */
+    h1, .hero-title { font-size: 1.8rem !important; line-height: 1.3 !important; }
+    h2 { font-size: 1.4rem !important; }
+    h3 { font-size: 1.2rem !important; }
+    p, span, a, li { font-size: 13.5px !important; }
+
+    /* সব প্যানেল (Pop-up Modal) মোবাইলে ফিট করা */
+    .learning-hub-panel, .comp-panel, .edu-panel, .kn-panel, .bs9q-panel, 
+    .omt-panel, .bus-panel, .ai-panel, .rel-panel, .info-full-panel .ifp-inner,
+    .comm-full-panel .cfp-inner, .faq-panel, .emg-panel {
+        width: 95% !important;
+        max-width: 95% !important;
+        max-height: 90vh !important;
+        padding: 15px !important;
+        margin: 0 auto !important;
+        border-radius: 16px !important;
+        overflow-y: auto !important;
+    }
+
+    /* সোশ্যাল মিডিয়া বার মোবাইলে ছোট ও স্ক্রিনের ভেতরে আনা */
+    .rsb-container {
+        right: 5px !important;
+        gap: 5px !important;
+    }
+    .rsb-btn {
+        width: 35px !important;
+        height: 35px !important;
+        font-size: 15px !important;
+    }
+
+    /* হিরো আইল্যান্ড (দ্বীপ) ছোট করা */
+    .hero-island {
+        width: 220px !important;
+        height: 150px !important;
+        bottom: 20% !important;
+    }
+
+    /* কার্সর মোবাইলে বন্ধ */
+    .cursor-3d, .cursor-glow, .cursor-sparkles {
+        display: none !important;
+    }
+}
+
+/* ---------- ৪. ছোট মোবাইল (480px এর নিচে) ---------- */
+@media (max-width: 480px) {
+    .container { padding-left: 10px !important; padding-right: 10px !important; }
+    h1, .hero-title { font-size: 1.5rem !important; }
+    p, span, a, li { font-size: 13px !important; }
+
+    /* টপ বার মোবাইলে শুধু আইকন দেখাবে (লেখা লুকানো থাকবে) */
+    .top-action-btn span:not(.notif-badge):not(.top-info-icon) {
+        display: none !important;
+    }
+    .top-action-btn {
+        padding: 8px 10px !important;
+        font-size: 15px !important;
+    }
+}
