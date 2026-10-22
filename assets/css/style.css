@@ -22675,4 +22675,437 @@ img, video, iframe {
         padding: 8px 10px !important;
         font-size: 15px !important;
     }
+}/* =========================================================
+   📱 MOBILE MENU BUTTON & TOGGLE FIX
+========================================================= */
+
+/* ডেস্কটপে বাটনটি লুকানো থাকবে */
+.mobile-menu-btn {
+    display: none;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 10px;
+    z-index: 10000;
+}
+
+.mobile-menu-btn span {
+    display: block;
+    width: 25px;
+    height: 3px;
+    background: #fff;
+    margin: 5px 0;
+    border-radius: 3px;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+@media (max-width: 1024px) {
+    /* বাটনটি ডানদিকে দেখা যাবে */
+    .mobile-menu-btn {
+        display: block;
+        position: absolute;
+        right: 15px;
+        top: 15px;
+    }
+
+    /* ক্লিক করলে 'X' হয়ে যাবে */
+    .mobile-menu-btn.active span:nth-child(1) {
+        transform: translateY(8px) rotate(45deg);
+        background: #ff2e88;
+    }
+    .mobile-menu-btn.active span:nth-child(2) {
+        opacity: 0;
+    }
+    .mobile-menu-btn.active span:nth-child(3) {
+        transform: translateY(-8px) rotate(-45deg);
+        background: #ff2e88;
+    }
+
+    /* মোবাইলে মেইন মেনু ডিফল্টভাবে লুকানো থাকবে */
+    .main-navigation {
+        display: none !important;
+        position: absolute;
+        top: 60px;
+        left: 0;
+        width: 100%;
+        background: rgba(15, 22, 45, 0.98);
+        padding: 15px;
+        z-index: 9999;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        border-radius: 0 0 15px 15px;
+        max-height: 85vh;
+        overflow-y: auto;
+    }
+
+    /* ক্লিক করলে মেনু দেখা যাবে */
+    .main-navigation.active {
+        display: block !important;
+    }
+
+    /* মেগা মেনু মোবাইলে নিচে নিচে সাজানো */
+    .mega-menu {
+        position: static !important;
+        width: 100% !important;
+        box-shadow: none !important;
+        background: transparent !important;
+        display: flex;
+        flex-direction: column;
+        padding: 10px 0;
+    }
+
+    .mega-menu-inner {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 15px;
+        padding: 10px;
+    }
+}/* =========================================================
+   🧭 FOOTER NAVIGATION MENU — 3D UI
+========================================================= */
+
+.bottom-menu-wrap {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 25px 15px 15px;
+    width: 100%;
+}
+
+.bottom-menu {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 6px;
+    background: rgba(15, 22, 45, 0.85);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    padding: 10px 14px;
+    border-radius: 50px; /* পিল শেপ */
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4), inset 0 0 15px rgba(0, 224, 255, 0.1);
+}
+
+.bm-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 8px 16px;
+    color: rgba(255, 255, 255, 0.85);
+    text-decoration: none;
+    font-size: 13.5px;
+    font-weight: 600;
+    border-radius: 30px;
+    transition: all 0.3s cubic-bezier(.2,.8,.2,1);
+    transform-style: preserve-3d;
+    border: 1px solid transparent;
+}
+
+.bm-btn span:first-child {
+    font-size: 16px;
+}
+
+/* 3D Hover Effect */
+.bm-btn:hover {
+    color: #fff;
+    background: rgba(0, 224, 255, 0.15);
+    transform: translateY(-3px) translateZ(10px);
+    box-shadow: 0 8px 20px rgba(0, 224, 255, 0.3);
+    border: 1px solid rgba(0, 224, 255, 0.4);
+}
+
+/* মোবাইলের জন্য রেসপন্সিভ */
+@media (max-width: 768px) {
+    .bottom-menu {
+        border-radius: 20px;
+        padding: 10px;
+        gap: 4px;
+        width: 95%;
+    }
+    .bm-btn {
+        padding: 6px 10px;
+        font-size: 12px;
+    }
+    .bm-btn span:first-child {
+        font-size: 14px;
+    }
+}
+
+/* লাইট থিম সাপোর্ট */
+body.light-theme .bottom-menu {
+    background: rgba(255, 255, 255, 0.9);
+    border-color: rgba(0, 0, 0, 0.1);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+body.light-theme .bm-btn {
+    color: #333;
+}
+body.light-theme .bm-btn:hover {
+    color: #000;
+    background: rgba(0, 224, 255, 0.15);
+}/* =========================================================
+   🧭 FOOTER NAVIGATION MENU — Premium 3D UI
+========================================================= */
+
+.bottom-menu-wrap {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 30px 15px;
+    width: 100%;
+}
+
+.bottom-menu {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 8px;
+    background: rgba(15, 22, 45, 0.85);
+    border: 1px solid rgba(0, 224, 255, 0.3);
+    padding: 10px 18px;
+    border-radius: 50px;
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5), inset 0 0 20px rgba(0, 224, 255, 0.05);
+    transform-style: preserve-3d;
+    perspective: 1000px;
+}
+
+.bm-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 16px;
+    color: rgba(255, 255, 255, 0.85);
+    text-decoration: none;
+    font-size: 13.5px;
+    font-weight: 600;
+    font-family: 'Hind Siliguri', 'Segoe UI', sans-serif;
+    border-radius: 30px;
+    border: 1px solid transparent;
+    transition: all 0.4s cubic-bezier(.2,.8,.2,1);
+    transform-style: preserve-3d;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.bm-btn span:first-child {
+    font-size: 16px;
+    transition: transform 0.3s ease;
+}
+
+/* 3D Hover & Focus ইফেক্ট */
+.bm-btn:hover,
+.bm-btn:focus-visible {
+    color: #fff;
+    background: rgba(0, 224, 255, 0.15);
+    transform: translateY(-4px) translateZ(15px) scale(1.05);
+    box-shadow: 0 10px 25px rgba(0, 224, 255, 0.35);
+    border: 1px solid rgba(0, 224, 255, 0.6);
+    outline: none;
+}
+
+.bm-btn:hover span:first-child {
+    transform: scale(1.2) rotate(10deg);
+}
+
+/* মোবাইলের জন্য রেসপন্সিভ */
+@media (max-width: 768px) {
+    .bottom-menu {
+        border-radius: 20px;
+        padding: 12px 14px;
+        gap: 6px;
+        width: 95%;
+        max-width: 400px;
+    }
+    .bm-btn {
+        padding: 8px 12px;
+        font-size: 12.5px;
+        flex: 1 1 auto;
+        justify-content: center;
+    }
+    .bm-btn span:first-child {
+        font-size: 15px;
+    }
+}
+
+@media (max-width: 480px) {
+    .bm-btn {
+        padding: 6px 10px;
+        font-size: 11.5px;
+        gap: 4px;
+    }
+    .bm-btn span:first-child {
+        font-size: 14px;
+    }
+}
+
+/* লাইট থিম সাপোর্ট */
+body.light-theme .bottom-menu {
+    background: rgba(255, 255, 255, 0.85);
+    border-color: rgba(0, 224, 255, 0.4);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1), inset 0 0 15px rgba(0, 224, 255, 0.1);
+}
+body.light-theme .bm-btn {
+    color: #333;
+}
+body.light-theme .bm-btn:hover,
+body.light-theme .bm-btn:focus-visible {
+    color: #000;
+    background: rgba(0, 224, 255, 0.2);
+    border-color: rgba(0, 224, 255, 0.8);
+}/* =========================================================
+   🧭 FOOTER BOTTOM ACTIONS — Premium 3D UI
+========================================================= */
+
+.footer-bottom-actions {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 15px;
+}
+
+.footer-action-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 8px 14px;
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 12px;
+    color: #fff;
+    font-size: 13px;
+    font-weight: 600;
+    font-family: inherit;
+    text-decoration: none;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(.2,.8,.2,1);
+    transform-style: preserve-3d;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.footer-action-btn:hover {
+    transform: translateY(-3px) translateZ(10px);
+    background: rgba(0, 224, 255, 0.15);
+    border-color: rgba(0, 224, 255, 0.5);
+    box-shadow: 0 8px 20px rgba(0, 224, 255, 0.3);
+    color: #fff;
+}
+
+.theme-icon {
+    font-size: 16px;
+    transition: transform 0.5s ease;
+}
+
+.footer-action-btn:hover .theme-icon {
+    transform: rotate(180deg);
+}
+
+/* মোবাইলের জন্য রেসপন্সিভ */
+@media (max-width: 768px) {
+    .footer-bottom-actions {
+        gap: 8px;
+    }
+    .footer-action-btn {
+        padding: 6px 12px;
+        font-size: 12px;
+    }
+}
+
+/* লাইট থিমে বাটনের রঙ */
+body.light-theme .footer-action-btn {
+    background: rgba(0, 0, 0, 0.05);
+    border-color: rgba(0, 0, 0, 0.1);
+    color: #333;
+}
+body.light-theme .footer-action-btn:hover {
+    background: rgba(0, 224, 255, 0.2);
+    border-color: rgba(0, 224, 255, 0.6);
+    color: #000;
+}/* =========================================================
+   📱 MOBILE MENU BAR & BUTTON FIX
+========================================================= */
+
+/* ডেস্কটপে বাটনটি লুকানো থাকবে */
+.mobile-menu-btn {
+    display: none;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 10px;
+    z-index: 10000;
+}
+
+/* বাটনের ভেতরের ৩টি লাইন */
+.mobile-menu-btn span {
+    display: block;
+    width: 26px;
+    height: 3px;
+    background: #fff; /* তোমার ব্র্যান্ড কালার */
+    margin: 5px 0;
+    border-radius: 3px;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+/* মোবাইল ও ট্যাবলেটের জন্য (1024px এর নিচে) */
+@media (max-width: 1024px) {
+    
+    /* ১. বাটনটি ডানদিকে দেখা যাবে */
+    .mobile-menu-btn {
+        display: block;
+        position: absolute;
+        right: 15px;
+        top: 15px;
+    }
+
+    /* ২. ক্লিক করলে বাটন 'X' হয়ে যাবে */
+    .mobile-menu-btn.active span:nth-child(1) {
+        transform: translateY(8px) rotate(45deg);
+        background: #ff2e88;
+    }
+    .mobile-menu-btn.active span:nth-child(2) {
+        opacity: 0;
+    }
+    .mobile-menu-btn.active span:nth-child(3) {
+        transform: translateY(-8px) rotate(-45deg);
+        background: #ff2e88;
+    }
+
+    /* ৩. মোবাইলে মেইন মেনু ডিফল্টভাবে লুকানো থাকবে */
+    #mainNav, .main-navigation {
+        display: none !important;
+        position: absolute;
+        top: 60px; /* হেডারের উচ্চতা অনুযায়ী ঠিক করে নিও */
+        left: 0;
+        width: 100%;
+        background: rgba(15, 22, 45, 0.98); /* তোমার ডার্ক থিম */
+        padding: 15px;
+        z-index: 9999;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        border-radius: 0 0 15px 15px;
+        max-height: 85vh;
+        overflow-y: auto;
+    }
+
+    /* ৪. বাটনে ক্লিক করলে মেনু দেখা যাবে */
+    #mainNav.active, .main-navigation.active {
+        display: block !important;
+    }
+
+    /* ৫. মেগা মেনু মোবাইলে নিচে নিচে সাজানো */
+    .mega-menu {
+        position: static !important;
+        width: 100% !important;
+        box-shadow: none !important;
+        background: transparent !important;
+        display: flex;
+        flex-direction: column;
+        padding: 10px 0;
+    }
+
+    .mega-menu-inner {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 15px;
+        padding: 10px;
+    }
 }

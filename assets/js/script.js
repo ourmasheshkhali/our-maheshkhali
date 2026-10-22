@@ -9491,4 +9491,165 @@ const MORE_DATA = {
         });
     });
 
+})();/* =========================================================
+   📱 MOBILE MENU TOGGLE
+========================================================= */
+
+(function initMobileMenu() {
+    const mobileBtn = document.getElementById('mobileMenuBtn');
+    const mainNav   = document.getElementById('mainNav');
+
+    if (!mobileBtn || !mainNav) return;
+
+    mobileBtn.addEventListener('click', () => {
+        const isActive = mobileBtn.classList.toggle('active');
+        mainNav.classList.toggle('active');
+        
+        mobileBtn.setAttribute('aria-expanded', isActive ? 'true' : 'false');
+        
+        if (isActive) {
+            document.body.style.overflow = 'hidden';
+        } else {
+            document.body.style.overflow = '';
+        }
+    });
+
+    mainNav.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', () => {
+            mobileBtn.classList.remove('active');
+            mainNav.classList.remove('active');
+            mobileBtn.setAttribute('aria-expanded', 'false');
+            document.body.style.overflow = '';
+        });
+    });
+})();/* =========================================================
+   🧭 FOOTER MENU SMOOTH SCROLL
+========================================================= */
+document.querySelectorAll('.bm-btn').forEach(link => {
+    link.addEventListener('click', (e) => {
+        const href = link.getAttribute('href');
+        if (href.startsWith('#')) {
+            const target = document.querySelector(href);
+            if (target) {
+                e.preventDefault();
+                target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
+        }
+    });
+});/* =========================================================
+   🧭 FOOTER MENU — Smooth Scroll to Main Header
+========================================================= */
+
+(function initFooterMenuScroll() {
+    // ফুটারের সব মেনু বাটন সিলেক্ট করা
+    const footerBtns = document.querySelectorAll('.bm-btn');
+    
+    // মেইন নেভিগেশনের সব লিংক সিলেক্ট করা
+    const mainNavLinks = document.querySelectorAll('.main-navigation .nav-link');
+
+    footerBtns.forEach(btn => {
+        btn.addEventListener('click', (e) => {
+            const targetHref = btn.getAttribute('href'); // যেমন: #home, #about-us
+            
+            // ১. মেইন নেভিগেশনে এই লিংকের অ্যাংকর (href) খুঁজে বের করা
+            const mainLink = Array.from(mainNavLinks).find(link => link.getAttribute('href') === targetHref);
+
+            if (mainLink) {
+                // ২. পেজকে মেইন মেনুর সেই সেকশনে স্ক্রল করা
+                e.preventDefault(); // ডিফল্ট জাম্প বন্ধ করা
+
+                // মেইন মেনুর ওপরের পজিশন বের করা
+                const headerOffset = document.querySelector('.main-navigation').offsetHeight + 20; // হেডারের উচ্চতা + প্যাডিং
+                const elementPosition = mainLink.getBoundingClientRect().top;
+                const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+
+                window.scrollTo({
+                    top: offsetPosition,
+                    behavior: 'smooth'
+                });
+
+                // ৩. (অপশনাল) মেইন মেনুর লিংকে একটি হাইলাইট (Active) ক্লাস দেওয়া
+                mainNavLinks.forEach(l => l.classList.remove('active'));
+                mainLink.classList.add('active');
+            }
+        });
+    });
+})();/* =========================================================
+   🌐 FOOTER ACTIONS LOGIC (Theme, Language, Map)
+========================================================= */
+
+(function initFooterActions() {
+    const footerThemeBtn = document.getElementById('footerThemeBtn');
+    const footerThemeIcon = document.getElementById('footerThemeIcon');
+    const footerLangBtn = document.getElementById('footerLangBtn');
+    const topThemeBtn = document.getElementById('topThemeBtn'); // মেইন হেডারের থিম বাটন
+
+    /* ---------- ১. থিম টগল ---------- */
+    if (localStorage.getItem('theme') === 'light') {
+        if (footerThemeIcon) footerThemeIcon.textContent = '☀️';
+    }
+
+    function toggleTheme() {
+        const isLight = document.body.classList.toggle('light-theme');
+        const icon = isLight ? '☀️' : '🌙';
+        
+        if (footerThemeIcon) footerThemeIcon.textContent = icon;
+        if (topThemeBtn) topThemeBtn.textContent = icon;
+
+        localStorage.setItem('theme', isLight ? 'light' : 'dark');
+    }
+
+    footerThemeBtn?.addEventListener('click', toggleTheme);
+
+    /* ---------- ২. ভাষা টগল (Footer) ---------- */
+    footerLangBtn?.addEventListener('click', () => {
+        const newLang = document.documentElement.lang === 'bn' ? 'en' : 'bn';
+        
+        // মেইন ল্যাঙ্গুয়েজ টগল ফাংশন কল করা (যদি থাকে)
+        if (typeof applyLanguage === 'function') {
+            applyLanguage(newLang);
+        }
+
+        // মেইন টপ বারের ভাষা বাটনের লেখা আপডেট করা (যদি থাকে)
+        const topLangBtn = document.getElementById('topLangBtn');
+        if (topLangBtn) {
+            topLangBtn.click(); // টপ বারে ক্লিক সিমুলেট করে লেখা পরিবর্তন করা
+        }
+    });
+
+})();/* =========================================================
+   📱 MOBILE MENU TOGGLE LOGIC
+========================================================= */
+
+(function initMobileMenu() {
+    const mobileBtn = document.getElementById('mobileMenuBtn');
+    const mainNav   = document.getElementById('mainNav') || document.querySelector('.main-navigation');
+
+    if (!mobileBtn || !mainNav) return;
+
+    mobileBtn.addEventListener('click', () => {
+        // বাটন ও মেনুতে 'active' ক্লাস টগল হবে
+        const isActive = mobileBtn.classList.toggle('active');
+        mainNav.classList.toggle('active');
+        
+        // অ্যাক্সেসিবিলিটির জন্য aria-expanded আপডেট
+        mobileBtn.setAttribute('aria-expanded', isActive ? 'true' : 'false');
+        
+        // মেনু ওপেন হলে পেছনের স্ক্রল লক হবে
+        if (isActive) {
+            document.body.style.overflow = 'hidden';
+        } else {
+            document.body.style.overflow = '';
+        }
+    });
+
+    // মেনুর ভেতরের লিংকে ক্লিক করলে মেনু বন্ধ হয়ে যাবে
+    mainNav.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', () => {
+            mobileBtn.classList.remove('active');
+            mainNav.classList.remove('active');
+            mobileBtn.setAttribute('aria-expanded', 'false');
+            document.body.style.overflow = '';
+        });
+    });
 })();

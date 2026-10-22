@@ -8279,35 +8279,78 @@
                 </div>
             </div>
         </div>
-
-        <!-- =========================================================
-             FOOTER BOTTOM
-        ========================================================== -->
-        <div class="footer-bottom">
-            <div class="fb-copyright">
-                <p data-bn="© ২০২৬ OUR MAHESHKHALI। সর্বস্বত্ব সংরক্ষিত।"
-                   data-en="© 2026 OUR MAHESHKHALI. All rights reserved.">
-                    © ২০২৬ OUR MAHESHKHALI। সর্বস্বত্ব সংরক্ষিত।
-                </p>
-            </div>
-
-            <nav class="fb-legal" aria-label="Legal links">
-                <a href="#privacy" title="Privacy Policy">
-                    <span>🔒</span><span data-bn="প্রাইভেসি" data-en="Privacy">প্রাইভেসি</span>
-                </a>
-                <a href="#terms" title="Terms & Conditions">
-                    <span>📄</span><span data-bn="শর্তাবলী" data-en="Terms">শর্তাবলী</span>
-                </a>
-                <a href="#disclaimer" title="Disclaimer">
-                    <span>⚖️</span><span data-bn="ডিসক্লেইমার" data-en="Disclaimer">ডিসক্লেইমার</span>
-                </a>
-                <a href="#sitemap" title="Sitemap">
-                    <span>🗂️</span><span data-bn="সাইটম্যাপ" data-en="Sitemap">সাইটম্যাপ</span>
-                </a>
-            </nav>
-        </div>
-
+<!-- =========================================================
+     🧭 FOOTER NAVIGATION MENU (Quick Access)
+========================================================= -->
+<div class="bottom-menu-wrap">
+    <nav class="bottom-menu" aria-label="Footer Navigation">
+        <a href="#home" class="bm-btn">
+            <span>🏠</span> <span data-bn="হোম" data-en="Home">হোম</span>
+        </a>
+        <a href="#about-us" class="bm-btn">
+            <span>📖</span> <span data-bn="পরিচিতি" data-en="About">পরিচিতি</span>
+        </a>
+        <a href="#explore" class="bm-btn">
+            <span>🌴</span> <span data-bn="অন্বেষণ" data-en="Explore">অন্বেষণ</span>
+        </a>
+        <a href="#community" class="bm-btn">
+            <span>👥</span> <span data-bn="কমিউনিটি" data-en="Community">কমিউনিটি</span>
+        </a>
+        <a href="#opportunities" class="bm-btn">
+            <span>💼</span> <span data-bn="সুযোগ" data-en="Opportunities">সুযোগ</span>
+        </a>
+        <a href="#more" class="bm-btn">
+            <span>⋮</span> <span data-bn="আরও" data-en="More">আরও</span>
+        </a>
+    </nav>
+</div>
+       <!-- ═══ FOOTER BOTTOM ═══ -->
+<div class="footer-bottom">
+    <div class="fb-copyright">
+        <p data-bn="© ২০২৬ OUR MAHESHKHALI। সর্বস্বত্ব সংরক্ষিত।"
+           data-en="© 2026 OUR MAHESHKHALI. All rights reserved.">
+            © ২০২৬ OUR MAHESHKHALI। সর্বস্বত্ব সংরক্ষিত।
+        </p>
     </div>
+
+    <!-- ═══ FOOTER BOTTOM ACTIONS ═══ -->
+<div class="footer-bottom-actions">
+    
+    <!-- ১. ভাষা পরিবর্তন (Language) -->
+    <button type="button" class="footer-action-btn" id="footerLangBtn" aria-label="Change Language">
+        <span>🌐</span>
+        <span id="footerLangText" data-bn="বাংলা" data-en="English">বাংলা</span>
+    </button>
+
+    <!-- ২. থিম পরিবর্তন (Theme) -->
+    <button type="button" class="footer-action-btn" id="footerThemeBtn" aria-label="Toggle Theme">
+        <span class="theme-icon" id="footerThemeIcon">🌙</span>
+        <span data-bn="থিম" data-en="Theme">থিম</span>
+    </button>
+
+    <!-- ৩. গুগল ম্যাপ (Location) -->
+    <a href="https://www.google.com/maps/search/Maheshkhali,+Cox%27s+Bazar" target="_blank" rel="noopener" class="footer-action-btn">
+        <span>📍</span>
+        <span data-bn="ম্যাপ" data-en="Map">ম্যাপ</span>
+    </a>
+
+</div>
+
+<!-- ═══ LEGAL LINKS ═══ -->
+<nav class="fb-legal" aria-label="Legal links">
+    <a href="#privacy" title="Privacy Policy">
+        <span>🔒</span><span data-bn="প্রাইভেসি" data-en="Privacy">প্রাইভেসি</span>
+    </a>
+    <a href="#terms" title="Terms & Conditions">
+        <span>📄</span><span data-bn="শর্তাবলী" data-en="Terms">শর্তাবলী</span>
+    </a>
+    <a href="#disclaimer" title="Disclaimer">
+        <span>⚖️</span><span data-bn="ডিসক্লেইমার" data-en="Disclaimer">ডিসক্লেইমার</span>
+    </a>
+    <a href="#sitemap" title="Sitemap">
+        <span>🗂️</span><span data-bn="সাইটম্যাপ" data-en="Sitemap">সাইটম্যাপ</span>
+    </a>
+</nav>
 
     <!-- Watermark -->
     <div class="footer-watermark" aria-hidden="true">
@@ -15471,48 +15514,94 @@ END OF UNIVERSAL AI MASTER COMMAND
     </div>
 </div>
 
-<!-- ৬. প্রশ্নোত্তর (FAQ) -->
+<!-- ৬. প্রশ্নোত্তর (FAQ) — BS~9Q-5F Example: Maheshkhali -->
 <div class="info-full-panel" id="panel-faq" aria-hidden="true">
     <div class="ifp-inner">
         <button class="ifp-close" onclick="closeInfoPanel('panel-faq')">✕</button>
+        
         <div class="ifp-header">
-            <span class="ifp-icon">❓</span>
-            <h2 data-bn="সাধারণ প্রশ্নোত্তর" data-en="Frequently Asked Questions">সাধারণ প্রশ্নোত্তর</h2>
-            <p data-bn="আমাদের মহেশখালী সম্পর্কে জানুন" data-en="Know about Our Maheshkhali">আমাদের মহেশখালী সম্পর্কে জানুন</p>
+            <span class="ifp-icon">🧠</span>
+            <h2 data-bn="BS~9Q-5F মাইন্ডম্যাপ: মহেশখালী" data-en="BS~9Q-5F Mindmap: Maheshkhali">BS~9Q-5F মাইন্ডম্যাপ: মহেশখালী</h2>
+            <p data-bn="আমাদের মেথড ব্যবহার করে মহেশখালীকে বিশ্লেষণ" data-en="Analyzing Maheshkhali using our method">আমাদের মেথড ব্যবহার করে মহেশখালীকে বিশ্লেষণ</p>
         </div>
+        
         <div class="ifp-content">
             
-            <!-- FAQ Accordion Items -->
+            <!-- 1Q: WHO -->
             <div class="faq-item">
-                <button class="faq-question" data-bn="মহেশখালী কোথায় অবস্থিত?" data-en="Where is Maheshkhali located?">মহেশখালী কোথায় অবস্থিত?</button>
+                <button class="faq-question" data-bn="১. [WHO] এখানকার মানুষ কারা?" data-en="1. [WHO] Who are the people here?">১. [WHO] এখানকার মানুষ কারা?</button>
                 <div class="faq-answer">
-                    <p data-bn="মহেশখালী বাংলাদেশের কক্সবাজার জেলার একটি দ্বীপ উপজেলা। এটি বঙ্গোপসাগরের তীরে অবস্থিত।" data-en="Maheshkhali is an island upazila in Cox's Bazar district of Bangladesh. It is located on the coast of the Bay of Bengal.">মহেশখালী বাংলাদেশের কক্সবাজার জেলার একটি দ্বীপ উপজেলা। এটি বঙ্গোপসাগরের তীরে অবস্থিত।</p>
+                    <p data-bn="মহেশখালীর অধিকাংশ মানুষ সরাসরি প্রকৃতির ওপর নির্ভরশীল। এখানকার প্রধান জনগোষ্ঠীর মধ্যে রয়েছেন মৎস্যজীবী, লবণ চাষী, কৃষক এবং দিনমজুর। এছাড়া এখানকার বিপুল সংখ্যক মানুষ জীবিকার জন্য প্রবাসে এবং দেশ-বিদেশের সমুদ্রগামী জাহাজে (মার্চেন্ট মেরিনার হিসেবে) কাজ করেন। স্থানীয়দের মধ্যে হিন্দু, মুসলিম ও বৌদ্ধ সম্প্রদায়ের মানুষ অত্যন্ত সম্প্রীতির সাথে বসবাস করেন।" data-en="Most people of Maheshkhali depend directly on nature. The main population includes fishermen, salt farmers, agricultural workers, and daily laborers. Additionally, a large number of people work abroad and on ocean-going ships as Merchant Mariners. The local people, including Hindu, Muslim, and Buddhist communities, live together in great harmony.">মহেশখালীর অধিকাংশ মানুষ সরাসরি প্রকৃতির ওপর নির্ভরশীল। এখানকার প্রধান জনগোষ্ঠীর মধ্যে রয়েছেন মৎস্যজীবী, লবণ চাষী, কৃষক এবং দিনমজুর। এছাড়া এখানকার বিপুল সংখ্যক মানুষ জীবিকার জন্য প্রবাসে এবং দেশ-বিদেশের সমুদ্রগামী জাহাজে (মার্চেন্ট মেরিনার হিসেবে) কাজ করেন। স্থানীয়দের মধ্যে হিন্দু, মুসলিম ও বৌদ্ধ সম্প্রদায়ের মানুষ অত্যন্ত সম্প্রীতির সাথে বসবাস করেন।</p>
                 </div>
             </div>
 
+            <!-- 2Q: WHAT -->
             <div class="faq-item">
-                <button class="faq-question" data-bn="মহেশখালীতে কীভাবে যাওয়া যায়?" data-en="How to go to Maheshkhali?">মহেশখালীতে কীভাবে যাওয়া যায়?</button>
+                <button class="faq-question" data-bn="২. [WHAT] মহেশখালী আসলে কী?" data-en="2. [WHAT] What exactly is Maheshkhali?">২. [WHAT] মহেশখালী আসলে কী?</button>
                 <div class="faq-answer">
-                    <p data-bn="কক্সবাজার বা চকরিয়া থেকে স্পিড বোট বা ফেরি যোগে মহেশখালীতে যাওয়া যায়।" data-en="You can go to Maheshkhali from Cox's Bazar or Chakaria by speed boat or ferry.">কক্সবাজার বা চকরিয়া থেকে স্পিড বোট বা ফেরি যোগে মহেশখালীতে যাওয়া যায়।</p>
+                    <p data-bn="মহেশখালী হলো বাংলাদেশের কক্সবাজার জেলার একটি দ্বীপ উপজেলা, যা বঙ্গোপসাগরের তীরে অবস্থিত। প্রায় ৩৬২ বর্গ কিলোমিটার আয়তনের এই দ্বীপটি ৮টি ইউনিয়ন নিয়ে গঠিত। এটি শুধু একটি ভৌগোলিক এলাকা নয়, বরং প্রাকৃতিক সৌন্দর্য, সমৃদ্ধ ইতিহাস, ঐতিহ্য এবং অপার সম্ভাবনায় ভরপুর একটি জনপদ।" data-en="Maheshkhali is an island upazila in Cox's Bazar district of Bangladesh, located on the coast of the Bay of Bengal. With an area of about 362 square kilometers, this island consists of 8 unions. It is not just a geographical area, but a settlement full of natural beauty, rich history, heritage, and immense potential.">মহেশখালী হলো বাংলাদেশের কক্সবাজার জেলার একটি দ্বীপ উপজেলা, যা বঙ্গোপসাগরের তীরে অবস্থিত। প্রায় ৩৬২ বর্গ কিলোমিটার আয়তনের এই দ্বীপটি ৮টি ইউনিয়ন নিয়ে গঠিত। এটি শুধু একটি ভৌগোলিক এলাকা নয়, বরং প্রাকৃতিক সৌন্দর্য, সমৃদ্ধ ইতিহাস, ঐতিহ্য এবং অপার সম্ভাবনায় ভরপুর একটি জনপদ।</p>
                 </div>
             </div>
 
+            <!-- 3Q: WHY -->
             <div class="faq-item">
-                <button class="faq-question" data-bn="মহেশখালীর বিখ্যাত জায়গা কী কী?" data-en="What are the famous places in Maheshkhali?">মহেশখালীর বিখ্যাত জায়গা কী কী?</button>
+                <button class="faq-question" data-bn="৩. [WHY] মহেশখালী কেন বিখ্যাত?" data-en="3. [WHY] Why is Maheshkhali famous?">৩. [WHY] মহেশখালী কেন বিখ্যাত?</button>
                 <div class="faq-answer">
-                    <p data-bn="আদিনাথ মন্দির, মহেশখালী সৈকত, মাতারবাড়ি, সোনাদিয়া দ্বীপ ইত্যাদি।" data-en="Adinath Temple, Maheshkhali Beach, Matarbari, Sonadia Island, etc.">আদিনাথ মন্দির, মহেশখালী সৈকত, মাতারবাড়ি, সোনাদিয়া দ্বীপ ইত্যাদি।</p>
+                    <p data-bn="মহেশখালী মূলত তার পবিত্র ও ঐতিহাসিক স্থান এবং প্রাকৃতিক সম্পদের জন্য বিখ্যাত। এখানে রয়েছে শতাব্দী প্রাচীন আদিনাথ মন্দির, যা পাহাড়ের চূড়ায় অবস্থিত। এছাড়া নির্জন ও শান্ত সমুদ্র সৈকত, সোনাদিয়া দ্বীপ, লবণ চাষ, শুঁটকি শিল্প এবং মাতারবাড়ি কয়লাভিত্তিক বিদ্যুৎ কেন্দ্রের জন্যও এই দ্বীপটি দেশ-বিদেশে পরিচিত।" data-en="Maheshkhali is mainly famous for its sacred and historical sites and natural resources. It is home to the centuries-old Adinath Temple, located on a hilltop. The island is also known at home and abroad for its secluded and peaceful sea beaches, Sonadia Island, salt farming, dried fish industry, and the Matarbari coal-based power plant.">মহেশখালী মূলত তার পবিত্র ও ঐতিহাসিক স্থান এবং প্রাকৃতিক সম্পদের জন্য বিখ্যাত। এখানে রয়েছে শতাব্দী প্রাচীন আদিনাথ মন্দির, যা পাহাড়ের চূড়ায় অবস্থিত। এছাড়া নির্জন ও শান্ত সমুদ্র সৈকত, সোনাদিয়া দ্বীপ, লবণ চাষ, শুঁটকি শিল্প এবং মাতারবাড়ি কয়লাভিত্তিক বিদ্যুৎ কেন্দ্রের জন্যও এই দ্বীপটি দেশ-বিদেশে পরিচিত।</p>
                 </div>
             </div>
 
+            <!-- 4Q: WHEN -->
             <div class="faq-item">
-                <button class="faq-question" data-bn="মহেশখালীতে কয়টি ইউনিয়ন আছে?" data-en="How many unions are there in Maheshkhali?">মহেশখালীতে কয়টি ইউনিয়ন আছে?</button>
+                <button class="faq-question" data-bn="৪. [WHEN] ভ্রমণের সেরা সময় কখন?" data-en="4. [WHEN] When is the best time to visit?">৪. [WHEN] ভ্রমণের সেরা সময় কখন?</button>
                 <div class="faq-answer">
-                    <p data-bn="মহেশখালী উপজেলায় মোট ৮টি ইউনিয়ন পরিষদ রয়েছে।" data-en="There are a total of 8 union parishads in Maheshkhali upazila.">মহেশখালী উপজেলায় মোট ৮টি ইউনিয়ন পরিষদ রয়েছে।</p>
+                    <p data-bn="মহেশখালী ভ্রমণের জন্য সবচেয়ে আরামদায়ক ও নিরাপদ সময় হলো শীতকাল, বিশেষ করে নভেম্বর থেকে ফেব্রুয়ারি মাস। এই সময়ে আবহাওয়া থাকে শান্ত ও মনোরম, সমুদ্র থাকে শান্ত এবং বৃষ্টির ঝামেলা থাকে না। তাই সৈকত ভ্রমণ, পাহাড়ে ওঠা এবং দর্শনীয় স্থানগুলো ঘুরে দেখার জন্য এটি সবচেয়ে উপযুক্ত সময়।" data-en="The most comfortable and safe time to visit Maheshkhali is winter, especially from November to February. During this time, the weather is calm and pleasant, the sea is calm, and there is no trouble of rain. Therefore, it is the most suitable time for beach trips, hill climbing, and visiting tourist spots.">মহেশখালী ভ্রমণের জন্য সবচেয়ে আরামদায়ক ও নিরাপদ সময় হলো শীতকাল, বিশেষ করে নভেম্বর থেকে ফেব্রুয়ারি মাস। এই সময়ে আবহাওয়া থাকে শান্ত ও মনোরম, সমুদ্র থাকে শান্ত এবং বৃষ্টির ঝামেলা থাকে না। তাই সৈকত ভ্রমণ, পাহাড়ে ওঠা এবং দর্শনীয় স্থানগুলো ঘুরে দেখার জন্য এটি সবচেয়ে উপযুক্ত সময়।</p>
+                </div>
+            </div>
+
+            <!-- 5Q: HOW -->
+            <div class="faq-item">
+                <button class="faq-question" data-bn="৫. [HOW] কীভাবে মহেশখালীতে যাওয়া যায়?" data-en="5. [HOW] How to go to Maheshkhali?">৫. [HOW] কীভাবে মহেশখালীতে যাওয়া যায়?</button>
+                <div class="faq-answer">
+                    <p data-bn="মহেশখালী মূল ভূখণ্ড থেকে একটি চ্যানেল দিয়ে বিচ্ছিন্ন, তাই এখানে আসতে জলপথ ব্যবহার করতে হয়। সাধারণত কক্সবাজার বা চকরিয়া ঘাট থেকে স্পিড বোট বা ফেরি যোগে মহেশখালী চ্যানেল পার হয়ে এই দ্বীপে পৌঁছানো যায়। এটি একটি অত্যন্ত সুন্দর এবং রোমাঞ্চকর যাত্রা।" data-en="Maheshkhali is separated from the mainland by a channel, so you have to use the waterway to reach here. Usually, you can cross the Maheshkhali channel from Cox's Bazar or Chakaria ghat by speed boat or ferry to reach this island. It is a very beautiful and adventurous journey.">মহেশখালী মূল ভূখণ্ড থেকে একটি চ্যানেল দিয়ে বিচ্ছিন্ন, তাই এখানে আসতে জলপথ ব্যবহার করতে হয়। সাধারণত কক্সবাজার বা চকরিয়া ঘাট থেকে স্পিড বোট বা ফেরি যোগে মহেশখালী চ্যানেল পার হয়ে এই দ্বীপে পৌঁছানো যায়। এটি একটি অত্যন্ত সুন্দর এবং রোমাঞ্চকর যাত্রা।</p>
+                </div>
+            </div>
+
+            <!-- 6Q: WHERE -->
+            <div class="faq-item">
+                <button class="faq-question" data-bn="৬. [WHERE] দর্শনীয় স্থানগুলো কোথায়?" data-en="6. [WHERE] Where are the tourist spots?">৬. [WHERE] দর্শনীয় স্থানগুলো কোথায়?</button>
+                <div class="faq-answer">
+                    <p data-bn="মহেশখালীর দর্শনীয় স্থানগুলো দ্বীপের বিভিন্ন প্রান্তে ছড়িয়ে আছে। এর মধ্যে অন্যতম হলো পাহাড়ের চূড়ায় অবস্থিত আদিনাথ মন্দির। উপকূলীয় এলাকায় রয়েছে মহেশখালী সৈকত এবং সোনাদিয়া দ্বীপ। দ্বীপের চারপাশ ঘিরে রয়েছে বাঁকখালী নদী ও মহেশখালী চ্যানেল। এসব স্থানে সহজেই স্থানীয় যানবাহন বা স্পিড বোটে করে যাওয়া যায়।" data-en="The tourist spots of Maheshkhali are scattered across different parts of the island. Among them is the Adinath Temple located on a hilltop. In the coastal areas, there are Maheshkhali Beach and Sonadia Island. The island is surrounded by the Bankkhali River and Maheshkhali Channel. These places can be easily reached by local transport or speed boats.">মহেশখালীর দর্শনীয় স্থানগুলো দ্বীপের বিভিন্ন প্রান্তে ছড়িয়ে আছে। এর মধ্যে অন্যতম হলো পাহাড়ের চূড়ায় অবস্থিত আদিনাথ মন্দির। উপকূলীয় এলাকায় রয়েছে মহেশখালী সৈকত এবং সোনাদিয়া দ্বীপ। দ্বীপের চারপাশ ঘিরে রয়েছে বাঁখালী নদী ও মহেশখালী চ্যানেল। এসব স্থানে সহজেই স্থানীয় যানবাহন বা স্পিড বোটে করে যাওয়া যায়।</p>
+                </div>
+            </div>
+
+            <!-- 7Q: WHICH -->
+            <div class="faq-item">
+                <button class="faq-question" data-bn="৭. [WHICH] কোন স্থানটি সবচেয়ে জনপ্রিয়?" data-en="7. [WHICH] Which place is the most popular?">৭. [WHICH] কোন স্থানটি সবচেয়ে জনপ্রিয়?</button>
+                <div class="faq-answer">
+                    <p data-bn="পর্যটকদের কাছে মহেশখালীর সবচেয়ে জনপ্রিয় স্থান হলো পাহাড়ের চূড়ায় অবস্থিত শতাব্দী প্রাচীন আদিনাথ মন্দির। এর ঠিক পরেই রয়েছে শান্ত পরিবেশের জন্য বিখ্যাত মহেশখালী সৈকত। যারা নির্জনতা ও প্রকৃতির নৈসর্গিক সৌন্দর্য উপভোগ করতে চান, তাদের কাছে এই দুই জায়গাই সবচেয়ে প্রিয়।" data-en="The most popular place for tourists in Maheshkhali is the centuries-old Adinath Temple on the hilltop. Right after that is Maheshkhali Beach, famous for its peaceful environment. For those who want to enjoy solitude and the scenic beauty of nature, these two places are the most beloved.">পর্যটকদের কাছে মহেশখালীর সবচেয়ে জনপ্রিয় স্থান হলো পাহাড়ের চূড়ায় অবস্থিত শতাব্দী প্রাচীন আদিনাথ মন্দির। এর ঠিক পরেই রয়েছে শান্ত পরিবেশের জন্য বিখ্যাত মহেশখালী সৈকত। যারা নির্জনতা ও প্রকৃতির নৈসর্গিক সৌন্দর্য উপভোগ করতে চান, তাদের কাছে এই দুই জায়গাই সবচেয়ে প্রিয়।</p>
+                </div>
+            </div>
+
+            <!-- 8Q: WHOSE -->
+            <div class="faq-item">
+                <button class="faq-question" data-bn="৮. [WHOSE] এই দ্বীপের ঐতিহ্য কার?" data-en="8. [WHOSE] Whose heritage is this island?">৮. [WHOSE] এই দ্বীপের ঐতিহ্য কার?</button>
+                <div class="faq-answer">
+                    <p data-bn="এই দ্বীপের সমৃদ্ধ ঐতিহ্য এখানকার সব ধর্মের মানুষের। এটি হিন্দু, মুসলিম ও বৌদ্ধ সম্প্রদায়ের যৌথ ঐতিহ্যের এক অনন্য নিদর্শন। এখানে শতাব্দী প্রাচীন আদিনাথ মন্দিরের পাশাপাশি বৌদ্ধ বিহার এবং মসজিদ একসাথে বিদ্যমান। এই সম্প্রীতি মহেশখালীর সবচেয়ে বড় শক্তি।" data-en="The rich heritage of this island belongs to the people of all religions here. It is a unique example of the joint heritage of Hindu, Muslim, and Buddhist communities. Alongside the centuries-old Adinath Temple, Buddhist monasteries and mosques exist together. This harmony is the greatest strength of Maheshkhali.">এই দ্বীপের সমৃদ্ধ ঐতিহ্য এখানকার সব ধর্মের মানুষের। এটি হিন্দু, মুসলিম ও বৌদ্ধ সম্প্রদায়ের যৌথ ঐতিহ্যের এক অনন্য নিদর্শন। এখানে শতাব্দী প্রাচীন আদিনাথ মন্দিরের পাশাপাশি বৌদ্ধ বিহার এবং মসজিদ একসাথে বিদ্যমান। এই সম্প্রীতি মহেশখালীর সবচেয়ে বড় শক্তি।</p>
+                </div>
+            </div>
+
+            <!-- 9Q: WHOM -->
+            <div class="faq-item">
+                <button class="faq-question" data-bn="৯. [WHOM] কাদের জন্য এই প্ল্যাটফর্ম?" data-en="9. [WHOM] Who is this platform for?">৯. [WHOM] কাদের জন্য এই প্ল্যাটফর্ম?</button>
+                <div class="faq-answer">
+                    <p data-bn="এই ডিজিটাল প্ল্যাটফর্মটি মূলত মহেশখালীর স্থানীয় মানুষ, শিক্ষার্থী, উদ্যোক্তা, পর্যটক এবং প্রবাসী মহেশখালীবাসীদের জন্য তৈরি করা হয়েছে। যারা দ্বীপের ইতিহাস, ঐতিহ্য ও সম্ভাবনা সম্পর্কে জানতে আগ্রহী এবং যারা এই দ্বীপের উন্নয়নে কাজ করতে চান—তাদের সবার জন্য এটি একটি কমন প্ল্যাটফর্ম।" data-en="This digital platform is mainly built for the local people of Maheshkhali, students, entrepreneurs, tourists, and expatriate Maheshkhali residents. It is a common platform for everyone who is interested in knowing about the island's history, heritage, and potential, and those who want to work for the development of this island.">এই ডিজিটাল প্ল্যাটফর্মটি মূলত মহেশখালীর স্থানীয় মানুষ, শিক্ষার্থী, উদ্যোক্তা, পর্যটক এবং প্রবাসী মহেশখালীবাসীদের জন্য তৈরি করা হয়েছে। যারা দ্বীপের ইতিহাস, ঐতিহ্য ও সম্ভাবনা সম্পর্কে জানতে আগ্রহী এবং যারা এই দ্বীপের উন্নয়নে কাজ করতে চান—তাদের সবার জন্য এটি একটি কমন প্ল্যাটফর্ম।</p>
                 </div>
             </div>
             
         </div>
     </div>
+</div>
 </div>
 </body>
 </html>
