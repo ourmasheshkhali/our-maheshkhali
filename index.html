@@ -33,20 +33,27 @@
         <div class="bg-glow bg-glow-3"></div>
     </div>
 
+    <!-- 🌙 লোডিং কন্ট্রোলস (এখানে থিম বাটন যোগ করা হয়েছে) -->
     <div class="loader-controls">
-    <button type="button" class="ctrl-btn" id="langToggle">
-        🌐 <span id="langText" data-bn="বাংলা" data-en="English">বাংলা</span>
-    </button>
-    <button type="button" class="ctrl-btn" id="loginBtn">
-        <span data-bn="🔐 লগইন" data-en="🔐 Login">🔐 লগইন</span>
-    </button>
-    <button type="button" class="ctrl-btn" id="registerBtn">
-        <span data-bn="📝 রেজিস্ট্রেশন" data-en="📝 Register">📝 রেজিস্ট্রেশন</span>
-    </button>
-    <button type="button" class="ctrl-btn" id="logoutBtn">
-        <span data-bn="🚪 লগআউট" data-en="🚪 Logout">🚪 লগআউট</span>
-    </button>
-</div>
+        
+        <!-- থিম চেঞ্জ বাটন -->
+        <button type="button" class="ctrl-btn" id="loaderThemeBtn" aria-label="Change Theme" title="Change Theme">
+            <span id="loaderThemeIcon">🌙</span>
+        </button>
+
+        <button type="button" class="ctrl-btn" id="langToggle">
+            🌐 <span id="langText" data-bn="বাংলা" data-en="English">বাংলা</span>
+        </button>
+        <button type="button" class="ctrl-btn" id="loginBtn">
+            <span data-bn="🔐 লগইন" data-en="🔐 Login">🔐 লগইন</span>
+        </button>
+        <button type="button" class="ctrl-btn" id="registerBtn">
+            <span data-bn="📝 রেজিস্ট্রেশন" data-en="📝 Register">📝 রেজিস্ট্রেশন</span>
+        </button>
+        <button type="button" class="ctrl-btn" id="logoutBtn">
+            <span data-bn="🚪 লগআউট" data-en="🚪 Logout">🚪 লগআউট</span>
+        </button>
+    </div>
 
     <!-- SCENE 01: WORLD MAP -->
     <div class="scene scene-world active" id="sceneWorld">
@@ -308,6 +315,7 @@
         </div>
     </div>
 
+    <!-- লোডিং স্ক্রিনের নিচের বার -->
     <div class="loader-bottom-bar">
         <button type="button" class="nav-btn prev-btn" id="prevBtn" data-bn="⬅️ পূর্ববর্তী" data-en="⬅️ Prev">⬅️ পূর্ববর্তী</button>
         <button type="button" class="nav-btn auto-btn active" id="autoBtn" data-bn="⏸️ বিরতি" data-en="⏸️ Pause">⏸️ বিরতি</button>
@@ -439,6 +447,7 @@
         </div>
     </div>
 </div>
+
 <!-- ═══════════════════════════════════════════
      🌴 LIVE STATUS BAR — OUR MAHESHKHALI
      Between Topbar and Main Navigation
@@ -541,6 +550,7 @@
     </div>
 </div>
 <!-- ═══════ END LIVE STATUS BAR ═══════ -->
+ 
 <!-- ═══════════════════════════════════════════
      🌴 PREMIUM HEADER + 3D MEGA NAVIGATION
      Bangla ↔ English · SEO-Friendly · Accessible

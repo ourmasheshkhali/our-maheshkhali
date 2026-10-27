@@ -9652,4 +9652,77 @@ document.querySelectorAll('.bm-btn').forEach(link => {
             document.body.style.overflow = '';
         });
     });
+})();/* =========================================================
+   🎨 LOADER THEME CHANGER
+========================================================= */
+(function initLoaderTheme() {
+    const loader = document.getElementById('loader');
+    const themeBtn = document.getElementById('loaderThemeBtn');
+    const themeIcon = document.getElementById('loaderThemeIcon');
+
+    if (!loader || !themeBtn) return;
+
+    const loaderThemes = ['default', 'theme-light', 'theme-ocean'];
+    const icons = ['🌙', '☀️', '🌊'];
+    let currentThemeIndex = parseInt(localStorage.getItem('loaderTheme')) || 0;
+
+    function applyLoaderTheme(index) {
+        loader.classList.remove('theme-light', 'theme-ocean');
+        if (loaderThemes[index] !== 'default') {
+            loader.classList.add(loaderThemes[index]);
+        }
+        if (themeIcon) themeIcon.textContent = icons[index];
+        localStorage.setItem('loaderTheme', index);
+        currentThemeIndex = index;
+    }
+
+    applyLoaderTheme(currentThemeIndex);
+
+    themeBtn.addEventListener('click', () => {
+        currentThemeIndex = (currentThemeIndex + 1) % loaderThemes.length;
+        applyLoaderTheme(currentThemeIndex);
+    });
+})();/* =========================================================
+   🎨 TOP BAR THEME CHANGER (3 Colors)
+========================================================= */
+
+(function initTopTheme() {
+    const topThemeBtn = document.getElementById('topThemeBtn');
+
+    if (!topThemeBtn) return;
+
+    // থিমগুলোর তালিকা
+    const themes = ['default', 'theme-light', 'theme-ocean'];
+    const icons = ['🌙', '☀️', '🌊'];
+
+    // ব্রাউজারে সেভ করা থিম লোড করা
+    let currentIndex = parseInt(localStorage.getItem('topThemeIndex')) || 0;
+
+    // থিম অ্যাপ্লাই ফাংশন
+    function applyTheme(index) {
+        // আগের থিম ক্লাস রিমুভ করা
+        document.body.classList.remove('theme-light', 'theme-ocean');
+        
+        // নতুন থিম অ্যাপ্লাই করা
+        if (themes[index] !== 'default') {
+            document.body.classList.add(themes[index]);
+        }
+        
+        // আইকন আপডেট করা
+        topThemeBtn.textContent = icons[index];
+        
+        // সেভ করা
+        localStorage.setItem('topThemeIndex', index);
+        currentIndex = index;
+    }
+
+    // পেজ লোডে আগের থিম অ্যাপ্লাই
+    applyTheme(currentIndex);
+
+    // বাটনে ক্লিক করলে থিম পরিবর্তন হবে
+    topThemeBtn.addEventListener('click', () => {
+        currentIndex = (currentIndex + 1) % themes.length;
+        applyTheme(currentIndex);
+    });
+
 })();

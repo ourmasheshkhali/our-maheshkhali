@@ -23108,4 +23108,114 @@ body.light-theme .footer-action-btn:hover {
         gap: 15px;
         padding: 10px;
     }
+}/* =========================================================
+   🎨 LOADER THEME CHANGER
+========================================================= */
+#loaderThemeBtn {
+    padding: 12px 14px !important;
+    font-size: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.3s ease;
+}
+#loaderThemeBtn:hover {
+    transform: scale(1.1) rotate(15deg);
+}
+
+/* ১. ডিফল্ট থিম (Dark) */
+#loader { background-color: #0f0c29; transition: background-color 0.6s ease; }
+#loader .bg-glow-1 { background: #00e0ff; }
+#loader .bg-glow-2 { background: #ff2e88; }
+#loader .bg-glow-3 { background: #ffaa00; }
+
+/* ২. লাইট থিম (Soft Cream) */
+#loader.theme-light { background-color: #f8f9fa; }
+#loader.theme-light .bg-glow-1 { background: #ffd700; }
+#loader.theme-light .bg-glow-2 { background: #ff8c00; }
+#loader.theme-light .bg-glow-3 { background: #ffffff; }
+#loader.theme-light .bg-stars { opacity: 0; }
+#loader.theme-light .scene-title,
+#loader.theme-light .scene-subtitle,
+#loader.theme-light .caption-bn,
+#loader.theme-light .caption-en { color: #212529 !important; }
+#loader.theme-light .ctrl-btn { color: #000; background: rgba(0,0,0,0.05); border-color: rgba(0,0,0,0.1); }
+
+/* ৩. ওশান থিম (Teal) */
+#loader.theme-ocean { background-color: #0a192f; }
+#loader.theme-ocean .bg-glow-1 { background: #64ffda; }
+#loader.theme-ocean .bg-glow-2 { background: #00b4d8; }
+#loader.theme-ocean .bg-glow-3 { background: #90e0ef; }
+#loader.theme-ocean .scene-title,
+#loader.theme-ocean .scene-subtitle,
+#loader.theme-ocean .caption-bn,
+#loader.theme-ocean .caption-en { color: #e6f1ff !important; }
+#loader.theme-ocean .ctrl-btn { color: #e6f1ff; background: rgba(100, 255, 218, 0.05); border-color: rgba(100, 255, 218, 0.2); }/* =========================================================
+   🎨 3 THEMES FOR FULL WEBSITE (Eye-Friendly)
+========================================================= */
+
+/* ১. ডিফল্ট থিম (Dark Navy) — যেটা এখন আছে */
+body {
+    transition: background-color 0.5s ease, color 0.5s ease;
+}
+
+/* ২. সফট ক্রিম (Light Theme) — চোখের জন্য আরামদায়ক */
+body.theme-light {
+    background-color: #f4f6fb !important;
+    color: #1a1a2e !important;
+}
+
+body.theme-light .top-information-bar,
+body.theme-light .live-status-bar,
+body.theme-light .main-navigation,
+body.theme-light .site-footer,
+body.theme-light .hero-section {
+    background-color: #ffffff !important;
+    color: #1a1a2e !important;
+    border-color: #e0e0e0 !important;
+}
+
+body.theme-light .top-info-item,
+body.theme-light .top-action-btn,
+body.theme-light .live-item,
+body.theme-light .nav-link {
+    background-color: rgba(0, 0, 0, 0.03) !important;
+    color: #1a1a2e !important;
+    border-color: #dcdcdc !important;
+}
+
+body.theme-light .top-info-item:hover,
+body.theme-light .top-action-btn:hover {
+    background-color: rgba(0, 0, 0, 0.08) !important;
+}
+
+/* ৩. ওশান থিম (Soft Teal/Green) — চোখের জন্য শান্ত */
+body.theme-ocean {
+    background-color: #0a192f !important;
+    color: #e6f1ff !important;
+}
+
+body.theme-ocean .top-information-bar,
+body.theme-ocean .live-status-bar,
+body.theme-ocean .main-navigation,
+body.theme-ocean .site-footer,
+body.theme-ocean .hero-section {
+    background-color: #0f2444 !important;
+    color: #e6f1ff !important;
+    border-color: rgba(100, 255, 218, 0.2) !important;
+}
+
+body.theme-ocean .top-info-item,
+body.theme-ocean .top-action-btn,
+body.theme-ocean .live-item,
+body.theme-ocean .nav-link {
+    background-color: rgba(100, 255, 218, 0.05) !important;
+    color: #e6f1ff !important;
+    border-color: rgba(100, 255, 218, 0.2) !important;
+}
+
+body.theme-ocean .top-info-item:hover,
+body.theme-ocean .top-action-btn:hover {
+    background-color: rgba(100, 255, 218, 0.15) !important;
+    border-color: rgba(100, 255, 218, 0.6) !important;
 }
